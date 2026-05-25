@@ -1,0 +1,16 @@
+{
+  "name": "nufaa-website",
+  "version": "1.0.0",
+  "description": "Nufaa client website",
+  "type": "module",
+  "scripts": {
+    "serve": "node serve.mjs",
+    "screenshot": "node screenshot.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.0.0"
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
+  }
+}

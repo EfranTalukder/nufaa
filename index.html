@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nufaa | Zero-Interest Payments & Staking Rewards in Gambia</title>
+  <meta name="description" content="Buy electricity, airtime, rice, and everyday essentials across Gambia with zero interest and zero fees. Your balance shrinks automatically through blockchain staking rewards.">
+  <meta property="og:title" content="Nufaa | Your Money Works For You">
+  <meta property="og:description" content="Zero-interest payments for electricity, airtime, groceries, and essentials in Gambia. Earn staking rewards while you spend.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Satoshi', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          },
+          colors: {
+            brand: {
+              black: '#0a0a0a',
+              dark: '#171717',
+              gray: '#737373',
+              light: '#fafafa',
+              white: '#ffffff',
+              accent: '#059669',
+              accentDark: '#047857',
+              accentLight: '#d1fae5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #0a0a0a;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Grain Overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      mix-blend-mode: multiply;
+    }
+
+    /* Nav */
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
+    }
+    .nav-link {
+      position: relative; color: #737373; font-weight: 500;
+      transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover { color: #0a0a0a; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
+      background: #059669; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: #0a0a0a; }
+
+    /* Mobile Menu Overlay */
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 60;
+      background: rgba(250, 250, 250, 0.95);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+    .mobile-overlay .mobile-link {
+      transform: translateY(2rem); opacity: 0;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-overlay.open .mobile-link {
+      transform: translateY(0); opacity: 1;
+    }
+    .mobile-overlay.open .mobile-link:nth-child(1) { transition-delay: 0.08s; }
+    .mobile-overlay.open .mobile-link:nth-child(2) { transition-delay: 0.14s; }
+    .mobile-overlay.open .mobile-link:nth-child(3) { transition-delay: 0.20s; }
+    .mobile-overlay.open .mobile-link:nth-child(4) { transition-delay: 0.26s; }
+    .mobile-overlay.open .mobile-link:nth-child(5) { transition-delay: 0.32s; }
+    .mobile-overlay.open .mobile-link:nth-child(6) { transition-delay: 0.38s; }
+
+    /* Hamburger Morph */
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: #0a0a0a;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0; transform: translateY(2.5rem);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Floating Shapes */
+    .hero-shape {
+      position: absolute; border-radius: 50%; filter: blur(80px);
+      z-index: -1; animation: heroFloat 14s ease-in-out infinite;
+    }
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-30px) scale(1.04); }
+    }
+
+    /* Marquee */
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background-color: #0a0a0a; color: #ffffff;
+      padding: 1rem 2.25rem; border-radius: 999px;
+      font-weight: 600; letter-spacing: -0.01em;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.5);
+      background-color: #171717;
+    }
+    .btn-primary:active { transform: translateY(1px) scale(0.98); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background-color: transparent; color: #0a0a0a;
+      padding: 1rem 2.25rem; border-radius: 999px;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      font-weight: 600; letter-spacing: -0.01em;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background-color 0.3s;
+    }
+    .btn-secondary:hover {
+      background-color: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.25);
+      transform: translateY(-1px);
+    }
+    .btn-secondary:active { transform: translateY(1px) scale(0.98); }
+
+    /* Bento Card */
+    .bento-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 2rem;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.04);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Image Treatment */
+    .img-cover {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Wallet Card */
+    .wallet-card {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      border-radius: 1.5rem; padding: 2rem; color: white;
+      position: relative; overflow: hidden;
+      box-shadow: 0 24px 48px -12px rgba(0,0,0,0.3);
+      transform: rotate(-2deg);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .wallet-card:hover { transform: rotate(0deg) scale(1.02); }
+    .wallet-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.08), transparent);
+      pointer-events: none;
+    }
+
+    .tx-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.875rem 1rem; border-radius: 1rem;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.8);
+      transform: translateX(1rem); opacity: 0;
+      animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .tx-row:nth-child(2) { animation-delay: 0.15s; }
+    .tx-row:nth-child(3) { animation-delay: 0.3s; }
+    .tx-row:nth-child(4) { animation-delay: 0.45s; }
+    @keyframes slideIn { to { transform: translateX(0); opacity: 1; } }
+
+    /* Counter Animation */
+    .count-up { font-variant-numeric: tabular-nums; }
+
+    /* Comparison Table */
+    .compare-nufaa {
+      background: #f0fdf4;
+      border-left: 3px solid #059669;
+    }
+
+    /* Staking pulse */
+    @keyframes stakePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.3); }
+      50% { box-shadow: 0 0 0 10px rgba(5,150,105,0); }
+    }
+    .stake-pulse { animation: stakePulse 2.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- Background Shapes -->
+  <div class="hero-shape" style="right:-8%;top:5%;width:45vw;height:45vw;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);"></div>
+  <div class="hero-shape" style="left:-12%;bottom:10%;width:35vw;height:35vw;background:radial-gradient(circle,rgba(10,10,10,0.02) 0%,transparent 70%);animation-delay:-7s;animation-duration:18s;"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVIGATION                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center">
+    <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2.5 group" id="nav-logo">
+        <div class="w-8 h-8 flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90">
+            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-7 text-sm">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="wallet.html" class="nav-link">Wallet</a>
+        <a href="how-it-works.html" class="nav-link">How it works</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-sm" id="nav-cta">
+        Get Early Access
+      </a>
+
+      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobile-menu">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
+      <a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
+      <a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
+      <a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
+      <a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
+      <a href="contact.html" class="mobile-link btn-primary mt-4">Get Early Access</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO                                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="relative min-h-[100dvh] flex items-center pt-28 pb-16 md:pt-32 md:pb-20">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left Content -->
+      <div class="max-w-xl reveal">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-7 border border-brand-accent/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
+          Sharia-compliant rewards marketplace
+        </div>
+
+        <h1 class="font-display font-bold text-brand-black leading-[1.05] tracking-tight mb-5" style="font-size: clamp(2.5rem, 5.5vw, 4.2rem);">
+          Your money works<br>for you.<br>
+          <span class="text-brand-gray">Not against you.</span>
+        </h1>
+
+        <p class="text-brand-gray text-lg leading-relaxed mb-9 max-w-[52ch]">
+          Buy electricity, airtime, rice, and everyday essentials across Gambia — with zero interest and zero hidden fees. Your balance shrinks automatically through blockchain staking rewards.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
+          <a href="contact.html" class="btn-primary w-full sm:w-auto" id="hero-cta-primary">
+            Start growing your money
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="how-it-works.html" class="btn-secondary w-full sm:w-auto" id="hero-cta-secondary">See how it works</a>
+        </div>
+
+        <div class="mt-10 flex items-center gap-6 md:gap-10 border-t border-black/5 pt-7">
+          <div>
+            <p class="font-display font-bold text-2xl tracking-tight text-brand-black">0%</p>
+            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Interest</p>
+          </div>
+          <div class="w-px h-10 bg-black/5"></div>
+          <div>
+            <p class="font-display font-bold text-2xl tracking-tight text-brand-accent">4.45%</p>
+            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Est. APY</p>
+          </div>
+          <div class="w-px h-10 bg-black/5"></div>
+          <div>
+            <p class="font-display font-bold text-2xl tracking-tight text-brand-black">100%</p>
+            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Asset-backed</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Hero Image + Wallet UI -->
+      <div class="relative flex flex-col justify-center items-center reveal reveal-delay-2">
+        <div class="relative w-full max-w-md">
+          <!-- Hero Image -->
+          <div class="rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.12)] border border-black/5">
+            <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
+          </div>
+          <!-- Floating Wallet Card -->
+          <div class="absolute -bottom-6 -left-4 md:-left-12 bg-white rounded-2xl p-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.1)] border border-black/5 w-56 md:w-64" style="animation: heroFloat 8s ease-in-out infinite;">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-9 h-9 rounded-full bg-brand-accentLight flex items-center justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-brand-black">Staking reward</p>
+                <p class="text-[10px] text-brand-gray">Just now</p>
+              </div>
+            </div>
+            <p class="font-mono font-bold text-lg text-brand-accent">+D 42.50</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- TRUST MARQUEE                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="w-full overflow-hidden border-y border-black/5 py-7 bg-white/50">
+    <div class="marquee-track">
+      <div class="flex items-center gap-14 px-8">
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Powered by</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Solana</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Cardano</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Ethereum</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Sharia Certified</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Zero Interest</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Built for Gambia</span>
+        <span class="text-brand-gray/20 mr-14">&#8226;</span>
+      </div>
+      <div class="flex items-center gap-14 px-8">
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Powered by</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Solana</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Cardano</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Ethereum</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Sharia Certified</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Zero Interest</span>
+        <span class="text-brand-gray/20">&#8226;</span>
+        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Built for Gambia</span>
+        <span class="text-brand-gray/20 mr-14">&#8226;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PRODUCT SHOWCASE — What you can do           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
+    <div class="max-w-2xl mb-14 reveal">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">Your marketplace</div>
+      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Everything you need,<br><span class="text-brand-gray">all in one place.</span></h2>
+      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">From electricity and airtime to rice and household essentials — pay for it all with zero interest. Then watch your balance shrink through staking rewards.</p>
+    </div>
+
+    <!-- Asymmetric Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+
+      <!-- Wallet & Staking — Large -->
+      <div class="md:col-span-7 bento-card overflow-hidden group reveal">
+        <div class="grid grid-cols-1 sm:grid-cols-2 h-full">
+          <div class="p-8 md:p-10 flex flex-col justify-center">
+            <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-6">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.5"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Wallet & staking</h3>
+            <p class="text-brand-gray leading-relaxed mb-5">Manage your money and earn staking rewards. Your balance grows while you sleep at an estimated 4.45% APY.</p>
+            <a href="wallet.html" class="text-sm font-semibold text-brand-black inline-flex items-center gap-1.5 group/link hover:text-brand-accent transition-colors">
+              Explore wallet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="relative overflow-hidden rounded-r-2xl min-h-[260px]">
+            <img src="images/product-wallet.png" alt="Nufaa wallet app showing staking stats and balance" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+          </div>
+        </div>
+      </div>
+
+      <!-- Buy Essentials — Tall -->
+      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1">
+        <div class="relative h-48 md:h-56 overflow-hidden rounded-t-2xl">
+          <img src="images/product-marketplace.png" alt="Shopping for groceries and essentials at a Gambian market" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+        </div>
+        <div class="p-8">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Buy essentials</h3>
+          <p class="text-brand-gray leading-relaxed">Rice, cooking oil, household supplies — buy what your family needs from local merchants, interest-free.</p>
+        </div>
+      </div>
+
+      <!-- Bill Payments -->
+      <div class="md:col-span-5 bento-card overflow-hidden group reveal">
+        <div class="relative h-48 md:h-52 overflow-hidden rounded-t-2xl">
+          <img src="images/product-pay.png" alt="Agent helping customer with bill payment" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+        </div>
+        <div class="p-8">
+          <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Pay bills instantly</h3>
+          <p class="text-brand-gray leading-relaxed">Nawec electricity, Africell airtime, and more — paid instantly through our agent network or app. Zero transaction fees.</p>
+        </div>
+      </div>
+
+      <!-- Community — Wide -->
+      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 h-full">
+          <div class="p-8 md:p-10 flex flex-col justify-center order-2 sm:order-1">
+            <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-6">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-brand-black mb-3">A community, not just an app</h3>
+            <p class="text-brand-gray leading-relaxed">Join thousands of Gambians who are building wealth together. Share tips, refer friends, and grow as a community.</p>
+          </div>
+          <div class="relative overflow-hidden rounded-r-2xl min-h-[260px] order-1 sm:order-2">
+            <img src="images/value-community.png" alt="Gambian community members sharing and discussing" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HOW IT WORKS                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 bg-white border-y border-black/5">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The mechanism</div>
+          <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-9">Three steps.<br><span class="text-brand-gray">Zero complexity.</span></h2>
+
+          <div class="space-y-8">
+            <div class="flex gap-5 reveal">
+              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">01</div>
+              <div>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Pick what you need</h4>
+                <p class="text-brand-gray leading-relaxed">Electricity, airtime, rice, household goods — choose from our marketplace or visit a local Nufaa agent.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 reveal reveal-delay-1">
+              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">02</div>
+              <div>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">We stake, you own</h4>
+                <p class="text-brand-gray leading-relaxed">Your funds acquire Sharia-compliant digital assets on secure blockchains. You retain full ownership at all times.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 reveal reveal-delay-2">
+              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">03</div>
+              <div>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Watch your balance melt</h4>
+                <p class="text-brand-gray leading-relaxed">Staking rewards pay down your balance automatically. No interest. No deadlines. No catches.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a href="how-it-works.html" class="font-semibold text-brand-black border-b-2 border-brand-accent pb-1 hover:text-brand-accent transition-colors inline-flex items-center gap-2">
+              Read the full breakdown <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Balance Reduction Visual -->
+        <div class="reveal reveal-delay-2">
+          <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-black/5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)]">
+            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray mb-8">Live balance simulation</p>
+            <div class="space-y-5">
+              <div class="flex justify-between items-end border-b border-black/8 pb-4">
+                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gray">Your purchase</span>
+                <span class="font-mono text-2xl font-bold text-brand-black">D 1,000.00</span>
+              </div>
+              <div class="flex justify-between items-end border-b border-black/8 pb-4">
+                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">Staking rewards applied</span>
+                <span class="font-mono text-2xl font-bold text-brand-accent">-D 387.50</span>
+              </div>
+              <div class="flex justify-between items-end pt-2">
+                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-black">Remaining balance</span>
+                <span class="font-mono text-3xl font-bold text-brand-black">D 612.50</span>
+              </div>
+              <div class="mt-4 h-2 rounded-full bg-black/5 overflow-hidden">
+                <div class="h-full bg-brand-accent rounded-full" style="width: 38.75%;"></div>
+              </div>
+              <p class="text-xs text-brand-gray text-right">38.75% paid by staking rewards — and counting</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- WALLET PREVIEW                              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Wallet App Image -->
+      <div class="reveal order-2 lg:order-1 flex justify-center">
+        <div class="relative max-w-sm">
+          <div class="rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] border border-black/5">
+            <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
+          </div>
+          <!-- Floating stat -->
+          <div class="absolute -top-4 -right-4 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
+            <p class="text-[10px] text-white/50 uppercase tracking-[0.15em] font-semibold mb-1">Est. Annual Yield</p>
+            <p class="font-mono font-bold text-2xl text-brand-accentLight">4.45%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal order-1 lg:order-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-5 border border-brand-accent/20">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
+          Wallet
+        </div>
+        <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">A wallet that grows<br><span class="text-brand-gray">while you sleep.</span></h2>
+        <p class="text-brand-gray text-lg leading-relaxed mb-8 max-w-[50ch]">
+          Deposit money. Stake it on secure blockchain networks. Earn real rewards — automatically. Transfer, receive, buy essentials, and track your history from one place.
+        </p>
+
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">D 0</p>
+            <p class="text-xs text-brand-gray">Hidden fees</p>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+            <p class="font-mono font-bold text-xl text-brand-accent mb-0.5">4.45%</p>
+            <p class="text-xs text-brand-gray">Est. annual yield</p>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">24/7</p>
+            <p class="text-xs text-brand-gray">Access</p>
+          </div>
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">100%</p>
+            <p class="text-xs text-brand-gray">Your ownership</p>
+          </div>
+        </div>
+
+        <a href="wallet.html" class="btn-primary" id="wallet-cta">
+          Explore your wallet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- VALUES — Sharia & Community                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 bg-brand-black text-white relative overflow-hidden">
+    <!-- Subtle accent glow -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-accent rounded-full filter blur-[120px] opacity-10"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-accentDark rounded-full filter blur-[120px] opacity-10"></div>
+
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Image -->
+        <div class="reveal rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)]">
+          <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
+        </div>
+
+        <!-- Text -->
+        <div class="reveal reveal-delay-1">
+          <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-6">Finance rooted<br><span class="text-white/50">in fairness.</span></h2>
+          <p class="text-white/70 text-lg leading-relaxed mb-8 max-w-[50ch]">
+            In Islamic finance, charging interest exploits vulnerability. Conventional banks thrive by taxing the poorest with the highest rates. We built a different system.
+          </p>
+          <p class="text-white/70 text-lg leading-relaxed mb-8 max-w-[50ch]">
+            Nufaa uses a Wakala (agency) structure. You are not taking a loan. The blockchain staking yields the economic value to settle your transactions. Finance grounded in transparency and shared prosperity.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Sharia certified
+            </span>
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Zero interest (Riba-free)
+            </span>
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Wakala model
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- COMPARISON TABLE                            -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 w-full max-w-5xl mx-auto px-5 md:px-6">
+    <div class="mb-14 reveal">
+      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">See the difference.</h2>
+      <p class="text-brand-gray text-lg max-w-[50ch]">Compare Nufaa against legacy payment options in Gambia. The numbers speak clearly.</p>
+    </div>
+
+    <div class="overflow-x-auto reveal reveal-delay-1">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr>
+            <th class="py-4 border-b-2 border-black/10 text-brand-gray font-medium text-sm w-1/4"></th>
+            <th class="py-4 border-b-2 border-brand-accent text-brand-black w-1/4">
+              <div class="flex items-center gap-2">
+                <span class="font-display font-bold text-xl">Nufaa</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest bg-brand-accentLight text-brand-accentDark px-2 py-0.5 rounded">Your pick</span>
+              </div>
+            </th>
+            <th class="py-4 border-b-2 border-black/10 text-brand-gray font-medium w-1/4">Mobile Money</th>
+            <th class="py-4 border-b-2 border-black/10 text-brand-gray font-medium w-1/4">Banks</th>
+          </tr>
+        </thead>
+        <tbody class="text-brand-black">
+          <tr>
+            <td class="py-5 border-b border-black/5 font-medium text-sm">Interest (Riba)</td>
+            <td class="py-5 border-b border-black/5 compare-nufaa px-3 font-bold text-brand-accent">0%</td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">None</td>
+            <td class="py-5 border-b border-black/5 text-red-500">Up to 25%</td>
+          </tr>
+          <tr>
+            <td class="py-5 border-b border-black/5 font-medium text-sm">Transaction fees</td>
+            <td class="py-5 border-b border-black/5 compare-nufaa px-3 font-bold text-brand-accent">Zero</td>
+            <td class="py-5 border-b border-black/5 text-red-500">High per TX</td>
+            <td class="py-5 border-b border-black/5 text-red-500">Monthly + TX</td>
+          </tr>
+          <tr>
+            <td class="py-5 border-b border-black/5 font-medium text-sm">Money grows?</td>
+            <td class="py-5 border-b border-black/5 compare-nufaa px-3">
+              <span class="inline-flex items-center gap-1.5 font-bold text-brand-accent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Yes — 4.45% APY
+              </span>
+            </td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">No</td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">No (debt grows)</td>
+          </tr>
+          <tr>
+            <td class="py-5 border-b border-black/5 font-medium text-sm">Buy groceries?</td>
+            <td class="py-5 border-b border-black/5 compare-nufaa px-3">
+              <span class="inline-flex items-center gap-1.5 font-bold text-brand-accent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Yes
+              </span>
+            </td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">Limited</td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">No</td>
+          </tr>
+          <tr>
+            <td class="py-5 font-medium text-sm">Sharia compliant</td>
+            <td class="py-5 compare-nufaa px-3">
+              <span class="inline-flex items-center gap-1.5 font-bold text-brand-accent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Certified
+              </span>
+            </td>
+            <td class="py-5 text-brand-gray">N/A</td>
+            <td class="py-5 text-red-500">No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOUNDER                                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 bg-white border-y border-black/5">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <div class="reveal">
+          <div class="rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] border border-black/5">
+            <img src="images/founder.png" alt="Alhassan Bah, founder of Nufaa" class="img-cover aspect-[4/5]">
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The founder</div>
+          <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">Built by someone<br><span class="text-brand-gray">who lived the problem.</span></h2>
+          <p class="text-brand-gray text-lg leading-relaxed mb-6 max-w-[50ch]">
+            Alhassan Bah watched families across Gambia trapped in cycles of high-interest debt just to keep the lights on or buy basic necessities. The banking system was designed to extract wealth, not create it.
+          </p>
+          <p class="text-brand-gray text-lg leading-relaxed mb-8 max-w-[50ch]">
+            He built Nufaa to prove that technology can serve communities ethically — where your money grows through staking rewards instead of shrinking through interest payments. A system where fairness is not aspirational, but operational.
+          </p>
+          <div class="border-t border-black/5 pt-6">
+            <p class="font-display font-bold text-xl text-brand-black">Alhassan Bah</p>
+            <p class="text-brand-gray text-sm">Founder & CEO, Nufaa</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CTA                                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
+    <div class="reveal bento-card bg-brand-black text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none">
+      <!-- Glows -->
+      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15"></div>
+      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15"></div>
+
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Your next bill could<br>pay itself.</h2>
+        <p class="text-white/65 text-lg mb-4 max-w-[48ch] mx-auto">Early members get priority access to staking rewards and the lowest fee structure. The earlier you join, the more you earn.</p>
+        <p class="text-white/40 text-sm mb-9 font-mono">nufaa.now@hotmail.com</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]" id="cta-primary">
+            Claim your spot
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://wa.me/447982144203" class="inline-flex items-center justify-center gap-2 text-white/80 px-6 py-4 rounded-full font-medium border border-white/10 hover:border-white/25 transition-colors" id="cta-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity="0.8"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.108 1.537 5.842L.412 23.588l5.88-1.094A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.974c-1.898 0-3.69-.496-5.263-1.416l-.377-.22-3.896.724.739-3.8-2.42-.387A9.957 9.957 0 0 1 2.026 12C2.026 6.49 6.49 2.026 12 2.026S21.974 6.49 21.974 12c0 5.51-4.464 9.974-9.974 9.974z"/></svg>
+            Message us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer class="border-t border-black/5 bg-white pt-16 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
+      <div class="md:col-span-5">
+        <a href="/" class="flex items-center gap-2.5 mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span class="font-display font-bold text-xl tracking-tight">Nufaa</span>
+        </a>
+        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Zero fees. Real growth.</p>
+        <div class="space-y-2">
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +44 7982 144203
+          </a>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nufaa.now@hotmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4>
+        <ul class="space-y-3">
+          <li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li>
+          <li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li>
+          <li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li>
+          <li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4>
+        <ul class="space-y-3">
+          <li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li>
+          <li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-3">
+        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4>
+        <p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p>
+        <form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';">
+          <input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all" id="footer-email">
+          <button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shrink-0">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p>
+      <p class="text-brand-gray/40 text-sm">Made for Gambia.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- JAVASCRIPT                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    // Close menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll Reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
