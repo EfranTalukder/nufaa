@@ -25,32 +25,43 @@
     body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
     body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
 
-    .nav-pill { background:rgba(255,255,255,0.85); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); }
+    .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
+    .nav-scrolled .nav-pill { background:rgba(255,255,255,0.95); box-shadow:0 8px 32px -4px rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.06); }
     .nav-link { position:relative; color:#737373; font-weight:500; transition:color 0.4s cubic-bezier(0.16,1,0.3,1); }
     .nav-link:hover { color:#0a0a0a; }
     .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:#059669; transition:width 0.4s cubic-bezier(0.16,1,0.3,1); }
     .nav-link:hover::after, .nav-link.active::after { width:100%; }
     .nav-link.active { color:#0a0a0a; }
 
-    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.95); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.97); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
     .mobile-overlay.open { opacity:1; pointer-events:auto; }
     .mobile-overlay .mobile-link { transform:translateY(2rem); opacity:0; transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s cubic-bezier(0.16,1,0.3,1); }
     .mobile-overlay.open .mobile-link { transform:translateY(0); opacity:1; }
     .mobile-overlay.open .mobile-link:nth-child(1){transition-delay:.08s} .mobile-overlay.open .mobile-link:nth-child(2){transition-delay:.14s} .mobile-overlay.open .mobile-link:nth-child(3){transition-delay:.2s} .mobile-overlay.open .mobile-link:nth-child(4){transition-delay:.26s} .mobile-overlay.open .mobile-link:nth-child(5){transition-delay:.32s} .mobile-overlay.open .mobile-link:nth-child(6){transition-delay:.38s}
+    .mobile-link-active { color:#059669 !important; position:relative; }
+    .mobile-link-active::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:24px; height:2px; background:#059669; border-radius:1px; }
     .hamburger span { display:block; width:22px; height:2px; background:#0a0a0a; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
     .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-    .reveal { opacity:0; transform:translateY(2.5rem); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal { opacity:0; transform:translateY(2.5rem); filter:blur(4px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); filter:blur(0); }
     .reveal-delay-1 { transition-delay:0.1s; }
     .reveal-delay-2 { transition-delay:0.2s; }
-
-    .bento-card { background:#ffffff; border:1px solid rgba(0,0,0,0.04); border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.04); transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s; }
-    .bento-card:hover { transform:translateY(-4px); box-shadow:0 28px 60px -15px rgba(0,0,0,0.07); }
 
     .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s; box-shadow:0 8px 24px -8px rgba(0,0,0,0.4); }
     .btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(0,0,0,0.5); background-color:#171717; }
     .btn-primary:active { transform:translateY(1px) scale(0.98); }
+
+    .bento-card { background:#ffffff; border:none; border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08); transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s; }
+    .bento-card:hover { transform:translateY(-4px); box-shadow:0 28px 60px -15px rgba(0,0,0,0.07); }
+
+    .img-cover { width:100%; height:100%; object-fit:cover; }
+
+    .bezel-shell { padding:0; background:transparent; border:none; border-radius:2.25rem; }
+
+    @keyframes meshShift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,15px) scale(0.97)} }
+    .ambient-glow { animation:meshShift 20s ease-in-out infinite; }
+    .cta-refraction { box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02); }
 
     .faq-item { border-bottom:1px solid rgba(0,0,0,0.05); }
     .faq-trigger { display:flex; justify-content:space-between; align-items:center; width:100%; padding:1.75rem 0; cursor:pointer; text-align:left; background:none; border:none; }
@@ -60,29 +71,47 @@
     .faq-item.active .faq-icon { transform:rotate(180deg); }
     .faq-content { max-height:0; overflow:hidden; transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1); }
 
-    .img-cover { width:100%; height:100%; object-fit:cover; }
+    /* Step connector line */
+    .step-connector { position:relative; }
+    .step-connector::before {
+      content:''; position:absolute; left:50%; top:0; bottom:0; width:1px;
+      background:linear-gradient(to bottom, rgba(5,150,105,0.15), rgba(5,150,105,0.03));
+      display:none;
+    }
+    @media(min-width:768px) {
+      .step-connector::before { display:block; }
+    }
   </style>
 </head>
 <body class="relative">
 
   <!-- Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center">
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
     <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group"><div class="w-8 h-8 flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg></div><span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span></a>
       <div class="hidden md:flex items-center gap-7 text-sm">
         <a href="/" class="nav-link">Home</a><a href="wallet.html" class="nav-link">Wallet</a><a href="how-it-works.html" class="nav-link active">How it works</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-sm">Get Early Access</a>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]">Get Early Access</a>
       <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <div class="mobile-overlay" id="mobile-menu"><div class="flex flex-col items-center justify-center h-full gap-8"><a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a><a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a><a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a><a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a><a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a><a href="contact.html" class="mobile-link btn-primary mt-4">Get Early Access</a></div></div>
+  <div class="mobile-overlay" id="mobile-menu">
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
+      <a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
+      <a href="how-it-works.html" class="mobile-link mobile-link-active font-display font-bold text-3xl">How it works</a>
+      <a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
+      <a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
+      <a href="contact.html" class="mobile-link btn-primary mt-4">Get Early Access</a>
+    </div>
+  </div>
 
   <!-- Hero -->
   <header class="pt-40 md:pt-48 pb-16 md:pb-20 px-5 md:px-6 text-center">
     <div class="max-w-3xl mx-auto reveal">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-6 border border-brand-accent/20">The mechanism</div>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-6">The mechanism</div>
       <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05;">Simple on the surface.<br><span class="text-brand-gray">Sophisticated beneath.</span></h1>
       <p class="text-brand-gray text-xl max-w-2xl mx-auto leading-relaxed">We handle the blockchain complexity so you can focus on what matters — buying essentials, paying bills, and growing your money.</p>
     </div>
@@ -94,50 +123,57 @@
 
       <!-- Step 1 -->
       <div class="bento-card relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 p-8 md:p-10 reveal">
-        <div class="absolute -left-6 -top-6 font-display font-bold text-[10rem] leading-none text-brand-gray/4 pointer-events-none select-none">01</div>
+        <div class="absolute -left-6 -top-6 font-display font-bold text-[10rem] leading-none text-brand-gray/[0.04] pointer-events-none select-none">01</div>
         <div class="md:w-1/2 relative z-10">
           <h3 class="font-display font-bold text-2xl md:text-3xl mb-3">Pick what you need</h3>
           <p class="text-brand-gray text-lg leading-relaxed mb-4">Visit a local Nufaa agent or use the app. Choose from electricity tokens (Nawec), airtime (Africell), rice, cooking oil, or any essential item in our marketplace.</p>
           <p class="text-brand-gray leading-relaxed">You enter into a Wakala (agency) agreement — completely interest-free. No credit checks, no paperwork maze.</p>
         </div>
         <div class="md:w-1/2 w-full relative z-10">
-          <div class="rounded-2xl overflow-hidden border border-black/5 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.06)]">
-            <img src="images/product-pay.png" alt="Nufaa agent helping customer with a payment at a shop counter" class="img-cover aspect-video">
+          <div class="bezel-shell" style="border-radius:1.75rem;">
+            <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
+              <img src="images/product-pay.png" alt="Nufaa agent helping customer with a payment at a shop counter" class="img-cover aspect-video">
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Step 2 -->
       <div class="bento-card relative overflow-hidden flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12 p-8 md:p-10 reveal">
-        <div class="absolute -right-6 -top-6 font-display font-bold text-[10rem] leading-none text-brand-gray/4 pointer-events-none select-none">02</div>
+        <div class="absolute -right-6 -top-6 font-display font-bold text-[10rem] leading-none text-brand-gray/[0.04] pointer-events-none select-none">02</div>
         <div class="md:w-1/2 relative z-10">
           <h3 class="font-display font-bold text-2xl md:text-3xl mb-3">We stake, you own</h3>
           <p class="text-brand-gray text-lg leading-relaxed mb-4">The platform acquires Sharia-compliant digital assets on your behalf and stakes them on enterprise blockchain networks — Cardano, Solana, and Ethereum.</p>
           <p class="text-brand-gray leading-relaxed">You retain full ownership of these assets. They are diversified across networks for stability and transparency.</p>
         </div>
         <div class="md:w-1/2 w-full relative z-10">
-          <div class="rounded-2xl overflow-hidden border border-black/5 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.06)]">
-            <img src="images/product-rewards.png" alt="Blockchain network visualization with staking nodes" class="img-cover aspect-video">
+          <div class="bezel-shell" style="border-radius:1.75rem;">
+            <div style="border-radius:calc(1.75rem - 0.375rem); overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
+              <img src="images/product-rewards.png" alt="Blockchain network visualization with staking nodes" class="img-cover aspect-video">
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Step 3 -->
-      <div class="bento-card relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 p-8 md:p-10 bg-brand-black text-white border-none reveal">
-        <div class="absolute -left-6 -top-6 font-display font-bold text-[10rem] leading-none text-white/3 pointer-events-none select-none">03</div>
+      <!-- Step 3 — Dark -->
+      <div class="bento-card relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 p-8 md:p-10 bg-brand-black text-white border-none reveal cta-refraction">
+        <div class="absolute -left-6 -top-6 font-display font-bold text-[10rem] leading-none text-white/[0.03] pointer-events-none select-none">03</div>
+        <!-- Ambient glows -->
+        <div class="absolute -top-24 -right-24 w-56 h-56 bg-brand-accent rounded-full filter blur-[100px] opacity-10 ambient-glow"></div>
+        <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-brand-accentDark rounded-full filter blur-[100px] opacity-10 ambient-glow" style="animation-delay:-10s;"></div>
         <div class="md:w-1/2 relative z-10">
           <h3 class="font-display font-bold text-2xl md:text-3xl mb-3 text-white">Watch your balance melt</h3>
           <p class="text-white/70 text-lg leading-relaxed mb-4">As the staked assets secure blockchain networks, they generate real cryptographic rewards. Those rewards are converted and applied to your balance automatically.</p>
           <p class="text-white/70 leading-relaxed">No interest. No deadlines. No penalties. Your balance only goes down — or if you are staking to grow, it only goes up.</p>
         </div>
         <div class="md:w-1/2 w-full relative z-10">
-          <div class="bg-white/5 rounded-2xl p-6 md:p-8 border border-white/8">
+          <div class="bg-white/[0.04] rounded-2xl p-6 md:p-8 border border-white/[0.06]">
             <div class="flex justify-between items-end mb-5">
               <span class="text-white/40 text-xs font-mono uppercase tracking-widest">Remaining</span>
               <span class="font-mono text-3xl font-bold text-brand-accentLight">D 147.50</span>
             </div>
-            <div class="h-2 rounded-full bg-white/8 overflow-hidden mb-2">
-              <div class="h-full bg-brand-accent rounded-full" style="width:85%"></div>
+            <div class="h-2 rounded-full bg-white/[0.06] overflow-hidden mb-2">
+              <div class="h-full bg-brand-accent rounded-full transition-all duration-1000" style="width:85%"></div>
             </div>
             <p class="text-xs text-white/40 text-right">85% paid by staking rewards</p>
           </div>
@@ -155,29 +191,29 @@
         <p class="text-brand-gray text-lg max-w-[50ch]">Nufaa is not just for bills. It is a full marketplace for the essentials your family needs every day.</p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 reveal">
-        <div class="p-6 rounded-2xl bg-brand-light border border-black/4 text-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+        <div class="p-6 rounded-2xl bg-brand-light border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
           <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
           <p class="font-semibold text-brand-black mb-1">Electricity</p>
           <p class="text-xs text-brand-gray">Nawec tokens</p>
         </div>
-        <div class="p-6 rounded-2xl bg-brand-light border border-black/4 text-center">
+        <div class="p-6 rounded-2xl bg-brand-light border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
           <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mx-auto mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <p class="font-semibold text-brand-black mb-1">Airtime</p>
           <p class="text-xs text-brand-gray">Africell credit</p>
         </div>
-        <div class="p-6 rounded-2xl bg-brand-light border border-black/4 text-center">
+        <div class="p-6 rounded-2xl bg-brand-light border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
           <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </div>
           <p class="font-semibold text-brand-black mb-1">Groceries</p>
           <p class="text-xs text-brand-gray">Rice, oil, supplies</p>
         </div>
-        <div class="p-6 rounded-2xl bg-brand-light border border-black/4 text-center">
+        <div class="p-6 rounded-2xl bg-brand-light border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
           <div class="w-12 h-12 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mx-auto mb-4">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
@@ -189,8 +225,10 @@
   </section>
 
   <!-- Long Term Vision -->
-  <section class="py-24 md:py-36 max-w-4xl mx-auto px-5 md:px-6">
-    <div class="text-center reveal">
+  <section class="py-24 md:py-36 max-w-4xl mx-auto px-5 md:px-6 relative">
+    <!-- Ambient decoration -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-accent rounded-full filter blur-[200px] opacity-[0.03] pointer-events-none"></div>
+    <div class="text-center reveal relative z-10">
       <h2 class="font-display font-bold text-4xl md:text-5xl tracking-tight mb-6">Where this goes.</h2>
       <p class="text-brand-gray text-xl leading-relaxed mb-6 max-w-[55ch] mx-auto">We are building an ecosystem where accessing fundamental necessities does not require trading away your future through debt. Gambia first. Then beyond.</p>
       <a href="about.html" class="font-semibold text-brand-black border-b-2 border-brand-accent pb-1 hover:text-brand-accent transition-colors inline-flex items-center gap-2">Read our full vision <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -246,31 +284,31 @@
 
   <!-- CTA -->
   <section class="py-24 w-full max-w-7xl mx-auto px-5 md:px-6 mb-8">
-    <div class="reveal bg-brand-black rounded-[2rem] text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)]">
-      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15"></div>
-      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15"></div>
+    <div class="reveal bento-card bg-brand-black rounded-[2rem] text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none cta-refraction">
+      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15 ambient-glow"></div>
+      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15 ambient-glow" style="animation-delay:-10s;"></div>
       <div class="relative z-10 max-w-2xl mx-auto">
         <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Ready to try it?</h2>
         <p class="text-white/65 text-lg mb-9 max-w-[45ch] mx-auto">Join the waitlist for priority access. The earlier you join, the better your staking position.</p>
-        <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]">Claim your spot <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]">Claim your spot <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-black/5 bg-white pt-16 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
-      <div class="md:col-span-5">
+  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+      <div class="col-span-2 md:col-span-5">
         <a href="/" class="flex items-center gap-2.5 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg><span class="font-display font-bold text-xl tracking-tight">Nufaa</span></a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia.</p>
+        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Zero fees. Real growth.</p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
           <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nufaa.now@hotmail.com</a>
         </div>
       </div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
-      <div class="md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">New features and updates.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shrink-0">Join</button></form></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
+      <div class="col-span-2 md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button></form></div>
     </div>
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-3"><p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p><p class="text-brand-gray/40 text-sm">Made for Gambia.</p></div>
   </footer>
@@ -279,6 +317,8 @@
     const menuToggle=document.getElementById('menu-toggle');const mobileMenu=document.getElementById('mobile-menu');
     menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
     mobileMenu.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});
+    const mainNav=document.getElementById('main-nav');
+    window.addEventListener('scroll',()=>{if(window.scrollY>60){mainNav.classList.add('nav-scrolled');}else{mainNav.classList.remove('nav-scrolled');}},{passive:true});
     const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
   </script>

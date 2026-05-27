@@ -3,132 +3,360 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | Nufaa</title>
-  
+  <title>Terms of Service | Nufaa — Sharia-Compliant Rewards Marketplace</title>
+  <meta name="description" content="Read the Nufaa Terms of Service. Understand the Wakala agreement, staking mechanics, marketplace rules, and your rights as a user of Gambia's ethical finance platform.">
+  <meta property="og:title" content="Terms of Service | Nufaa">
+  <meta property="og:description" content="Our terms are built on the same principle as our product: transparency and fairness.">
+
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Satoshi', 'sans-serif'],
-            display: ['Outfit', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          colors: {
-            brand: {
-              black: '#0a0a0a',
-              dark: '#171717',
-              gray: '#737373',
-              light: '#fafafa',
-              white: '#ffffff',
-              accent: '#059669', 
-            }
-          }
-        }
-      }
+      theme: { extend: {
+        fontFamily: { sans: ['Satoshi','sans-serif'], display: ['Outfit','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+        colors: { brand: { black:'#0a0a0a', dark:'#171717', gray:'#737373', light:'#fafafa', white:'#ffffff', accent:'#059669', accentDark:'#047857', accentLight:'#d1fae5' } }
+      } }
     }
   </script>
-  
-  <style>
-    body { background-color: #fafafa; color: #0a0a0a; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    
-    .nav-pill {
-      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(0, 0, 0, 0.03);
-      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
-    }
-    .nav-link { position: relative; color: #737373; font-weight: 500; transition: color 0.3s; }
-    .nav-link:hover { color: #0a0a0a; }
 
-    .prose-custom h2 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem; color: #0a0a0a; }
-    .prose-custom p { margin-bottom: 1.5rem; color: #737373; line-height: 1.8; }
+  <style>
+    body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
+
+    .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
+    .nav-scrolled .nav-pill { background:rgba(255,255,255,0.95); box-shadow:0 8px 32px -4px rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.06); }
+    .nav-link { position:relative; color:#737373; font-weight:500; transition:color 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover { color:#0a0a0a; }
+    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:#059669; transition:width 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover::after { width:100%; }
+
+    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.97); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .mobile-overlay.open { opacity:1; pointer-events:auto; }
+    .mobile-overlay .mobile-link { transform:translateY(2rem); opacity:0; transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .mobile-overlay.open .mobile-link { transform:translateY(0); opacity:1; }
+    .mobile-overlay.open .mobile-link:nth-child(1){transition-delay:.08s} .mobile-overlay.open .mobile-link:nth-child(2){transition-delay:.14s} .mobile-overlay.open .mobile-link:nth-child(3){transition-delay:.2s} .mobile-overlay.open .mobile-link:nth-child(4){transition-delay:.26s} .mobile-overlay.open .mobile-link:nth-child(5){transition-delay:.32s} .mobile-overlay.open .mobile-link:nth-child(6){transition-delay:.38s}
+    .hamburger span { display:block; width:22px; height:2px; background:#0a0a0a; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .reveal { opacity:0; transform:translateY(2.5rem); filter:blur(4px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); filter:blur(0); }
+    .reveal-delay-1 { transition-delay:0.1s; }
+
+    .section-card { background:#ffffff; border:none; border-radius:1.5rem; padding:2.5rem; box-shadow:0 8px 30px -10px rgba(0,0,0,0.06); transition:transform 0.3s, box-shadow 0.3s; }
+    .section-card:hover { transform:translateY(-2px); box-shadow:0 12px 40px -10px rgba(0,0,0,0.1); }
+
+    .toc-link { display:flex; align-items:center; gap:0.75rem; padding:0.625rem 1rem; border-radius:0.75rem; color:#737373; font-weight:500; font-size:0.8125rem; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:2px solid transparent; }
+    .toc-link:hover { background:rgba(5,150,105,0.06); color:#0a0a0a; }
+    .toc-link.toc-active { color:#059669; background:rgba(5,150,105,0.06); border-left-color:#059669; font-weight:600; }
+
+    .prose-section h3 { font-family:'Outfit',sans-serif; font-weight:700; font-size:1.25rem; color:#0a0a0a; margin-bottom:0.75rem; }
+    .prose-section p { color:#737373; line-height:1.9; margin-bottom:1.25rem; }
+    .prose-section p:last-child { margin-bottom:0; }
+    .prose-section ul { list-style:none; padding:0; margin:0 0 1.25rem 0; }
+    .prose-section ul li { position:relative; padding-left:1.5rem; color:#737373; line-height:1.9; margin-bottom:0.5rem; }
+    .prose-section ul li::before { content:''; position:absolute; left:0; top:0.75rem; width:6px; height:6px; border-radius:50%; background:#059669; }
+
+    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s; box-shadow:0 8px 24px -8px rgba(0,0,0,0.4); }
+    .btn-primary:active { transform:translateY(1px) scale(0.98); }
+
+    .toc-scroll { position:relative; }
+    .toc-scroll::after { content:''; position:absolute; right:0; top:0; bottom:0; width:2rem; background:linear-gradient(to right, transparent, #fafafa); pointer-events:none; }
+    @media(min-width:1024px) { .toc-scroll::after { display:none; } }
   </style>
 </head>
 <body class="relative">
 
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center">
+  <!-- Ambient shapes -->
+  <div class="absolute top-0 left-0 w-[350px] h-[350px] bg-brand-accent rounded-full filter blur-[200px] opacity-[0.03] pointer-events-none"></div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
     <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90">
-            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span>
-      </a>
+      <a href="/" class="flex items-center gap-2.5 group"><div class="w-8 h-8 flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg></div><span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span></a>
       <div class="hidden md:flex items-center gap-7 text-sm">
-        <a href="/" class="nav-link">Home</a>
-        <a href="wallet.html" class="nav-link">Wallet</a>
-        <a href="how-it-works.html" class="nav-link">How it works</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="/" class="nav-link">Home</a><a href="wallet.html" class="nav-link">Wallet</a><a href="how-it-works.html" class="nav-link">How it works</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-sm">Get Early Access</a>
-      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]">Get Early Access</a>
+      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <div class="mobile-overlay" id="mobile-menu">
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
-      <a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
-      <a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
-      <a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
-      <a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
-      <a href="contact.html" class="mobile-link btn-primary mt-4" style="display:inline-flex; align-items:center; justify-content:center; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600;">Get Early Access</a>
-    </div>
-  </div>
+  <div class="mobile-overlay" id="mobile-menu"><div class="flex flex-col items-center justify-center h-full gap-8"><a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a><a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a><a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a><a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a><a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a><a href="contact.html" class="mobile-link btn-primary mt-4">Get Early Access</a></div></div>
 
-  <header class="pt-48 pb-12 px-6 max-w-3xl mx-auto border-b border-black/5">
-    <h1 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">Terms of Service</h1>
-    <p class="text-brand-gray font-mono text-sm uppercase tracking-widest">Last Updated: May 2026</p>
+  <!-- Hero -->
+  <header class="pt-40 md:pt-48 pb-12 md:pb-16 px-5 md:px-6 max-w-4xl mx-auto reveal">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="/" class="text-brand-gray text-sm hover:text-brand-black transition-colors">Home</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="text-brand-black text-sm font-medium">Terms of Service</span>
+    </div>
+    <h1 class="font-display font-bold text-brand-black tracking-tight mb-4" style="font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.08;">Terms of Service</h1>
+    <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch] mb-6">Our terms are built on the same principle as our product — transparency, fairness, and zero hidden surprises. Read them once and you will understand exactly how Nufaa works.</p>
+    <div class="flex items-center gap-4 text-sm">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-black/5 text-brand-black font-mono text-xs tracking-wider">Last updated: May 2026</span>
+      <span class="text-brand-gray">10 min read</span>
+    </div>
   </header>
 
-  <section class="py-12 max-w-3xl mx-auto px-6 mb-24 prose-custom">
-    <p>Welcome to Nufaa. By accessing or using our platform, you agree to be bound by these Terms of Service. Please read them carefully.</p>
+  <!-- Content Grid -->
+  <section class="pb-24 md:pb-32 px-5 md:px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-    <h2>1. The Wakala Agreement</h2>
-    <p>Nufaa operates strictly on a Sharia-compliant Wakala (agency) model. By using our services to pay for utilities (such as Nawec or Africell), you appoint Nufaa as your agent to manage the underlying digital assets. You acknowledge that no interest (Riba) is charged or accumulated on your account.</p>
+      <!-- Sticky ToC Sidebar -->
+      <aside class="lg:col-span-3 reveal">
+        <div class="lg:sticky lg:top-28">
+          <h4 class="font-bold uppercase tracking-[0.15em] text-[10px] text-brand-gray mb-4 px-1">Contents</h4>
+          <nav class="toc-scroll flex flex-row lg:flex-col gap-0.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0" id="toc-nav">
+            <a href="#acceptance" class="toc-link whitespace-nowrap" data-section="acceptance">01 — Acceptance</a>
+            <a href="#wakala" class="toc-link whitespace-nowrap" data-section="wakala">02 — Wakala Agreement</a>
+            <a href="#eligibility" class="toc-link whitespace-nowrap" data-section="eligibility">03 — Eligibility</a>
+            <a href="#marketplace" class="toc-link whitespace-nowrap" data-section="marketplace">04 — Marketplace</a>
+            <a href="#staking" class="toc-link whitespace-nowrap" data-section="staking">05 — Staking</a>
+            <a href="#wallet" class="toc-link whitespace-nowrap" data-section="wallet">06 — Wallet</a>
+            <a href="#conduct" class="toc-link whitespace-nowrap" data-section="conduct">07 — User Conduct</a>
+            <a href="#liability" class="toc-link whitespace-nowrap" data-section="liability">08 — Liability</a>
+            <a href="#termination" class="toc-link whitespace-nowrap" data-section="termination">09 — Termination</a>
+            <a href="#changes" class="toc-link whitespace-nowrap" data-section="changes">10 — Changes</a>
+            <a href="#contact-legal" class="toc-link whitespace-nowrap" data-section="contact-legal">11 — Contact</a>
+          </nav>
+        </div>
+      </aside>
 
-    <h2>2. Eligibility</h2>
-    <p>Our services are currently restricted to residents of Gambia. You must be at least 18 years old to use the platform. Nufaa reserves the right to verify your identity through local KYC protocols.</p>
+      <!-- Main Content -->
+      <div class="lg:col-span-9 space-y-6">
 
-    <h2>3. Staking & Asset Management</h2>
-    <p>Your service cost corresponds to an equivalent acquisition of Sharia-compliant digital assets. Nufaa stakes these assets on enterprise blockchains to generate yields. These yields automatically pay down your balance. You bear no risk of the balance increasing due to interest or penalties.</p>
+        <div id="acceptance" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">01</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Acceptance of Terms</h2>
+          </div>
+          <p>By accessing or using Nufaa — whether through our mobile app, web platform, or local agent network — you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our services.</p>
+          <p>These terms constitute a legally binding agreement between you ("User," "you") and Nufaa Ltd ("Nufaa," "we," "us"), a company registered in Gambia operating a Sharia-compliant rewards marketplace.</p>
+        </div>
 
-    <h2>4. Liability</h2>
-    <p>Nufaa makes every effort to ensure continuous service availability. However, we are not liable for outages caused by third-party utility providers (e.g., Nawec) or systemic blockchain network failures.</p>
+        <div id="wakala" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">02</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">The Wakala Agreement</h2>
+          </div>
+          <p>Nufaa operates strictly on a Sharia-compliant <strong class="text-brand-black">Wakala (agency) model</strong>. This is the foundation of everything we do:</p>
+          <ul>
+            <li>When you make a purchase through Nufaa, you appoint us as your agent (Wakeel) to acquire and manage Sharia-compliant digital assets on your behalf.</li>
+            <li>No interest (Riba) is ever charged, accumulated, or implied on your account. Your balance can only decrease or remain the same — it will never increase due to charges.</li>
+            <li>The economic relationship is one of agency, not lending. You are not taking out a loan. You are appointing Nufaa to facilitate a transaction using blockchain staking yields.</li>
+            <li>Nufaa earns revenue through a transparent operational fee deducted from staking yields — never from interest on your balance.</li>
+          </ul>
+          <p>This structure has been designed with guidance from Islamic finance principles and is subject to ongoing Sharia compliance review.</p>
+        </div>
+
+        <div id="eligibility" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">03</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Eligibility</h2>
+          </div>
+          <p>To use Nufaa, you must meet all of the following requirements:</p>
+          <ul>
+            <li>You must be at least <strong class="text-brand-black">18 years of age</strong>.</li>
+            <li>You must be a <strong class="text-brand-black">resident of The Gambia</strong> or accessing services through an authorized Nufaa agent located in The Gambia.</li>
+            <li>You must provide accurate and complete registration information, including a valid Gambian phone number.</li>
+            <li>You must not have been previously suspended or removed from the platform for violations of these terms.</li>
+          </ul>
+          <p>Nufaa reserves the right to verify your identity through local Know Your Customer (KYC) protocols at any time. Failure to provide requested verification may result in temporary account suspension.</p>
+        </div>
+
+        <div id="marketplace" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">04</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Marketplace & Purchases</h2>
+          </div>
+          <p>Nufaa operates a rewards marketplace where you can purchase everyday essentials interest-free. Current offerings include:</p>
+          <ul>
+            <li><strong class="text-brand-black">Utility payments</strong> — Nawec electricity tokens and Africell mobile airtime top-ups.</li>
+            <li><strong class="text-brand-black">Groceries & essentials</strong> — Rice, cooking oil, household supplies, and other daily necessities through our local merchant network.</li>
+            <li><strong class="text-brand-black">Additional items</strong> — As the marketplace expands, new product categories will be added and announced through our platform.</li>
+          </ul>
+          <p>Prices on the marketplace reflect the actual cost of goods plus any applicable delivery or agent fees. These fees are disclosed at the time of purchase. Nufaa does not mark up goods to compensate for interest — because there is no interest.</p>
+          <p>All purchases are final once confirmed. Refund eligibility depends on the nature of the product — utility tokens and airtime are non-refundable once delivered to the provider. Physical goods may be eligible for return or exchange through the originating merchant within 48 hours of delivery.</p>
+        </div>
+
+        <div id="staking" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">05</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Staking & Digital Assets</h2>
+          </div>
+          <p>When you deposit funds or make a purchase through Nufaa, the platform acquires Sharia-compliant digital assets and stakes them across enterprise blockchain networks (including but not limited to Cardano, Solana, and Ethereum).</p>
+          <h3>How staking works</h3>
+          <ul>
+            <li>Staking involves delegating digital assets to support blockchain network validation. In return, the network distributes cryptographic rewards.</li>
+            <li>Nufaa converts these rewards and applies them to reduce your outstanding balance or grow your wallet balance, depending on your account mode.</li>
+            <li>The estimated annual percentage yield (APY) is approximately <strong class="text-brand-black">4.45%</strong>, but this is not guaranteed and fluctuates with network conditions.</li>
+          </ul>
+          <h3>Risk disclosure</h3>
+          <ul>
+            <li>Your <strong class="text-brand-black">principal balance is protected</strong>. Staking on Nufaa does not expose you to the risk of losing your deposited funds.</li>
+            <li>Staking yields may decrease during periods of low network activity, meaning your balance reduction may slow — but it will never reverse.</li>
+            <li>Nufaa diversifies staking across multiple blockchains to mitigate concentration risk.</li>
+          </ul>
+        </div>
+
+        <div id="wallet" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">06</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Wallet & Account</h2>
+          </div>
+          <p>Your Nufaa wallet is your personal account on the platform. You are responsible for maintaining the security and confidentiality of your account credentials.</p>
+          <ul>
+            <li>You must not share your login credentials, PIN, or account access with any third party.</li>
+            <li>You are solely responsible for all activity that occurs under your account.</li>
+            <li>If you suspect unauthorized access, you must contact us immediately via WhatsApp at <strong class="text-brand-black">+44 7982 144203</strong> or email <strong class="text-brand-black">nufaa.now@hotmail.com</strong>.</li>
+            <li>Nufaa reserves the right to freeze or suspend accounts pending investigation of suspicious activity.</li>
+          </ul>
+        </div>
+
+        <div id="conduct" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">07</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">User Conduct</h2>
+          </div>
+          <p>By using Nufaa, you agree that you will not:</p>
+          <ul>
+            <li>Use the platform for any illegal, fraudulent, or unauthorized purpose.</li>
+            <li>Attempt to circumvent, disable, or interfere with the platform's security features.</li>
+            <li>Create multiple accounts for the purpose of abusing referral programs or promotional offers.</li>
+            <li>Use the platform to launder money, finance terrorism, or engage in any activity that violates Gambian law or international anti-money laundering regulations.</li>
+            <li>Misrepresent your identity or provide false information during registration or verification.</li>
+          </ul>
+          <p>Violation of these rules may result in immediate account termination, forfeiture of staking rewards, and referral to appropriate Gambian authorities.</p>
+        </div>
+
+        <div id="liability" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">08</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Limitation of Liability</h2>
+          </div>
+          <p>Nufaa makes every reasonable effort to ensure continuous, reliable service. However:</p>
+          <ul>
+            <li>We are <strong class="text-brand-black">not liable</strong> for service outages caused by third-party utility providers (e.g., Nawec, Africell) or systemic blockchain network failures.</li>
+            <li>We are not liable for delays in staking yield distribution caused by blockchain congestion or network upgrades.</li>
+            <li>We are not liable for losses resulting from your failure to maintain account security.</li>
+            <li>Our total liability to you for any claims arising from use of the platform shall not exceed the total amount of funds you have deposited in the preceding 12 months.</li>
+          </ul>
+          <p>The platform is provided "as is" and "as available." We make no warranties, express or implied, regarding the uninterrupted availability or error-free operation of the service.</p>
+        </div>
+
+        <div id="termination" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">09</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Termination</h2>
+          </div>
+          <p>Either party may terminate this agreement at any time:</p>
+          <ul>
+            <li><strong class="text-brand-black">You</strong> may close your account by contacting our support team. Upon closure, any outstanding balance will be settled through remaining staking yields or refunded to your designated payment method.</li>
+            <li><strong class="text-brand-black">Nufaa</strong> may suspend or terminate your account for violations of these terms, suspected fraudulent activity, or regulatory compliance requirements.</li>
+          </ul>
+          <p>Upon termination, your right to use the platform ceases immediately. Any accrued staking rewards up to the date of termination remain yours and will be disbursed within 30 business days.</p>
+        </div>
+
+        <div id="changes" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">10</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Changes to Terms</h2>
+          </div>
+          <p>Nufaa reserves the right to modify these Terms of Service at any time. When we make material changes:</p>
+          <ul>
+            <li>We will notify you via the app, SMS, or email at least <strong class="text-brand-black">14 days</strong> before the changes take effect.</li>
+            <li>Continued use of the platform after the effective date constitutes acceptance of the updated terms.</li>
+            <li>If you disagree with any changes, you may close your account and withdraw your funds before the effective date.</li>
+          </ul>
+        </div>
+
+        <div id="contact-legal" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">11</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Contact & Disputes</h2>
+          </div>
+          <p>If you have questions about these terms or a dispute with Nufaa, please contact us:</p>
+          <div class="flex flex-col sm:flex-row gap-4 mt-4 not-prose">
+            <a href="https://wa.me/447982144203" class="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-brand-light border border-black/5 hover:border-brand-accent/30 hover:-translate-y-0.5 transition-all group">
+              <div class="w-9 h-9 rounded-lg bg-brand-accentLight flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div><p class="font-semibold text-sm text-brand-black group-hover:text-brand-accent transition-colors">WhatsApp</p><p class="text-xs text-brand-gray font-mono">+44 7982 144203</p></div>
+            </a>
+            <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-brand-light border border-black/5 hover:border-brand-accent/30 hover:-translate-y-0.5 transition-all group">
+              <div class="w-9 h-9 rounded-lg bg-brand-accentLight flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><p class="font-semibold text-sm text-brand-black group-hover:text-brand-accent transition-colors">Email</p><p class="text-xs text-brand-gray font-mono">nufaa.now@hotmail.com</p></div>
+            </a>
+          </div>
+          <p class="mt-5">Any disputes that cannot be resolved informally shall be governed by the laws of The Gambia and subject to the jurisdiction of Gambian courts.</p>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <footer class="border-t border-black/5 bg-white pt-16 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
-      <div class="md:col-span-5">
+  <!-- Related Links -->
+  <section class="pb-16 md:pb-24 px-5 md:px-6 max-w-6xl mx-auto border-t border-black/5 pt-12 reveal">
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="privacy.html" class="flex-1 flex items-center justify-between p-6 rounded-2xl bg-white border-none shadow-[0_4px_16px_-8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-all group">
+        <div><p class="text-xs text-brand-gray uppercase tracking-widest font-semibold mb-1">Also read</p><p class="font-display font-bold text-lg text-brand-black group-hover:text-brand-accent transition-colors">Privacy Policy</p></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gray group-hover:text-brand-accent transition-colors"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="contact.html" class="flex-1 flex items-center justify-between p-6 rounded-2xl bg-white border-none shadow-[0_4px_16px_-8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-all group">
+        <div><p class="text-xs text-brand-gray uppercase tracking-widest font-semibold mb-1">Questions?</p><p class="font-display font-bold text-lg text-brand-black group-hover:text-brand-accent transition-colors">Contact Us</p></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gray group-hover:text-brand-accent transition-colors"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+      <div class="col-span-2 md:col-span-5">
         <a href="/" class="flex items-center gap-2.5 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg><span class="font-display font-bold text-xl tracking-tight">Nufaa</span></a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia.</p>
+        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Zero fees. Real growth.</p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
           <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nufaa.now@hotmail.com</a>
         </div>
       </div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
-      <div class="md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">New features and updates.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shrink-0">Join</button></form></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
+      <div class="col-span-2 md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button></form></div>
     </div>
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-3"><p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p><p class="text-brand-gray/40 text-sm">Made for Gambia.</p></div>
   </footer>
 
   <script>
+    // Menu
     const menuToggle=document.getElementById('menu-toggle');const mobileMenu=document.getElementById('mobile-menu');
     menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
     mobileMenu.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});
+    // Scroll-aware nav
+    const mainNav=document.getElementById('main-nav');
+    window.addEventListener('scroll',()=>{if(window.scrollY>60){mainNav.classList.add('nav-scrolled');}else{mainNav.classList.remove('nav-scrolled');}},{passive:true});
+    // Scroll reveal
+    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    // Scroll-spy for ToC
+    const tocLinks=document.querySelectorAll('#toc-nav .toc-link');
+    const sections=[];
+    tocLinks.forEach(link=>{
+      const id=link.getAttribute('data-section');
+      const section=document.getElementById(id);
+      if(section) sections.push({id,el:section,link});
+    });
+    const spyObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          tocLinks.forEach(l=>l.classList.remove('toc-active'));
+          const match=sections.find(s=>s.id===entry.target.id);
+          if(match) match.link.classList.add('toc-active');
+        }
+      });
+    },{threshold:0.2,rootMargin:'-100px 0px -60% 0px'});
+    sections.forEach(s=>spyObserver.observe(s.el));
   </script>
 </body>
 </html>

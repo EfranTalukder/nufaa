@@ -3,132 +3,390 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | Nufaa</title>
-  
+  <title>Privacy Policy | Nufaa — How We Protect Your Data</title>
+  <meta name="description" content="Nufaa's Privacy Policy explains how we collect, use, protect, and share your personal data. Your privacy is fundamental to our Sharia-compliant platform.">
+  <meta property="og:title" content="Privacy Policy | Nufaa">
+  <meta property="og:description" content="Transparency is our default. Read exactly how we handle your data on Nufaa.">
+
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  
+
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Satoshi', 'sans-serif'],
-            display: ['Outfit', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          colors: {
-            brand: {
-              black: '#0a0a0a',
-              dark: '#171717',
-              gray: '#737373',
-              light: '#fafafa',
-              white: '#ffffff',
-              accent: '#059669', 
-            }
-          }
-        }
-      }
+      theme: { extend: {
+        fontFamily: { sans: ['Satoshi','sans-serif'], display: ['Outfit','sans-serif'], mono: ['JetBrains Mono','monospace'] },
+        colors: { brand: { black:'#0a0a0a', dark:'#171717', gray:'#737373', light:'#fafafa', white:'#ffffff', accent:'#059669', accentDark:'#047857', accentLight:'#d1fae5' } }
+      } }
     }
   </script>
-  
-  <style>
-    body { background-color: #fafafa; color: #0a0a0a; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-    
-    .nav-pill {
-      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(0, 0, 0, 0.03);
-      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
-    }
-    .nav-link { position: relative; color: #737373; font-weight: 500; transition: color 0.3s; }
-    .nav-link:hover { color: #0a0a0a; }
 
-    .prose-custom h2 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem; color: #0a0a0a; }
-    .prose-custom p { margin-bottom: 1.5rem; color: #737373; line-height: 1.8; }
+  <style>
+    body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
+
+    .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
+    .nav-scrolled .nav-pill { background:rgba(255,255,255,0.95); box-shadow:0 8px 32px -4px rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.06); }
+    .nav-link { position:relative; color:#737373; font-weight:500; transition:color 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover { color:#0a0a0a; }
+    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:#059669; transition:width 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover::after { width:100%; }
+
+    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.97); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
+    .mobile-overlay.open { opacity:1; pointer-events:auto; }
+    .mobile-overlay .mobile-link { transform:translateY(2rem); opacity:0; transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s cubic-bezier(0.16,1,0.3,1); }
+    .mobile-overlay.open .mobile-link { transform:translateY(0); opacity:1; }
+    .mobile-overlay.open .mobile-link:nth-child(1){transition-delay:.08s} .mobile-overlay.open .mobile-link:nth-child(2){transition-delay:.14s} .mobile-overlay.open .mobile-link:nth-child(3){transition-delay:.2s} .mobile-overlay.open .mobile-link:nth-child(4){transition-delay:.26s} .mobile-overlay.open .mobile-link:nth-child(5){transition-delay:.32s} .mobile-overlay.open .mobile-link:nth-child(6){transition-delay:.38s}
+    .hamburger span { display:block; width:22px; height:2px; background:#0a0a0a; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    .reveal { opacity:0; transform:translateY(2.5rem); filter:blur(4px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); filter:blur(0); }
+    .reveal-delay-1 { transition-delay:0.1s; }
+
+    .section-card { background:#ffffff; border:none; border-radius:1.5rem; padding:2.5rem; box-shadow:0 8px 30px -10px rgba(0,0,0,0.06); transition:transform 0.3s, box-shadow 0.3s; }
+    .section-card:hover { transform:translateY(-2px); box-shadow:0 12px 40px -10px rgba(0,0,0,0.1); }
+
+    .toc-link { display:flex; align-items:center; gap:0.75rem; padding:0.625rem 1rem; border-radius:0.75rem; color:#737373; font-weight:500; font-size:0.8125rem; transition:all 0.3s cubic-bezier(0.16,1,0.3,1); border-left:2px solid transparent; }
+    .toc-link:hover { background:rgba(5,150,105,0.06); color:#0a0a0a; }
+    .toc-link.toc-active { color:#059669; background:rgba(5,150,105,0.06); border-left-color:#059669; font-weight:600; }
+
+    .prose-section h3 { font-family:'Outfit',sans-serif; font-weight:700; font-size:1.25rem; color:#0a0a0a; margin-bottom:0.75rem; }
+    .prose-section p { color:#737373; line-height:1.9; margin-bottom:1.25rem; }
+    .prose-section p:last-child { margin-bottom:0; }
+    .prose-section ul { list-style:none; padding:0; margin:0 0 1.25rem 0; }
+    .prose-section ul li { position:relative; padding-left:1.5rem; color:#737373; line-height:1.9; margin-bottom:0.5rem; }
+    .prose-section ul li::before { content:''; position:absolute; left:0; top:0.75rem; width:6px; height:6px; border-radius:50%; background:#059669; }
+
+    .data-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1rem; border-radius:0.75rem; background:#d1fae5; color:#047857; font-size:0.8125rem; font-weight:600; }
+
+    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s; box-shadow:0 8px 24px -8px rgba(0,0,0,0.4); }
+    .btn-primary:active { transform:translateY(1px) scale(0.98); }
+
+    /* Mobile ToC scroll indicators */
+    .toc-scroll { position:relative; }
+    .toc-scroll::after { content:''; position:absolute; right:0; top:0; bottom:0; width:2rem; background:linear-gradient(to right, transparent, #fafafa); pointer-events:none; }
+    @media(min-width:1024px) { .toc-scroll::after { display:none; } }
   </style>
 </head>
 <body class="relative">
 
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center">
+  <!-- Ambient header shapes -->
+  <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-accent rounded-full filter blur-[200px] opacity-[0.03] pointer-events-none"></div>
+  <div class="absolute top-60 left-0 w-[250px] h-[250px] bg-brand-black rounded-full filter blur-[150px] opacity-[0.02] pointer-events-none"></div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
     <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group">
-        <div class="w-8 h-8 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90">
-            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span>
-      </a>
+      <a href="/" class="flex items-center gap-2.5 group"><div class="w-8 h-8 flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg></div><span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span></a>
       <div class="hidden md:flex items-center gap-7 text-sm">
-        <a href="/" class="nav-link">Home</a>
-        <a href="wallet.html" class="nav-link">Wallet</a>
-        <a href="how-it-works.html" class="nav-link">How it works</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="/" class="nav-link">Home</a><a href="wallet.html" class="nav-link">Wallet</a><a href="how-it-works.html" class="nav-link">How it works</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a>
       </div>
-      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-sm">Get Early Access</a>
-      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]">Get Early Access</a>
+      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <div class="mobile-overlay" id="mobile-menu">
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
-      <a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
-      <a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
-      <a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
-      <a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
-      <a href="contact.html" class="mobile-link btn-primary mt-4" style="display:inline-flex; align-items:center; justify-content:center; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600;">Get Early Access</a>
-    </div>
-  </div>
+  <div class="mobile-overlay" id="mobile-menu"><div class="flex flex-col items-center justify-center h-full gap-8"><a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a><a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a><a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a><a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a><a href="contact.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a><a href="contact.html" class="mobile-link btn-primary mt-4">Get Early Access</a></div></div>
 
-  <header class="pt-48 pb-12 px-6 max-w-3xl mx-auto border-b border-black/5">
-    <h1 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">Privacy Policy</h1>
-    <p class="text-brand-gray font-mono text-sm uppercase tracking-widest">Last Updated: May 2026</p>
+  <!-- Hero -->
+  <header class="pt-40 md:pt-48 pb-12 md:pb-16 px-5 md:px-6 max-w-4xl mx-auto reveal">
+    <div class="flex items-center gap-3 mb-6">
+      <a href="/" class="text-brand-gray text-sm hover:text-brand-black transition-colors">Home</a>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#737373" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      <span class="text-brand-black text-sm font-medium">Privacy Policy</span>
+    </div>
+    <h1 class="font-display font-bold text-brand-black tracking-tight mb-4" style="font-size:clamp(2.25rem,5vw,3.75rem);line-height:1.08;">Privacy Policy</h1>
+    <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch] mb-6">Your data is yours. We collect only what we need, we never sell it, and we protect it with the same seriousness we bring to protecting your money. Transparency is our default.</p>
+    <div class="flex flex-wrap items-center gap-3 text-sm">
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-black/5 text-brand-black font-mono text-xs tracking-wider">Last updated: May 2026</span>
+      <span class="data-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Your data is encrypted
+      </span>
+      <span class="data-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        We never sell data
+      </span>
+    </div>
   </header>
 
-  <section class="py-12 max-w-3xl mx-auto px-6 mb-24 prose-custom">
-    <p>Nufaa is committed to protecting your privacy and ensuring the security of your data. This policy outlines how we handle your information.</p>
+  <!-- Content Grid -->
+  <section class="pb-24 md:pb-32 px-5 md:px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-    <h2>1. Data Collection</h2>
-    <p>We collect essential information required to execute Wakala agreements and verify identity. This includes your phone number, utility account details (e.g., Nawec meter number), and transaction history on the Nufaa platform.</p>
+      <!-- Sticky ToC Sidebar with scroll-spy -->
+      <aside class="lg:col-span-3 reveal">
+        <div class="lg:sticky lg:top-28">
+          <h4 class="font-bold uppercase tracking-[0.15em] text-[10px] text-brand-gray mb-4 px-1">Contents</h4>
+          <nav class="toc-scroll flex flex-row lg:flex-col gap-0.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0" id="toc-nav">
+            <a href="#overview" class="toc-link whitespace-nowrap" data-section="overview">01 — Overview</a>
+            <a href="#collection" class="toc-link whitespace-nowrap" data-section="collection">02 — What We Collect</a>
+            <a href="#usage" class="toc-link whitespace-nowrap" data-section="usage">03 — How We Use It</a>
+            <a href="#blockchain-privacy" class="toc-link whitespace-nowrap" data-section="blockchain-privacy">04 — Blockchain Privacy</a>
+            <a href="#sharing" class="toc-link whitespace-nowrap" data-section="sharing">05 — Data Sharing</a>
+            <a href="#security" class="toc-link whitespace-nowrap" data-section="security">06 — Security</a>
+            <a href="#retention" class="toc-link whitespace-nowrap" data-section="retention">07 — Retention</a>
+            <a href="#your-rights" class="toc-link whitespace-nowrap" data-section="your-rights">08 — Your Rights</a>
+            <a href="#cookies" class="toc-link whitespace-nowrap" data-section="cookies">09 — Cookies</a>
+            <a href="#children" class="toc-link whitespace-nowrap" data-section="children">10 — Children</a>
+            <a href="#changes-privacy" class="toc-link whitespace-nowrap" data-section="changes-privacy">11 — Changes</a>
+            <a href="#contact-privacy" class="toc-link whitespace-nowrap" data-section="contact-privacy">12 — Contact</a>
+          </nav>
+        </div>
+      </aside>
 
-    <h2>2. Data Usage</h2>
-    <p>Your data is used exclusively for facilitating transactions, providing customer support, and complying with local Gambian financial regulations. We do not sell your data to third parties.</p>
+      <!-- Main Content -->
+      <div class="lg:col-span-9 space-y-6">
 
-    <h2>3. Blockchain Privacy</h2>
-    <p>While Nufaa utilizes blockchain technology to generate staking yields, your personal identity is never directly linked to on-chain transactions visible to the public. We maintain a secure off-chain ledger for individual account balances.</p>
+        <div id="overview" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">01</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Overview</h2>
+          </div>
+          <p>This Privacy Policy explains how Nufaa Ltd ("Nufaa," "we," "us") collects, uses, stores, and protects your personal information when you use our platform — including the Nufaa mobile app, website, and local agent services.</p>
+          <p>We are committed to handling your data responsibly and in accordance with applicable Gambian data protection laws and international best practices. As a Sharia-compliant platform, we view the ethical treatment of your personal data as an extension of our commitment to transparency and fairness.</p>
+        </div>
 
-    <h2>4. Security</h2>
-    <p>We implement strict encryption and security protocols to protect your data. If you wish to have your data deleted from our systems, you may request this by contacting our support team via WhatsApp.</p>
+        <div id="collection" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">02</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">What We Collect</h2>
+          </div>
+          <h3>Information you provide</h3>
+          <ul>
+            <li><strong class="text-brand-black">Identity data</strong> — Full name, date of birth, and government-issued ID (when required for KYC verification).</li>
+            <li><strong class="text-brand-black">Contact data</strong> — Gambian phone number, email address, and physical address.</li>
+            <li><strong class="text-brand-black">Account data</strong> — Utility account numbers (e.g., Nawec meter number), Africell phone number for airtime top-ups.</li>
+            <li><strong class="text-brand-black">Financial data</strong> — Deposit amounts, transaction history, and wallet balances on the Nufaa platform.</li>
+          </ul>
+          <h3>Information collected automatically</h3>
+          <ul>
+            <li><strong class="text-brand-black">Device data</strong> — Device type, operating system, browser type, and unique device identifiers.</li>
+            <li><strong class="text-brand-black">Usage data</strong> — Pages visited, features used, timestamps, and interaction patterns within the Nufaa platform.</li>
+            <li><strong class="text-brand-black">Location data</strong> — Approximate location based on IP address (we do not use GPS tracking).</li>
+          </ul>
+          <h3>Information from third parties</h3>
+          <ul>
+            <li>Identity verification results from KYC providers.</li>
+            <li>Transaction confirmations from utility providers (Nawec, Africell).</li>
+            <li>Blockchain network data related to staking operations (this data does not contain personal information).</li>
+          </ul>
+        </div>
+
+        <div id="usage" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">03</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">How We Use Your Data</h2>
+          </div>
+          <p>We use your personal data exclusively for the following purposes:</p>
+          <ul>
+            <li><strong class="text-brand-black">Service delivery</strong> — Processing transactions, executing Wakala agreements, managing your wallet, and distributing staking rewards.</li>
+            <li><strong class="text-brand-black">Identity verification</strong> — Complying with Gambian KYC/AML regulations and preventing fraud.</li>
+            <li><strong class="text-brand-black">Customer support</strong> — Responding to inquiries via WhatsApp, email, or through local agents.</li>
+            <li><strong class="text-brand-black">Platform improvement</strong> — Analyzing aggregate, anonymized usage patterns to improve features and user experience.</li>
+            <li><strong class="text-brand-black">Legal compliance</strong> — Meeting our obligations under Gambian financial regulations and tax law.</li>
+            <li><strong class="text-brand-black">Security</strong> — Detecting, preventing, and investigating fraud, unauthorized access, and platform abuse.</li>
+          </ul>
+          <p>We <strong class="text-brand-black">never</strong> use your data for targeted advertising, and we <strong class="text-brand-black">never</strong> sell your personal information to third parties for any purpose.</p>
+        </div>
+
+        <div id="blockchain-privacy" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">04</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Blockchain & On-Chain Privacy</h2>
+          </div>
+          <p>Nufaa uses blockchain technology to generate staking yields. Here is how we protect your privacy in this context:</p>
+          <ul>
+            <li>Your <strong class="text-brand-black">personal identity is never directly linked</strong> to on-chain transactions visible to the public. Blockchain addresses used by Nufaa are pooled and cannot be traced to individual users.</li>
+            <li>We maintain a <strong class="text-brand-black">secure off-chain ledger</strong> for individual account balances and transaction records. This data is encrypted and stored on private servers — not on any public blockchain.</li>
+            <li>Staking operations are conducted through Nufaa-managed wallets. You do not interact directly with blockchain networks, and no personal data is written to any blockchain.</li>
+          </ul>
+          <p>This architecture ensures that the transparency benefits of blockchain (for yield generation) are separated from the privacy requirements of your personal financial data.</p>
+        </div>
+
+        <div id="sharing" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">05</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Data Sharing</h2>
+          </div>
+          <p>We share your personal data only in the following limited circumstances:</p>
+          <ul>
+            <li><strong class="text-brand-black">Utility providers</strong> — We share the minimum information required to process transactions (e.g., meter numbers with Nawec, phone numbers with Africell).</li>
+            <li><strong class="text-brand-black">KYC/AML partners</strong> — Identity verification data is shared with licensed compliance partners who are contractually bound to protect your information.</li>
+            <li><strong class="text-brand-black">Law enforcement</strong> — Only when required by valid Gambian court orders or legal processes.</li>
+            <li><strong class="text-brand-black">Service infrastructure</strong> — Encrypted data may be processed by cloud infrastructure providers who meet our security standards and are bound by data processing agreements.</li>
+          </ul>
+          <p>We <strong class="text-brand-black">never</strong> share your data with advertisers, data brokers, or any third party for marketing purposes.</p>
+        </div>
+
+        <div id="security" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">06</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Security Measures</h2>
+          </div>
+          <p>We implement comprehensive security measures to protect your data:</p>
+          <ul>
+            <li><strong class="text-brand-black">Encryption in transit</strong> — All data transmitted between your device and Nufaa servers is encrypted using TLS 1.3.</li>
+            <li><strong class="text-brand-black">Encryption at rest</strong> — All stored personal data and financial records are encrypted using AES-256.</li>
+            <li><strong class="text-brand-black">Access controls</strong> — Internal access to user data is restricted to authorized personnel on a need-to-know basis, with multi-factor authentication and audit logging.</li>
+            <li><strong class="text-brand-black">Regular audits</strong> — We conduct periodic security assessments and penetration testing to identify and address vulnerabilities.</li>
+          </ul>
+          <p>While we take every reasonable precaution, no system is perfectly secure. If we discover a data breach that affects your personal information, we will notify you within 72 hours through the app, SMS, or email.</p>
+        </div>
+
+        <div id="retention" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">07</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Data Retention</h2>
+          </div>
+          <p>We retain your personal data only for as long as necessary to fulfill the purposes described in this policy:</p>
+          <ul>
+            <li><strong class="text-brand-black">Active accounts</strong> — Data is retained for the duration of your account's active status.</li>
+            <li><strong class="text-brand-black">Closed accounts</strong> — Transaction records and identity data are retained for 7 years after account closure, as required by Gambian financial regulations.</li>
+            <li><strong class="text-brand-black">Usage analytics</strong> — Anonymized, aggregated usage data may be retained indefinitely for product improvement.</li>
+          </ul>
+          <p>When retention periods expire, your data is securely deleted or anonymized so that it can no longer be associated with you.</p>
+        </div>
+
+        <div id="your-rights" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">08</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Your Rights</h2>
+          </div>
+          <p>You have the following rights regarding your personal data:</p>
+          <ul>
+            <li><strong class="text-brand-black">Access</strong> — You can request a copy of all personal data we hold about you.</li>
+            <li><strong class="text-brand-black">Correction</strong> — You can request correction of inaccurate or incomplete data.</li>
+            <li><strong class="text-brand-black">Deletion</strong> — You can request deletion of your data, subject to our legal retention obligations. We will process deletion requests within 30 days.</li>
+            <li><strong class="text-brand-black">Portability</strong> — You can request your data in a structured, machine-readable format.</li>
+            <li><strong class="text-brand-black">Objection</strong> — You can object to specific uses of your data where processing is based on legitimate interest.</li>
+            <li><strong class="text-brand-black">Withdrawal of consent</strong> — Where processing is based on your consent, you can withdraw that consent at any time.</li>
+          </ul>
+          <p>To exercise any of these rights, contact us via WhatsApp at <strong class="text-brand-black">+44 7982 144203</strong> or email <strong class="text-brand-black">nufaa.now@hotmail.com</strong>. We will respond to all requests within 30 days.</p>
+        </div>
+
+        <div id="cookies" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">09</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Cookies & Tracking</h2>
+          </div>
+          <p>Our website uses minimal, essential cookies only:</p>
+          <ul>
+            <li><strong class="text-brand-black">Session cookies</strong> — Required for the platform to function (e.g., maintaining your login session). These expire when you close your browser.</li>
+            <li><strong class="text-brand-black">Preference cookies</strong> — To remember your language and display preferences. These expire after 12 months.</li>
+          </ul>
+          <p>We do <strong class="text-brand-black">not</strong> use advertising cookies, tracking pixels, or any third-party analytics that track your browsing behavior across other websites. We do not use Google Analytics or similar surveillance-based analytics platforms.</p>
+        </div>
+
+        <div id="children" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">10</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Children's Privacy</h2>
+          </div>
+          <p>Nufaa is not intended for use by individuals under the age of 18. We do not knowingly collect personal data from children. If we discover that we have inadvertently collected data from a minor, we will delete it immediately and suspend the associated account.</p>
+          <p>If you believe a minor has created a Nufaa account, please contact us immediately so we can take appropriate action.</p>
+        </div>
+
+        <div id="changes-privacy" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">11</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Changes to This Policy</h2>
+          </div>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes:</p>
+          <ul>
+            <li>We will notify you via the app, SMS, or email at least <strong class="text-brand-black">14 days</strong> before the changes take effect.</li>
+            <li>The "Last Updated" date at the top of this page will be revised.</li>
+            <li>Continued use of the platform after the effective date constitutes acceptance of the updated policy.</li>
+          </ul>
+          <p>We encourage you to review this page periodically for the latest information on our privacy practices.</p>
+        </div>
+
+        <div id="contact-privacy" class="section-card prose-section reveal scroll-mt-28">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-xl bg-brand-accentLight text-brand-accentDark text-xs font-bold font-mono">12</span>
+            <h2 class="font-display font-bold text-xl md:text-2xl">Contact Us</h2>
+          </div>
+          <p>If you have questions about this Privacy Policy, want to exercise your data rights, or have concerns about how your data is being handled, reach out:</p>
+          <div class="flex flex-col sm:flex-row gap-4 mt-4 not-prose">
+            <a href="https://wa.me/447982144203" class="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-brand-light border border-black/5 hover:border-brand-accent/30 hover:-translate-y-0.5 transition-all group">
+              <div class="w-9 h-9 rounded-lg bg-brand-accentLight flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <div><p class="font-semibold text-sm text-brand-black group-hover:text-brand-accent transition-colors">WhatsApp</p><p class="text-xs text-brand-gray font-mono">+44 7982 144203</p></div>
+            </a>
+            <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-3 px-5 py-3.5 rounded-xl bg-brand-light border border-black/5 hover:border-brand-accent/30 hover:-translate-y-0.5 transition-all group">
+              <div class="w-9 h-9 rounded-lg bg-brand-accentLight flex items-center justify-center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><p class="font-semibold text-sm text-brand-black group-hover:text-brand-accent transition-colors">Email</p><p class="text-xs text-brand-gray font-mono">nufaa.now@hotmail.com</p></div>
+            </a>
+          </div>
+          <p class="mt-5">For formal data protection complaints, you may also contact the relevant Gambian data protection authority.</p>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-  <footer class="border-t border-black/5 bg-white pt-16 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
-      <div class="md:col-span-5">
+  <!-- Related Links -->
+  <section class="pb-16 md:pb-24 px-5 md:px-6 max-w-6xl mx-auto border-t border-black/5 pt-12 reveal">
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="terms.html" class="flex-1 flex items-center justify-between p-6 rounded-2xl bg-white border-none shadow-[0_4px_16px_-8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-all group">
+        <div><p class="text-xs text-brand-gray uppercase tracking-widest font-semibold mb-1">Also read</p><p class="font-display font-bold text-lg text-brand-black group-hover:text-brand-accent transition-colors">Terms of Service</p></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gray group-hover:text-brand-accent transition-colors"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="contact.html" class="flex-1 flex items-center justify-between p-6 rounded-2xl bg-white border-none shadow-[0_4px_16px_-8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.1)] hover:-translate-y-0.5 transition-all group">
+        <div><p class="text-xs text-brand-gray uppercase tracking-widest font-semibold mb-1">Questions?</p><p class="font-display font-bold text-lg text-brand-black group-hover:text-brand-accent transition-colors">Contact Us</p></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-brand-gray group-hover:text-brand-accent transition-colors"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+      <div class="col-span-2 md:col-span-5">
         <a href="/" class="flex items-center gap-2.5 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg><span class="font-display font-bold text-xl tracking-tight">Nufaa</span></a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia.</p>
+        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Zero fees. Real growth.</p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
           <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nufaa.now@hotmail.com</a>
         </div>
       </div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
-      <div class="md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
-      <div class="md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">New features and updates.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shrink-0">Join</button></form></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
+      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
+      <div class="col-span-2 md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button></form></div>
     </div>
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-3"><p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p><p class="text-brand-gray/40 text-sm">Made for Gambia.</p></div>
   </footer>
 
   <script>
+    // Menu
     const menuToggle=document.getElementById('menu-toggle');const mobileMenu=document.getElementById('mobile-menu');
     menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
     mobileMenu.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});
+    // Scroll-aware nav
+    const mainNav=document.getElementById('main-nav');
+    window.addEventListener('scroll',()=>{if(window.scrollY>60){mainNav.classList.add('nav-scrolled');}else{mainNav.classList.remove('nav-scrolled');}},{passive:true});
+    // Scroll reveal
+    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    // Scroll-spy for ToC
+    const tocLinks=document.querySelectorAll('#toc-nav .toc-link');
+    const sections=[];
+    tocLinks.forEach(link=>{
+      const id=link.getAttribute('data-section');
+      const section=document.getElementById(id);
+      if(section) sections.push({id,el:section,link});
+    });
+    const spyObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          tocLinks.forEach(l=>l.classList.remove('toc-active'));
+          const match=sections.find(s=>s.id===entry.target.id);
+          if(match) match.link.classList.add('toc-active');
+        }
+      });
+    },{threshold:0.2,rootMargin:'-100px 0px -60% 0px'});
+    sections.forEach(s=>spyObserver.observe(s.el));
   </script>
 </body>
 </html>

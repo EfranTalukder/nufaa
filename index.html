@@ -60,13 +60,19 @@
       mix-blend-mode: multiply;
     }
 
-    /* Nav */
+    /* Nav — scroll-aware */
     .nav-pill {
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
       border: 1px solid rgba(0, 0, 0, 0.03);
       box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
+      transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-scrolled .nav-pill {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.06);
     }
     .nav-link {
       position: relative; color: #737373; font-weight: 500;
@@ -83,7 +89,7 @@
     /* Mobile Menu Overlay */
     .mobile-overlay {
       position: fixed; inset: 0; z-index: 60;
-      background: rgba(250, 250, 250, 0.95);
+      background: rgba(250, 250, 250, 0.97);
       backdrop-filter: blur(40px) saturate(180%);
       -webkit-backdrop-filter: blur(40px) saturate(180%);
       opacity: 0; pointer-events: none;
@@ -103,6 +109,21 @@
     .mobile-overlay.open .mobile-link:nth-child(4) { transition-delay: 0.26s; }
     .mobile-overlay.open .mobile-link:nth-child(5) { transition-delay: 0.32s; }
     .mobile-overlay.open .mobile-link:nth-child(6) { transition-delay: 0.38s; }
+    .mobile-link-active {
+      color: #059669 !important;
+      position: relative;
+    }
+    .mobile-link-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background: #059669;
+      border-radius: 1px;
+    }
 
     /* Hamburger Morph */
     .hamburger span {
@@ -113,15 +134,16 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Scroll Reveal */
+    /* Scroll Reveal — enhanced with blur */
     .reveal {
-      opacity: 0; transform: translateY(2.5rem);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0; transform: translateY(2.5rem); filter: blur(4px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* Floating Shapes */
     .hero-shape {
@@ -133,9 +155,10 @@
       50% { transform: translateY(-30px) scale(1.04); }
     }
 
-    /* Marquee */
+    /* Marquee — pauses on hover */
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+    .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
 
     /* Buttons */
     .btn-primary {
@@ -168,14 +191,12 @@
     }
     .btn-secondary:active { transform: translateY(1px) scale(0.98); }
 
+    /* Double-Bezel — outer shell for premium depth */
+    .bezel-shell { padding:0; background:transparent; border:none; border-radius:2.25rem; }
+    .bezel-inner { border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08); }
+
     /* Bento Card */
-    .bento-card {
-      background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      border-radius: 2rem;
-      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.04);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    .bento-card { background:#ffffff; border:none; border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08); transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
     .bento-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.07);
@@ -223,6 +244,19 @@
       background: #f0fdf4;
       border-left: 3px solid #059669;
     }
+    /* Mobile comparison cards */
+    .compare-mobile-card {
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.04);
+    }
+    .compare-mobile-card.nufaa-card {
+      background: #f0fdf4;
+      border: 1.5px solid rgba(5,150,105,0.2);
+      box-shadow: 0 12px 32px -8px rgba(5,150,105,0.1);
+    }
 
     /* Staking pulse */
     @keyframes stakePulse {
@@ -230,6 +264,34 @@
       50% { box-shadow: 0 0 0 10px rgba(5,150,105,0); }
     }
     .stake-pulse { animation: stakePulse 2.5s ease-in-out infinite; }
+
+    /* Ambient mesh gradient for dark sections */
+    @keyframes meshShift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.97); }
+    }
+    .ambient-glow {
+      animation: meshShift 20s ease-in-out infinite;
+    }
+
+    /* CTA inner refraction */
+    .cta-refraction {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02);
+    }
+
+    /* Floating notification with glow */
+    .float-notification {
+      animation: heroFloat 8s ease-in-out infinite;
+      box-shadow: 0 16px 40px -10px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.03);
+    }
+
+    /* Stats separator line */
+    .stat-divider {
+      width: 1px;
+      height: 2.5rem;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08), transparent);
+    }
   </style>
 </head>
 <body class="relative">
@@ -241,7 +303,7 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- NAVIGATION                                  -->
   <!-- ═══════════════════════════════════════════ -->
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center">
+  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
     <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2.5 group" id="nav-logo">
         <div class="w-8 h-8 flex items-center justify-center">
@@ -261,7 +323,7 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
 
-      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shadow-sm" id="nav-cta">
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]" id="nav-cta">
         Get Early Access
       </a>
 
@@ -274,7 +336,7 @@
   <!-- Mobile Menu Overlay -->
   <div class="mobile-overlay" id="mobile-menu">
     <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
+      <a href="/" class="mobile-link mobile-link-active font-display font-bold text-3xl">Home</a>
       <a href="wallet.html" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
       <a href="how-it-works.html" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
       <a href="about.html" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
@@ -286,12 +348,12 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- HERO                                        -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="relative min-h-[100dvh] flex items-center pt-28 pb-16 md:pt-32 md:pb-20">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <section class="relative flex items-center min-h-[100dvh] pt-28 pb-16 md:pt-40 md:pb-24">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
       <!-- Left Content -->
       <div class="max-w-xl reveal">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-7 border border-brand-accent/20">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-7">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
           Sharia-compliant rewards marketplace
         </div>
@@ -305,12 +367,12 @@
           Buy electricity, airtime, rice, and everyday essentials across Gambia — with zero interest and zero hidden fees. Your balance shrinks automatically through blockchain staking rewards.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5">
-          <a href="contact.html" class="btn-primary w-full sm:w-auto" id="hero-cta-primary">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a href="contact.html" class="btn-primary text-center" id="hero-cta-primary">
             Start growing your money
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="how-it-works.html" class="btn-secondary w-full sm:w-auto" id="hero-cta-secondary">See how it works</a>
+          <a href="how-it-works.html" class="btn-secondary text-center" id="hero-cta-secondary">See how it works</a>
         </div>
 
         <div class="mt-10 flex items-center gap-6 md:gap-10 border-t border-black/5 pt-7">
@@ -318,12 +380,12 @@
             <p class="font-display font-bold text-2xl tracking-tight text-brand-black">0%</p>
             <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Interest</p>
           </div>
-          <div class="w-px h-10 bg-black/5"></div>
+          <div class="stat-divider"></div>
           <div>
             <p class="font-display font-bold text-2xl tracking-tight text-brand-accent">4.45%</p>
             <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Est. APY</p>
           </div>
-          <div class="w-px h-10 bg-black/5"></div>
+          <div class="stat-divider"></div>
           <div>
             <p class="font-display font-bold text-2xl tracking-tight text-brand-black">100%</p>
             <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Asset-backed</p>
@@ -331,25 +393,27 @@
         </div>
       </div>
 
-      <!-- Right — Hero Image + Wallet UI -->
+      <!-- Right — Hero Image + Wallet UI (Double-Bezel) -->
       <div class="relative flex flex-col justify-center items-center reveal reveal-delay-2">
-        <div class="relative w-full max-w-md">
-          <!-- Hero Image -->
-          <div class="rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.12)] border border-black/5">
-            <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
+        <div class="relative w-full max-w-sm mx-auto">
+          <!-- Double-Bezel Shell -->
+          <div class="bezel-shell">
+            <div class="bezel-inner">
+              <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
+            </div>
           </div>
           <!-- Floating Wallet Card -->
-          <div class="absolute -bottom-6 -left-4 md:-left-12 bg-white rounded-2xl p-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.1)] border border-black/5 w-56 md:w-64" style="animation: heroFloat 8s ease-in-out infinite;">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="w-9 h-9 rounded-full bg-brand-accentLight flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div class="absolute -bottom-4 left-2 md:-left-8 bg-white rounded-2xl p-3 md:p-4 float-notification w-48 md:w-60">
+            <div class="flex items-center gap-2.5 mb-2.5">
+              <div class="w-8 h-8 rounded-full bg-brand-accentLight flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </div>
               <div>
                 <p class="text-xs font-semibold text-brand-black">Staking reward</p>
                 <p class="text-[10px] text-brand-gray">Just now</p>
               </div>
             </div>
-            <p class="font-mono font-bold text-lg text-brand-accent">+D 42.50</p>
+            <p class="font-mono font-bold text-base md:text-lg text-brand-accent">+D 42.50</p>
           </div>
         </div>
       </div>
@@ -360,7 +424,7 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- TRUST MARQUEE                               -->
   <!-- ═══════════════════════════════════════════ -->
-  <div class="w-full overflow-hidden border-y border-black/5 py-7 bg-white/50">
+  <div class="marquee-wrapper w-full overflow-hidden border-y border-black/5 py-7 bg-white/50">
     <div class="marquee-track">
       <div class="flex items-center gap-14 px-8">
         <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Powered by</span>
@@ -398,7 +462,7 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- PRODUCT SHOWCASE — What you can do           -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
+  <section class="py-20 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
     <div class="max-w-2xl mb-14 reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">Your marketplace</div>
       <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Everything you need,<br><span class="text-brand-gray">all in one place.</span></h2>
@@ -431,7 +495,6 @@
       <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1">
         <div class="relative h-48 md:h-56 overflow-hidden rounded-t-2xl">
           <img src="images/product-marketplace.png" alt="Shopping for groceries and essentials at a Gambian market" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
         </div>
         <div class="p-8">
           <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
@@ -443,10 +506,9 @@
       </div>
 
       <!-- Bill Payments -->
-      <div class="md:col-span-5 bento-card overflow-hidden group reveal">
+      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-2">
         <div class="relative h-48 md:h-52 overflow-hidden rounded-t-2xl">
           <img src="images/product-pay.png" alt="Agent helping customer with bill payment" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
         </div>
         <div class="p-8">
           <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
@@ -458,7 +520,7 @@
       </div>
 
       <!-- Community — Wide -->
-      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-1">
+      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 h-full">
           <div class="p-8 md:p-10 flex flex-col justify-center order-2 sm:order-1">
             <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-6">
@@ -478,7 +540,7 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- HOW IT WORKS                                -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 bg-white border-y border-black/5">
+  <section class="py-20 md:py-36 bg-white border-y border-black/5">
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
@@ -519,25 +581,29 @@
 
         <!-- Balance Reduction Visual -->
         <div class="reveal reveal-delay-2">
-          <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-black/5 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)]">
-            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray mb-8">Live balance simulation</p>
-            <div class="space-y-5">
-              <div class="flex justify-between items-end border-b border-black/8 pb-4">
-                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gray">Your purchase</span>
-                <span class="font-mono text-2xl font-bold text-brand-black">D 1,000.00</span>
+          <div class="bezel-shell" style="border-radius: 2.25rem;">
+            <div style="border-radius: calc(2.25rem - 0.375rem); overflow: hidden;">
+              <div class="bg-white p-8 md:p-10">
+                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray mb-8">Live balance simulation</p>
+                <div class="space-y-5">
+                  <div class="flex justify-between items-end border-b border-black/8 pb-4">
+                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gray">Your purchase</span>
+                    <span class="font-mono text-2xl font-bold text-brand-black">D 1,000.00</span>
+                  </div>
+                  <div class="flex justify-between items-end border-b border-black/8 pb-4">
+                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">Staking rewards applied</span>
+                    <span class="font-mono text-2xl font-bold text-brand-accent">-D 387.50</span>
+                  </div>
+                  <div class="flex justify-between items-end pt-2">
+                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-black">Remaining balance</span>
+                    <span class="font-mono text-3xl font-bold text-brand-black">D 612.50</span>
+                  </div>
+                  <div class="mt-4 h-2 rounded-full bg-black/5 overflow-hidden">
+                    <div class="h-full bg-brand-accent rounded-full" style="width: 38.75%;"></div>
+                  </div>
+                  <p class="text-xs text-brand-gray text-right">38.75% paid by staking rewards — and counting</p>
+                </div>
               </div>
-              <div class="flex justify-between items-end border-b border-black/8 pb-4">
-                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">Staking rewards applied</span>
-                <span class="font-mono text-2xl font-bold text-brand-accent">-D 387.50</span>
-              </div>
-              <div class="flex justify-between items-end pt-2">
-                <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-black">Remaining balance</span>
-                <span class="font-mono text-3xl font-bold text-brand-black">D 612.50</span>
-              </div>
-              <div class="mt-4 h-2 rounded-full bg-black/5 overflow-hidden">
-                <div class="h-full bg-brand-accent rounded-full" style="width: 38.75%;"></div>
-              </div>
-              <p class="text-xs text-brand-gray text-right">38.75% paid by staking rewards — and counting</p>
             </div>
           </div>
         </div>
@@ -549,14 +615,16 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- WALLET PREVIEW                              -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
+  <section class="py-20 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      <!-- Wallet App Image -->
+      <!-- Wallet App Image (Double-Bezel) -->
       <div class="reveal order-2 lg:order-1 flex justify-center">
         <div class="relative max-w-sm">
-          <div class="rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] border border-black/5">
-            <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
+          <div class="bezel-shell" style="border-radius: 2.75rem; padding: 0.5rem;">
+            <div style="border-radius: calc(2.75rem - 0.5rem); overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);">
+              <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
+            </div>
           </div>
           <!-- Floating stat -->
           <div class="absolute -top-4 -right-4 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
@@ -578,19 +646,19 @@
         </p>
 
         <div class="grid grid-cols-2 gap-4 mb-8">
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
             <p class="font-mono font-bold text-xl text-brand-black mb-0.5">D 0</p>
             <p class="text-xs text-brand-gray">Hidden fees</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
             <p class="font-mono font-bold text-xl text-brand-accent mb-0.5">4.45%</p>
             <p class="text-xs text-brand-gray">Est. annual yield</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
             <p class="font-mono font-bold text-xl text-brand-black mb-0.5">24/7</p>
             <p class="text-xs text-brand-gray">Access</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5">
+          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
             <p class="font-mono font-bold text-xl text-brand-black mb-0.5">100%</p>
             <p class="text-xs text-brand-gray">Your ownership</p>
           </div>
@@ -608,17 +676,22 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- VALUES — Sharia & Community                  -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 bg-brand-black text-white relative overflow-hidden">
-    <!-- Subtle accent glow -->
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-accent rounded-full filter blur-[120px] opacity-10"></div>
-    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-accentDark rounded-full filter blur-[120px] opacity-10"></div>
+  <section class="py-20 md:py-36 bg-brand-black text-white relative overflow-hidden">
+    <!-- Ambient mesh gradient glows -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-accent rounded-full filter blur-[120px] opacity-10 ambient-glow"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-accentDark rounded-full filter blur-[120px] opacity-10 ambient-glow" style="animation-delay: -7s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full filter blur-[150px] ambient-glow" style="animation-delay: -13s;"></div>
 
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
         <!-- Image -->
-        <div class="reveal rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)]">
-          <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
+        <div class="reveal">
+          <div class="bezel-shell" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); border-radius: 2.25rem;">
+            <div style="border-radius: calc(2.25rem - 0.375rem); overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);">
+              <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
+            </div>
+          </div>
         </div>
 
         <!-- Text -->
@@ -632,15 +705,15 @@
           </p>
 
           <div class="flex flex-wrap gap-3">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Sharia certified
             </span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Zero interest (Riba-free)
             </span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80">
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               Wakala model
             </span>
@@ -651,15 +724,16 @@
   </section>
 
   <!-- ═══════════════════════════════════════════ -->
-  <!-- COMPARISON TABLE                            -->
+  <!-- COMPARISON — Desktop Table / Mobile Cards    -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 w-full max-w-5xl mx-auto px-5 md:px-6">
+  <section class="py-20 md:py-36 w-full max-w-5xl mx-auto px-5 md:px-6">
     <div class="mb-14 reveal">
       <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">See the difference.</h2>
       <p class="text-brand-gray text-lg max-w-[50ch]">Compare Nufaa against legacy payment options in Gambia. The numbers speak clearly.</p>
     </div>
 
-    <div class="overflow-x-auto reveal reveal-delay-1">
+    <!-- Desktop Table -->
+    <div class="hidden md:block overflow-x-auto reveal reveal-delay-1">
       <table class="w-full text-left border-collapse">
         <thead>
           <tr>
@@ -723,18 +797,60 @@
         </tbody>
       </table>
     </div>
+
+    <!-- Mobile Comparison Cards -->
+    <div class="md:hidden space-y-4 reveal reveal-delay-1">
+      <!-- Nufaa Card -->
+      <div class="compare-mobile-card nufaa-card">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="font-display font-bold text-xl text-brand-black">Nufaa</span>
+          <span class="text-[9px] font-bold uppercase tracking-widest bg-brand-accent text-white px-2 py-0.5 rounded">Recommended</span>
+        </div>
+        <div class="space-y-3">
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Interest</span><span class="font-bold text-brand-accent">0%</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="font-bold text-brand-accent">Zero</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="font-bold text-brand-accent">Yes — 4.45% APY</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="font-bold text-brand-accent">Yes</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="font-bold text-brand-accent">Certified</span></div>
+        </div>
+      </div>
+      <!-- Mobile Money Card -->
+      <div class="compare-mobile-card">
+        <p class="font-display font-bold text-lg text-brand-gray mb-4">Mobile Money</p>
+        <div class="space-y-3">
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Interest</span><span class="text-sm text-brand-gray">None</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="text-sm text-red-500">High per TX</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="text-sm text-brand-gray">No</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="text-sm text-brand-gray">Limited</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="text-sm text-brand-gray">N/A</span></div>
+        </div>
+      </div>
+      <!-- Banks Card -->
+      <div class="compare-mobile-card">
+        <p class="font-display font-bold text-lg text-brand-gray mb-4">Banks</p>
+        <div class="space-y-3">
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Interest</span><span class="text-sm text-red-500">Up to 25%</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="text-sm text-red-500">Monthly + TX</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="text-sm text-brand-gray">No (debt grows)</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="text-sm text-brand-gray">No</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="text-sm text-red-500">No</span></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- FOUNDER                                     -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 bg-white border-y border-black/5">
+  <section class="py-24 md:py-40 bg-white border-y border-black/5">
     <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
         <div class="reveal">
-          <div class="rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] border border-black/5">
-            <img src="images/founder.png" alt="Alhassan Bah, founder of Nufaa" class="img-cover aspect-[4/5]">
+          <div class="bezel-shell">
+            <div class="bezel-inner">
+              <img src="images/founder.png" alt="Alhassan Bah, founder of Nufaa" class="img-cover aspect-[4/5]">
+            </div>
           </div>
         </div>
 
@@ -760,22 +876,22 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- CTA                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
-    <div class="reveal bento-card bg-brand-black text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none">
-      <!-- Glows -->
-      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15"></div>
-      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15"></div>
+  <section class="py-24 md:py-40 w-full max-w-7xl mx-auto px-5 md:px-6">
+    <div class="reveal bento-card bg-brand-black text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none cta-refraction">
+      <!-- Ambient Glows -->
+      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15 ambient-glow"></div>
+      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15 ambient-glow" style="animation-delay:-10s;"></div>
 
       <div class="relative z-10 max-w-2xl mx-auto">
         <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Your next bill could<br>pay itself.</h2>
         <p class="text-white/65 text-lg mb-4 max-w-[48ch] mx-auto">Early members get priority access to staking rewards and the lowest fee structure. The earlier you join, the more you earn.</p>
         <p class="text-white/40 text-sm mb-9 font-mono">nufaa.now@hotmail.com</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]" id="cta-primary">
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]" id="cta-primary">
             Claim your spot
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="https://wa.me/447982144203" class="inline-flex items-center justify-center gap-2 text-white/80 px-6 py-4 rounded-full font-medium border border-white/10 hover:border-white/25 transition-colors" id="cta-whatsapp">
+          <a href="https://wa.me/447982144203" class="inline-flex items-center justify-center gap-2 text-white/80 px-6 py-4 rounded-full font-medium border border-white/10 hover:border-white/25 hover:bg-white/5 active:scale-[0.98] transition-all" id="cta-whatsapp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity="0.8"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.108 1.537 5.842L.412 23.588l5.88-1.094A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.974c-1.898 0-3.69-.496-5.263-1.416l-.377-.22-3.896.724.739-3.8-2.42-.387A9.957 9.957 0 0 1 2.026 12C2.026 6.49 6.49 2.026 12 2.026S21.974 6.49 21.974 12c0 5.51-4.464 9.974-9.974 9.974z"/></svg>
             Message us
           </a>
@@ -787,9 +903,9 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FOOTER                                      -->
   <!-- ═══════════════════════════════════════════ -->
-  <footer class="border-t border-black/5 bg-white pt-16 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 md:grid-cols-12 gap-10 mb-14">
-      <div class="md:col-span-5">
+  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
+    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+      <div class="col-span-2 md:col-span-5">
         <a href="/" class="flex items-center gap-2.5 mb-5">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -810,7 +926,7 @@
         </div>
       </div>
 
-      <div class="md:col-span-2">
+      <div class="col-span-1 md:col-span-2">
         <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4>
         <ul class="space-y-3">
           <li><a href="wallet.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li>
@@ -820,7 +936,7 @@
         </ul>
       </div>
 
-      <div class="md:col-span-2">
+      <div class="col-span-1 md:col-span-2">
         <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4>
         <ul class="space-y-3">
           <li><a href="terms.html" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li>
@@ -828,12 +944,12 @@
         </ul>
       </div>
 
-      <div class="md:col-span-3">
+      <div class="col-span-2 md:col-span-3">
         <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4>
         <p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p>
         <form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';">
-          <input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all" id="footer-email">
-          <button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-colors shrink-0">Join</button>
+          <input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0" id="footer-email">
+          <button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button>
         </form>
       </div>
     </div>
@@ -866,6 +982,19 @@
         document.body.style.overflow = '';
       });
     });
+
+    // Scroll-aware nav
+    const mainNav = document.getElementById('main-nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 60) {
+        mainNav.classList.add('nav-scrolled');
+      } else {
+        mainNav.classList.remove('nav-scrolled');
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
 
     // Scroll Reveal
     const revealElements = document.querySelectorAll('.reveal');
