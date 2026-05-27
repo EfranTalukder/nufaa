@@ -41,10 +41,15 @@
   </script>
 
   <style>
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+    
     body {
       background-color: #fafafa;
       color: #0a0a0a;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -396,11 +401,8 @@
       <!-- Right — Hero Image + Wallet UI (Double-Bezel) -->
       <div class="relative flex flex-col justify-center items-center reveal reveal-delay-2">
         <div class="relative w-full max-w-sm mx-auto">
-          <!-- Double-Bezel Shell -->
-          <div class="bezel-shell">
-            <div class="bezel-inner">
-              <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
-            </div>
+          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);">
+            <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
           </div>
           <!-- Floating Wallet Card -->
           <div class="absolute -bottom-4 left-2 md:-left-8 bg-white rounded-2xl p-3 md:p-4 float-notification w-48 md:w-60">
@@ -485,7 +487,7 @@
               Explore wallet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
-          <div class="relative overflow-hidden rounded-r-2xl min-h-[260px]">
+          <div class="relative overflow-hidden min-h-[260px]">
             <img src="images/product-wallet.png" alt="Nufaa wallet app showing staking stats and balance" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
           </div>
         </div>
@@ -493,8 +495,8 @@
 
       <!-- Buy Essentials — Tall -->
       <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1">
-        <div class="relative h-48 md:h-56 overflow-hidden rounded-t-2xl">
-          <img src="images/product-marketplace.png" alt="Shopping for groceries and essentials at a Gambian market" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+        <div class="relative h-48 md:h-56 overflow-hidden">
+            <img src="images/product-marketplace.png" alt="Shopping for groceries and essentials at a Gambian market" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
         </div>
         <div class="p-8">
           <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
@@ -507,8 +509,8 @@
 
       <!-- Bill Payments -->
       <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-2">
-        <div class="relative h-48 md:h-52 overflow-hidden rounded-t-2xl">
-          <img src="images/product-pay.png" alt="Agent helping customer with bill payment" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+        <div class="relative h-48 md:h-52 overflow-hidden">
+            <img src="images/product-pay.png" alt="Agent helping customer with bill payment" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
         </div>
         <div class="p-8">
           <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
@@ -529,7 +531,7 @@
             <h3 class="font-display font-bold text-2xl text-brand-black mb-3">A community, not just an app</h3>
             <p class="text-brand-gray leading-relaxed">Join thousands of Gambians who are building wealth together. Share tips, refer friends, and grow as a community.</p>
           </div>
-          <div class="relative overflow-hidden rounded-r-2xl min-h-[260px] order-1 sm:order-2">
+          <div class="relative overflow-hidden min-h-[260px] order-1 sm:order-2">
             <img src="images/value-community.png" alt="Gambian community members sharing and discussing" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
           </div>
         </div>
@@ -580,10 +582,9 @@
         </div>
 
         <!-- Balance Reduction Visual -->
-        <div class="reveal reveal-delay-2">
-          <div class="bezel-shell" style="border-radius: 2.25rem;">
-            <div style="border-radius: calc(2.25rem - 0.375rem); overflow: hidden;">
-              <div class="bg-white p-8 md:p-10">
+        <div class="reveal reveal-delay-2 w-full max-w-md mx-auto">
+          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.08);">
+            <div class="bg-white p-6 md:p-10">
                 <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray mb-8">Live balance simulation</p>
                 <div class="space-y-5">
                   <div class="flex justify-between items-end border-b border-black/8 pb-4">
@@ -603,7 +604,6 @@
                   </div>
                   <p class="text-xs text-brand-gray text-right">38.75% paid by staking rewards — and counting</p>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -620,11 +620,9 @@
 
       <!-- Wallet App Image (Double-Bezel) -->
       <div class="reveal order-2 lg:order-1 flex justify-center">
-        <div class="relative max-w-sm">
-          <div class="bezel-shell" style="border-radius: 2.75rem; padding: 0.5rem;">
-            <div style="border-radius: calc(2.75rem - 0.5rem); overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15);">
-              <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
-            </div>
+        <div class="relative max-w-sm w-full mx-auto">
+          <div style="border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);">
+            <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
           </div>
           <!-- Floating stat -->
           <div class="absolute -top-4 -right-4 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
@@ -686,11 +684,9 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
         <!-- Image -->
-        <div class="reveal">
-          <div class="bezel-shell" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); border-radius: 2.25rem;">
-            <div style="border-radius: calc(2.25rem - 0.375rem); overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);">
-              <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
-            </div>
+        <div class="reveal w-full max-w-lg mx-auto">
+          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);">
+            <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
           </div>
         </div>
 

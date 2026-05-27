@@ -22,7 +22,8 @@
   </script>
 
   <style>
-    body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    html, body { overflow-x:hidden; width:100%; position:relative; }
+    body { background-color:#fafafa; color:#0a0a0a; -webkit-font-smoothing:antialiased; }
     body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
 
     .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
@@ -130,10 +131,8 @@
           <p class="text-brand-gray leading-relaxed">You enter into a Wakala (agency) agreement — completely interest-free. No credit checks, no paperwork maze.</p>
         </div>
         <div class="md:w-1/2 w-full relative z-10">
-          <div class="bezel-shell" style="border-radius:1.75rem;">
-            <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
-              <img src="images/product-pay.png" alt="Nufaa agent helping customer with a payment at a shop counter" class="img-cover aspect-video">
-            </div>
+          <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
+            <img src="images/product-pay.png" alt="Nufaa agent helping customer with a payment at a shop counter" class="img-cover aspect-video">
           </div>
         </div>
       </div>
@@ -147,10 +146,8 @@
           <p class="text-brand-gray leading-relaxed">You retain full ownership of these assets. They are diversified across networks for stability and transparency.</p>
         </div>
         <div class="md:w-1/2 w-full relative z-10">
-          <div class="bezel-shell" style="border-radius:1.75rem;">
-            <div style="border-radius:calc(1.75rem - 0.375rem); overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
-              <img src="images/product-rewards.png" alt="Blockchain network visualization with staking nodes" class="img-cover aspect-video">
-            </div>
+          <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 16px 32px -10px rgba(0,0,0,0.08);">
+            <img src="images/product-rewards.png" alt="Blockchain network visualization with staking nodes" class="img-cover aspect-video">
           </div>
         </div>
       </div>
