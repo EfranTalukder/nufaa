@@ -297,6 +297,39 @@
       height: 2.5rem;
       background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08), transparent);
     }
+
+    /* Editorial image treatment for photos */
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      background: #f5f5f4;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.18), transparent 55%);
+      pointer-events: none;
+    }
+    .group:hover .photo-frame img { transform: scale(1.04); }
+
+    /* Bento card mobile uniformity — image always on top, consistent ratio */
+    .bento-img-mobile {
+      aspect-ratio: 16 / 10;
+    }
+    @media (min-width: 768px) {
+      .bento-img-mobile {
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 280px;
+      }
+    }
   </style>
 </head>
 <body class="relative">
@@ -363,13 +396,13 @@
           Sharia-compliant rewards marketplace
         </div>
 
-        <h1 class="font-display font-bold text-brand-black leading-[1.05] tracking-tight mb-5" style="font-size: clamp(2.5rem, 5.5vw, 4.2rem);">
+        <h1 class="font-display font-bold text-brand-black leading-[1.05] tracking-tight mb-5" style="font-size: clamp(2.4rem, 5.5vw, 4.2rem);">
           Your money works<br>for you.<br>
           <span class="text-brand-gray">Not against you.</span>
         </h1>
 
-        <p class="text-brand-gray text-lg leading-relaxed mb-9 max-w-[52ch]">
-          Buy electricity, airtime, rice, and everyday essentials across Gambia — with zero interest and zero hidden fees. Your balance shrinks automatically through blockchain staking rewards.
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-9 max-w-[52ch]">
+          A Sharia-compliant marketplace for everyday life in Gambia — electricity, airtime, rice, household essentials. Zero interest. Zero hidden fees. Your balance quietly shrinks through blockchain staking rewards.
         </p>
 
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -380,20 +413,20 @@
           <a href="how-it-works.html" class="btn-secondary text-center" id="hero-cta-secondary">See how it works</a>
         </div>
 
-        <div class="mt-10 flex items-center gap-6 md:gap-10 border-t border-black/5 pt-7">
-          <div>
-            <p class="font-display font-bold text-2xl tracking-tight text-brand-black">0%</p>
-            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Interest</p>
+        <div class="mt-10 flex items-center gap-5 sm:gap-8 md:gap-10 border-t border-black/5 pt-7">
+          <div class="min-w-0">
+            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-black">0%</p>
+            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Interest</p>
           </div>
           <div class="stat-divider"></div>
-          <div>
-            <p class="font-display font-bold text-2xl tracking-tight text-brand-accent">4.45%</p>
-            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Est. APY</p>
+          <div class="min-w-0">
+            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-accent">4.45%</p>
+            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Est. APY</p>
           </div>
           <div class="stat-divider"></div>
-          <div>
-            <p class="font-display font-bold text-2xl tracking-tight text-brand-black">100%</p>
-            <p class="text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Asset-backed</p>
+          <div class="min-w-0">
+            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-black">100%</p>
+            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Asset-backed</p>
           </div>
         </div>
       </div>
@@ -466,9 +499,9 @@
   <!-- ═══════════════════════════════════════════ -->
   <section class="py-20 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
     <div class="max-w-2xl mb-14 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">Your marketplace</div>
-      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Everything you need,<br><span class="text-brand-gray">all in one place.</span></h2>
-      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">From electricity and airtime to rice and household essentials — pay for it all with zero interest. Then watch your balance shrink through staking rewards.</p>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The marketplace</div>
+      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Built for the<br><span class="text-brand-gray">life you live.</span></h2>
+      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">Electricity, airtime, groceries, household goods — every purchase is interest-free, and every Dalasi you hold quietly compounds in the background.</p>
     </div>
 
     <!-- Asymmetric Product Grid -->
@@ -476,63 +509,63 @@
 
       <!-- Wallet & Staking — Large -->
       <div class="md:col-span-7 bento-card overflow-hidden group reveal">
-        <div class="grid grid-cols-1 sm:grid-cols-2 h-full">
-          <div class="p-8 md:p-10 flex flex-col justify-center">
-            <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-6">
+        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
+          <div class="photo-frame bento-img-mobile md:order-2">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80" alt="Hand holding a smartphone with a finance app open">
+          </div>
+          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-1">
+            <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-5 md:mb-6">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.5"/></svg>
             </div>
-            <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Wallet & staking</h3>
-            <p class="text-brand-gray leading-relaxed mb-5">Manage your money and earn staking rewards. Your balance grows while you sleep at an estimated 4.45% APY.</p>
+            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">A wallet that earns</h3>
+            <p class="text-brand-gray leading-relaxed mb-5">Every Dalasi you deposit is staked across Cardano, Solana, and Ethereum. You spend like normal — the network pays you the difference.</p>
             <a href="wallet.html" class="text-sm font-semibold text-brand-black inline-flex items-center gap-1.5 group/link hover:text-brand-accent transition-colors">
-              Explore wallet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Open the wallet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-          </div>
-          <div class="relative overflow-hidden min-h-[260px]">
-            <img src="images/product-wallet.png" alt="Nufaa wallet app showing staking stats and balance" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
           </div>
         </div>
       </div>
 
-      <!-- Buy Essentials — Tall -->
-      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1">
-        <div class="relative h-48 md:h-56 overflow-hidden">
-            <img src="images/product-marketplace.png" alt="Shopping for groceries and essentials at a Gambian market" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+      <!-- Buy Essentials -->
+      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1 flex flex-col">
+        <div class="photo-frame bento-img-mobile md:!min-h-0 md:aspect-[16/10]">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80" alt="A spread of fresh produce — rice, vegetables, and pantry staples">
         </div>
-        <div class="p-8">
+        <div class="p-7 sm:p-8 flex-1">
           <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Buy essentials</h3>
-          <p class="text-brand-gray leading-relaxed">Rice, cooking oil, household supplies — buy what your family needs from local merchants, interest-free.</p>
+          <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Stock the kitchen</h3>
+          <p class="text-brand-gray leading-relaxed">Rice, cooking oil, household goods — sourced from neighbourhood merchants, paid without a single percent of interest.</p>
         </div>
       </div>
 
       <!-- Bill Payments -->
-      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-2">
-        <div class="relative h-48 md:h-52 overflow-hidden">
-            <img src="images/product-pay.png" alt="Agent helping customer with bill payment" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-2 flex flex-col">
+        <div class="photo-frame bento-img-mobile md:!min-h-0 md:aspect-[16/10]">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=80" alt="Hand using a contactless mobile payment at a terminal">
         </div>
-        <div class="p-8">
+        <div class="p-7 sm:p-8 flex-1">
           <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Pay bills instantly</h3>
-          <p class="text-brand-gray leading-relaxed">Nawec electricity, Africell airtime, and more — paid instantly through our agent network or app. Zero transaction fees.</p>
+          <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Bills, settled instantly</h3>
+          <p class="text-brand-gray leading-relaxed">NAWEC electricity, Africell airtime, water — settle them from the app or your nearest Nufaa agent. No fees, no queues.</p>
         </div>
       </div>
 
       <!-- Community — Wide -->
       <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-3">
-        <div class="grid grid-cols-1 sm:grid-cols-2 h-full">
-          <div class="p-8 md:p-10 flex flex-col justify-center order-2 sm:order-1">
-            <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-6">
+        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
+          <div class="photo-frame bento-img-mobile md:order-1">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1400&q=80" alt="A group of joyful children waving — community in motion">
+          </div>
+          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-2">
+            <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-5 md:mb-6">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3 class="font-display font-bold text-2xl text-brand-black mb-3">A community, not just an app</h3>
-            <p class="text-brand-gray leading-relaxed">Join thousands of Gambians who are building wealth together. Share tips, refer friends, and grow as a community.</p>
-          </div>
-          <div class="relative overflow-hidden min-h-[260px] order-1 sm:order-2">
-            <img src="images/value-community.png" alt="Gambian community members sharing and discussing" class="img-cover h-full transition-transform duration-700 group-hover:scale-105">
+            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">A network, not a number</h3>
+            <p class="text-brand-gray leading-relaxed">Every member is part of a shared system. Refer a neighbour, share a tip — when one balance grows, the whole community does.</p>
           </div>
         </div>
       </div>
@@ -554,22 +587,22 @@
             <div class="flex gap-5 reveal">
               <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">01</div>
               <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Pick what you need</h4>
-                <p class="text-brand-gray leading-relaxed">Electricity, airtime, rice, household goods — choose from our marketplace or visit a local Nufaa agent.</p>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Choose</h4>
+                <p class="text-brand-gray leading-relaxed">Pick from the marketplace or visit a Nufaa agent. Electricity, airtime, rice, household goods — settle them on your terms.</p>
               </div>
             </div>
             <div class="flex gap-5 reveal reveal-delay-1">
               <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">02</div>
               <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">We stake, you own</h4>
-                <p class="text-brand-gray leading-relaxed">Your funds acquire Sharia-compliant digital assets on secure blockchains. You retain full ownership at all times.</p>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">We stake on your behalf</h4>
+                <p class="text-brand-gray leading-relaxed">Your funds acquire Sharia-compliant digital assets across Cardano, Solana, and Ethereum. Ownership stays with you, always.</p>
               </div>
             </div>
             <div class="flex gap-5 reveal reveal-delay-2">
               <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">03</div>
               <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Watch your balance melt</h4>
-                <p class="text-brand-gray leading-relaxed">Staking rewards pay down your balance automatically. No interest. No deadlines. No catches.</p>
+                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Watch the balance melt</h4>
+                <p class="text-brand-gray leading-relaxed">Staking rewards quietly settle your balance every day. No interest. No deadlines. No fine print.</p>
               </div>
             </div>
           </div>
@@ -620,12 +653,12 @@
 
       <!-- Wallet App Image (Double-Bezel) -->
       <div class="reveal order-2 lg:order-1 flex justify-center">
-        <div class="relative max-w-sm w-full mx-auto">
-          <div style="border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15);">
-            <img src="images/product-wallet.png" alt="Nufaa mobile wallet app showing balance, staking stats, and quick actions" class="img-cover">
+        <div class="relative max-w-md w-full mx-auto">
+          <div class="photo-frame" style="border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15); aspect-ratio: 4/5;">
+            <img src="images/product-wallet.png" alt="Nufaa wallet app — deposit, stake, send and spend" style="width:100%;height:100%;object-fit:cover;">
           </div>
           <!-- Floating stat -->
-          <div class="absolute -top-4 -right-4 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
+          <div class="absolute -top-4 -right-2 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
             <p class="text-[10px] text-white/50 uppercase tracking-[0.15em] font-semibold mb-1">Est. Annual Yield</p>
             <p class="font-mono font-bold text-2xl text-brand-accentLight">4.45%</p>
           </div>
@@ -639,8 +672,8 @@
           Wallet
         </div>
         <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">A wallet that grows<br><span class="text-brand-gray">while you sleep.</span></h2>
-        <p class="text-brand-gray text-lg leading-relaxed mb-8 max-w-[50ch]">
-          Deposit money. Stake it on secure blockchain networks. Earn real rewards — automatically. Transfer, receive, buy essentials, and track your history from one place.
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-8 max-w-[50ch]">
+          Deposit, stake, send, spend. Every Dalasi works in the background — earning real on-chain rewards across three networks. Transfers, bills, groceries: one place, zero fees.
         </p>
 
         <div class="grid grid-cols-2 gap-4 mb-8">
@@ -685,19 +718,19 @@
 
         <!-- Image -->
         <div class="reveal w-full max-w-lg mx-auto">
-          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);">
-            <img src="images/value-sharia.png" alt="Islamic architecture symbolizing Sharia-compliant finance" class="img-cover aspect-[4/3]">
+          <div class="photo-frame" style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4); aspect-ratio: 4/3;">
+            <img src="images/value-sharia.png" alt="Sunlight on ornate mosque arches symbolising ethical finance principles">
           </div>
         </div>
 
         <!-- Text -->
         <div class="reveal reveal-delay-1">
           <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-6">Finance rooted<br><span class="text-white/50">in fairness.</span></h2>
-          <p class="text-white/70 text-lg leading-relaxed mb-8 max-w-[50ch]">
-            In Islamic finance, charging interest exploits vulnerability. Conventional banks thrive by taxing the poorest with the highest rates. We built a different system.
+          <p class="text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-[50ch]">
+            Islamic finance forbids interest because it taxes the most vulnerable hardest. Conventional banks built their whole model on that asymmetry. We didn't want to participate.
           </p>
-          <p class="text-white/70 text-lg leading-relaxed mb-8 max-w-[50ch]">
-            Nufaa uses a Wakala (agency) structure. You are not taking a loan. The blockchain staking yields the economic value to settle your transactions. Finance grounded in transparency and shared prosperity.
+          <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-[50ch]">
+            Nufaa runs on a Wakala (agency) structure. You aren't borrowing — the platform stakes on your behalf, the network yields the value, and your transaction settles. Transparent. Audited. Shared.
           </p>
 
           <div class="flex flex-wrap gap-3">
@@ -723,9 +756,9 @@
   <!-- COMPARISON — Desktop Table / Mobile Cards    -->
   <!-- ═══════════════════════════════════════════ -->
   <section class="py-20 md:py-36 w-full max-w-5xl mx-auto px-5 md:px-6">
-    <div class="mb-14 reveal">
-      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">See the difference.</h2>
-      <p class="text-brand-gray text-lg max-w-[50ch]">Compare Nufaa against legacy payment options in Gambia. The numbers speak clearly.</p>
+    <div class="mb-12 md:mb-14 reveal">
+      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">Side by side.</h2>
+      <p class="text-brand-gray text-base md:text-lg max-w-[50ch]">Nufaa next to the alternatives. The numbers speak more clearly than any pitch could.</p>
     </div>
 
     <!-- Desktop Table -->
@@ -844,8 +877,8 @@
 
         <div class="reveal">
           <div class="bezel-shell">
-            <div class="bezel-inner">
-              <img src="images/founder.png" alt="Alhassan Bah, founder of Nufaa" class="img-cover aspect-[4/5]">
+            <div class="bezel-inner photo-frame" style="aspect-ratio: 4/5;">
+              <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1400&q=80" alt="A coastal scene in Gambia — the country Nufaa was built for">
             </div>
           </div>
         </div>
@@ -854,14 +887,14 @@
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The founder</div>
           <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">Built by someone<br><span class="text-brand-gray">who lived the problem.</span></h2>
           <p class="text-brand-gray text-lg leading-relaxed mb-6 max-w-[50ch]">
-            Alhassan Bah watched families across Gambia trapped in cycles of high-interest debt just to keep the lights on or buy basic necessities. The banking system was designed to extract wealth, not create it.
+            Alhassan Bah grew up in Gambia, watching families work three jobs only to lose half of it to interest on a phone bill or a sack of rice. Conventional banking didn't fail by accident — it was built to extract.
           </p>
           <p class="text-brand-gray text-lg leading-relaxed mb-8 max-w-[50ch]">
-            He built Nufaa to prove that technology can serve communities ethically — where your money grows through staking rewards instead of shrinking through interest payments. A system where fairness is not aspirational, but operational.
+            Nufaa is his answer. A system where technology, not interest, settles the bill — and where every transaction is grounded in Islamic finance principles. Fairness, here, is operational. Not aspirational.
           </p>
           <div class="border-t border-black/5 pt-6">
             <p class="font-display font-bold text-xl text-brand-black">Alhassan Bah</p>
-            <p class="text-brand-gray text-sm">Founder & CEO, Nufaa</p>
+            <p class="text-brand-gray text-sm">Founder &amp; CEO, Nufaa</p>
           </div>
         </div>
 
@@ -880,7 +913,7 @@
 
       <div class="relative z-10 max-w-2xl mx-auto">
         <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Your next bill could<br>pay itself.</h2>
-        <p class="text-white/65 text-lg mb-4 max-w-[48ch] mx-auto">Early members get priority access to staking rewards and the lowest fee structure. The earlier you join, the more you earn.</p>
+        <p class="text-white/65 text-base md:text-lg mb-4 max-w-[48ch] mx-auto">Early members get priority access to staking yields and the lowest fee tier. The longer you're in, the more it compounds.</p>
         <p class="text-white/40 text-sm mb-9 font-mono">nufaa.now@hotmail.com</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
           <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]" id="cta-primary">

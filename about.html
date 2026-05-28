@@ -72,6 +72,11 @@
     /* Pull quote */
     .pull-quote { position:relative; padding-left:1.75rem; }
     .pull-quote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom, #059669, rgba(5,150,105,0.2)); border-radius:2px; }
+
+    /* Editorial photo treatment */
+    .photo-frame { position:relative; overflow:hidden; background:#f5f5f4; }
+    .photo-frame img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .photo-frame::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.18), transparent 55%); pointer-events:none; }
   </style>
 </head>
 <body class="relative">
@@ -104,72 +109,72 @@
   </div>
 
   <!-- Hero Header -->
-  <header class="pt-40 md:pt-48 pb-16 md:pb-20 px-5 md:px-6 max-w-4xl mx-auto relative reveal">
+  <header class="pt-36 md:pt-48 pb-12 md:pb-20 px-5 md:px-6 max-w-4xl mx-auto relative reveal">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">Our story</div>
-    <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05;">Engineering ethical<br>finance for Gambia.</h1>
-    <p class="text-brand-gray text-xl leading-relaxed max-w-[55ch]">We exist to prove that technology can serve communities — not exploit them. Nufaa is a Sharia-compliant rewards marketplace where your money grows through staking, not shrinks through interest.</p>
+    <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.05;">Engineering ethical<br>finance for Gambia.</h1>
+    <p class="text-brand-gray text-lg md:text-xl leading-relaxed max-w-[55ch]">We exist to prove that technology can serve communities — not strip them. Nufaa is a Sharia-compliant marketplace where your money grows through staking rewards, never shrinks through interest.</p>
   </header>
 
   <!-- Founder Section -->
-  <section class="py-20 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <section class="py-16 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
       <div class="reveal">
         <div class="bezel-shell">
-          <div class="bezel-inner">
-            <img src="images/founder.png" alt="Alhassan Bah, founder and CEO of Nufaa" class="img-cover aspect-[4/5]">
+          <div class="bezel-inner photo-frame" style="aspect-ratio: 4/5;">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1400&q=80" alt="Gambian coastline at golden hour — the place Nufaa was built for">
           </div>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The founder</div>
         <h2 class="font-display font-bold text-brand-black text-3xl md:text-4xl tracking-tight mb-6">Built by someone who<br>lived the problem.</h2>
-        <p class="text-brand-gray text-lg leading-relaxed mb-5 max-w-[50ch]">
-          Alhassan Bah grew up watching families across Gambia trapped in cycles of high-interest debt just to keep the lights on or buy rice for the week. The banking system was designed to extract wealth from communities, not create it.
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-5 max-w-[50ch]">
+          Alhassan Bah grew up in Gambia. He watched neighbours pay 25% interest on a sack of rice and lose half a month's wages to fees on a bank account they barely used. The system was designed to extract from the people who could afford it least.
         </p>
-        <p class="text-brand-gray text-lg leading-relaxed mb-5 max-w-[50ch]">
-          He saw an opportunity where blockchain staking yields could replace interest charges entirely — creating a financial system where paying for everyday essentials actually builds wealth instead of destroying it.
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-5 max-w-[50ch]">
+          He saw a different path in blockchain staking — where yields could replace interest entirely, and where paying for essentials could actually build wealth instead of bleed it.
         </p>
         <div class="pull-quote mb-8">
-          <p class="text-brand-black text-lg leading-relaxed font-medium italic max-w-[50ch]">
-            "Nufaa is the result: a platform where fairness is not aspirational, but operational. Where every transaction follows Islamic finance principles."
+          <p class="text-brand-black text-base md:text-lg leading-relaxed font-medium italic max-w-[50ch]">
+            "Nufaa is the result. A platform where fairness isn't a marketing line — it's the architecture."
           </p>
         </div>
         <div class="border-t border-black/5 pt-6">
           <p class="font-display font-bold text-xl text-brand-black">Alhassan Bah</p>
-          <p class="text-brand-gray text-sm">Founder & CEO</p>
+          <p class="text-brand-gray text-sm">Founder &amp; CEO</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Mission -->
-  <section class="py-20 md:py-36 px-5 md:px-6 max-w-5xl mx-auto border-t border-black/5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+  <section class="py-16 md:py-36 px-5 md:px-6 max-w-5xl mx-auto border-t border-black/5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
       <div class="reveal">
-        <div class="font-display font-bold text-[8rem] md:text-[12rem] leading-none text-brand-accent/8 select-none pointer-events-none -mb-8 md:-mb-16">01</div>
+        <div class="font-display font-bold text-[7rem] md:text-[12rem] leading-none text-brand-accent/[0.08] select-none pointer-events-none -mb-6 md:-mb-16">01</div>
         <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-4">The mission</h2>
       </div>
       <div class="reveal reveal-delay-1">
-        <p class="text-brand-gray text-xl leading-relaxed mb-6">We are building a rewards marketplace that breaks the cycle of predatory banking in Gambia. Buy electricity, airtime, rice, and household essentials — all interest-free, all powered by blockchain staking rewards.</p>
-        <p class="text-brand-gray text-lg leading-relaxed">Every Dalasi deposited into Nufaa acquires Sharia-compliant digital assets that earn real yields. Those yields pay down your balance or grow your wallet. The community grows together.</p>
+        <p class="text-brand-gray text-lg md:text-xl leading-relaxed mb-6">Break the cycle of extractive banking in Gambia. Electricity, airtime, rice, household goods — purchased interest-free, settled by staking yields.</p>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed">Every Dalasi held inside Nufaa quietly acquires Sharia-compliant digital assets that earn real on-chain rewards. Those rewards retire your balance — or compound it. Either way, the community grows together.</p>
       </div>
     </div>
   </section>
 
   <!-- Why Sharia-Compliant -->
-  <section class="py-20 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <section class="py-16 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
       <div class="reveal order-2 lg:order-1">
         <div class="bezel-shell" style="border-radius:2.25rem;">
-          <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08);">
-            <img src="images/value-sharia.png" alt="Islamic architectural detail symbolizing ethical finance principles" class="img-cover aspect-[4/3]">
+          <div class="photo-frame" style="border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08); aspect-ratio: 4/3;">
+            <img src="images/value-sharia.png" alt="Light through ornate mosque arches — a symbol of ethical finance principles">
           </div>
         </div>
       </div>
       <div class="reveal reveal-delay-1 order-1 lg:order-2">
         <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-6">Why Sharia-compliant?</h2>
-        <p class="text-brand-gray text-lg leading-relaxed mb-5">In Islamic finance, charging interest (Riba) is prohibited because it exploits vulnerability. Conventional banking systems thrive by taxing the poorest populations with the highest rates.</p>
-        <p class="text-brand-gray text-lg leading-relaxed mb-8">Nufaa uses a Wakala (agency) structure. When you buy through us, you are not taking a loan. The blockchain staking yields the economic value to settle the transaction. Finance grounded in fairness, transparency, and shared prosperity.</p>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-5">In Islamic finance, charging interest (Riba) is forbidden — because it taxes the most vulnerable hardest. Conventional banks built their model on exactly that asymmetry.</p>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-8">Nufaa runs on a Wakala (agency) structure. You aren't taking a loan. The platform stakes on your behalf; the network yields the economic value that settles each transaction. Finance grounded in transparency and shared prosperity.</p>
         <div class="flex flex-wrap gap-3">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-accentLight text-brand-accentDark text-sm font-semibold border border-brand-accent/20 transition-all duration-300 hover:-translate-y-0.5">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -189,17 +194,17 @@
   </section>
 
   <!-- Community -->
-  <section class="py-20 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+  <section class="py-16 md:py-36 px-5 md:px-6 max-w-7xl mx-auto border-t border-black/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
       <div class="reveal">
-        <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-6">More than an app.<br><span class="text-brand-gray">A community.</span></h2>
-        <p class="text-brand-gray text-lg leading-relaxed mb-5">Nufaa is not just a payment platform — it is a network of Gambians building wealth together. Share referral rewards, exchange tips on managing money, and grow as a collective.</p>
-        <p class="text-brand-gray text-lg leading-relaxed">When one member benefits from staking rewards, the entire network strengthens. We believe prosperity is shared, not hoarded.</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-6">More than an app.<br><span class="text-brand-gray">A network.</span></h2>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-5">Nufaa isn't a payment app you open and close. It's a shared system — neighbours, families, and merchants building balance together. Referrals reward both sides. Tips and knowledge move across the network.</p>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed">When one balance grows, the protocol works for everyone. Prosperity, here, is shared by design.</p>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="bezel-shell">
-          <div style="border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08);">
-            <img src="images/value-community.png" alt="Gambian community members sharing and discussing around a table" class="img-cover aspect-[4/3]">
+          <div class="photo-frame" style="border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08); aspect-ratio: 4/3;">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80" alt="Children waving with joy — a portrait of community">
           </div>
         </div>
       </div>
@@ -207,30 +212,30 @@
   </section>
 
   <!-- Roadmap -->
-  <section class="py-20 md:py-36 px-5 md:px-6 max-w-5xl mx-auto border-t border-black/5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+  <section class="py-16 md:py-36 px-5 md:px-6 max-w-5xl mx-auto border-t border-black/5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20">
       <div class="reveal">
-        <div class="font-display font-bold text-[8rem] md:text-[12rem] leading-none text-brand-accent/8 select-none pointer-events-none -mb-8 md:-mb-16">02</div>
-        <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-4">Vision & roadmap</h2>
-        <p class="text-brand-gray text-lg leading-relaxed">We are building in phases — each one expanding what Gambians can access interest-free.</p>
+        <div class="font-display font-bold text-[7rem] md:text-[12rem] leading-none text-brand-accent/[0.08] select-none pointer-events-none -mb-6 md:-mb-16">02</div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-4">Vision &amp; roadmap</h2>
+        <p class="text-brand-gray text-base md:text-lg leading-relaxed">We're building in phases. Each one widens the set of essentials Gambians can access without interest.</p>
       </div>
       <div class="reveal reveal-delay-1">
         <ul class="space-y-8 relative">
           <div class="timeline-line"></div>
           <li class="relative pl-10">
             <span class="timeline-dot timeline-dot-active"></span>
-            <h4 class="font-display font-bold text-lg mb-1.5">Phase 1: Utilities & essentials</h4>
-            <p class="text-brand-gray">Nawec electricity, Africell airtime, rice, cooking oil, and household goods — available now through our agent network.</p>
+            <h4 class="font-display font-bold text-lg mb-1.5">Phase 1 — Utilities &amp; essentials</h4>
+            <p class="text-brand-gray">NAWEC electricity, Africell airtime, rice, cooking oil, household goods. Live now through the Nufaa agent network.</p>
           </li>
           <li class="relative pl-10">
             <span class="timeline-dot timeline-dot-pending"></span>
-            <h4 class="font-display font-bold text-lg mb-1.5 text-brand-black/60">Phase 2: Full marketplace</h4>
-            <p class="text-brand-gray/70">Expanding to clothing, electronics, school supplies, and more — all purchasable through Nufaa with staking-backed payments.</p>
+            <h4 class="font-display font-bold text-lg mb-1.5 text-brand-black/60">Phase 2 — Full marketplace</h4>
+            <p class="text-brand-gray/70">Clothing, electronics, school supplies, transport — every category backed by staking, none charging interest.</p>
           </li>
           <li class="relative pl-10">
             <span class="timeline-dot timeline-dot-future"></span>
-            <h4 class="font-display font-bold text-lg mb-1.5 text-brand-black/40">Phase 3: SME financing</h4>
-            <p class="text-brand-gray/50">Allowing small businesses to acquire tools, machinery, and inventory interest-free — funded by staking rewards.</p>
+            <h4 class="font-display font-bold text-lg mb-1.5 text-brand-black/40">Phase 3 — SME financing</h4>
+            <p class="text-brand-gray/50">Small businesses can stock tools, machinery, and inventory interest-free — capital sourced from network yields.</p>
           </li>
         </ul>
       </div>

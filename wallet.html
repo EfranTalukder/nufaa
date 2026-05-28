@@ -78,6 +78,11 @@
     /* Feature card hover */
     .feature-card { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s; }
     .feature-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.06); }
+
+    /* Editorial photo treatment */
+    .photo-frame { position:relative; overflow:hidden; background:#f5f5f4; }
+    .photo-frame img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .photo-frame::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.18), transparent 55%); pointer-events:none; }
   </style>
 </head>
 <body class="relative">
@@ -109,12 +114,12 @@
   <section class="pt-36 md:pt-44 pb-16 md:pb-20 px-5 md:px-6 max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
       <div class="reveal">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-7">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-6 md:mb-7">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
           Wallet
         </div>
-        <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05;">Your wallet.<br><span class="text-brand-gray">Always working.</span></h1>
-        <p class="text-brand-gray text-xl leading-relaxed mb-8 max-w-[52ch]">Deposit, stake, earn, and spend — all from one place. Your assets are staked across Cardano, Solana, and Ethereum for consistent, real rewards. Transfer to anyone, pay bills, buy essentials.</p>
+        <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.05;">Your wallet.<br><span class="text-brand-gray">Always working.</span></h1>
+        <p class="text-brand-gray text-base md:text-xl leading-relaxed mb-8 max-w-[52ch]">Deposit, stake, send, spend — all from one place. Your balance is staked across Cardano, Solana, and Ethereum, generating real on-chain rewards while you go about your day.</p>
         <a href="contact.html" class="btn-primary">
           Get your wallet
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -122,14 +127,14 @@
       </div>
 
       <div class="reveal reveal-delay-2 flex justify-center">
-        <div class="relative max-w-sm">
+        <div class="relative max-w-sm w-full">
           <div class="bezel-shell" style="border-radius:2.75rem;">
-            <div style="border-radius:2rem; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,0.15);">
-              <img src="images/product-wallet.png" alt="Nufaa wallet app interface showing balance, staking stats, and quick actions" class="img-cover" loading="eager">
+            <div class="photo-frame" style="border-radius:2rem; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,0.15); aspect-ratio: 4/5;">
+              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80" alt="Hand using a card and laptop — the daily wallet at work" loading="eager">
             </div>
           </div>
           <!-- Floating badge -->
-          <div class="absolute -bottom-3 -left-3 md:-left-8 bg-white rounded-2xl p-3.5 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.1),_0_0_0_1px_rgba(0,0,0,0.03)]" style="animation: meshShift 10s ease-in-out infinite;">
+          <div class="absolute -bottom-3 left-2 md:-left-8 bg-white rounded-2xl p-3.5 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.1),_0_0_0_1px_rgba(0,0,0,0.03)]" style="animation: meshShift 10s ease-in-out infinite;">
             <div class="flex items-center gap-2.5">
               <div class="w-9 h-9 rounded-full bg-brand-accentLight flex items-center justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
