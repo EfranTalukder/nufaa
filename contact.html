@@ -164,6 +164,11 @@
 
               <div class="form-fields" id="form-fields">
                 <form class="space-y-5" id="waitlist-form">
+                  <!-- FormSubmit config (submissions delivered to ifran8413@gmail.com) -->
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+                  <input type="hidden" name="_subject" value="New Nufaa waitlist signup">
+                  <input type="hidden" name="_template" value="table">
+                  <input type="hidden" name="_captcha" value="false">
                   <div>
                     <label for="name">Full name</label>
                     <input type="text" id="name" name="name" placeholder="Aminata Ceesay" required>
@@ -295,11 +300,25 @@
     const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-    // Form submission
-    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    // Form submission — posts to FormSubmit (free, unlimited, no account) then shows success
+    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('form-fields').classList.add('hidden');
-      document.getElementById('form-success').classList.add('show');
+      const form = e.target;
+      const btn = form.querySelector('.btn-submit');
+      btn.disabled = true;
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/ifran8413@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form),
+        });
+        if (!res.ok) throw new Error('Submission failed');
+        document.getElementById('form-fields').classList.add('hidden');
+        document.getElementById('form-success').classList.add('show');
+      } catch (err) {
+        btn.disabled = false;
+        alert('Something went wrong — please reach us on WhatsApp or email instead.');
+      }
     });
   </script>
 </body>
