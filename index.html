@@ -501,7 +501,7 @@
     <div class="max-w-2xl mb-14 reveal">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The marketplace</div>
       <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Built for the<br><span class="text-brand-gray">life you live.</span></h2>
-      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">Electricity, airtime, groceries, household goods — every purchase is interest-free, and every Dalasi you hold quietly compounds in the background.</p>
+      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">Electricity, mobile top-up, groceries, household goods — every purchase is interest-free, and every Dalasi you hold quietly compounds in the background.</p>
     </div>
 
     <!-- Asymmetric Product Grid -->
@@ -554,8 +554,27 @@
         </div>
       </div>
 
-      <!-- Community — Wide -->
-      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-3">
+      <!-- Mobile Top Up — Wide -->
+      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-2">
+        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
+          <div class="photo-frame bento-img-mobile md:order-1">
+            <img src="https://images.unsplash.com/photo-1684853926876-f2e88f947062?auto=format&fit=crop&w=1400&q=80" alt="Person recharging their mobile phone using a digital top-up app">
+          </div>
+          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-2">
+            <div class="w-11 h-11 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-5 md:mb-6">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Top up, tap, done</h3>
+            <p class="text-brand-gray leading-relaxed mb-5">Africell, Qcell, Comium — recharge any Gambian network instantly from your wallet. No scratching cards, no queues.</p>
+            <a href="contact.html" class="text-sm font-semibold text-brand-black inline-flex items-center gap-1.5 group/link hover:text-brand-accent transition-colors">
+              Recharge now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community — Full Width -->
+      <div class="md:col-span-12 bento-card overflow-hidden group reveal reveal-delay-3">
         <div class="flex flex-col md:grid md:grid-cols-2 h-full">
           <div class="photo-frame bento-img-mobile md:order-1">
             <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1400&q=80" alt="A group of joyful children waving — community in motion">
@@ -813,6 +832,17 @@
             <td class="py-5 border-b border-black/5 text-brand-gray">No</td>
           </tr>
           <tr>
+            <td class="py-5 border-b border-black/5 font-medium text-sm">Mobile top-up?</td>
+            <td class="py-5 border-b border-black/5 compare-nufaa px-3">
+              <span class="inline-flex items-center gap-1.5 font-bold text-brand-accent">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                Instant, zero fees
+              </span>
+            </td>
+            <td class="py-5 border-b border-black/5 text-red-500">Yes, with fees</td>
+            <td class="py-5 border-b border-black/5 text-brand-gray">No</td>
+          </tr>
+          <tr>
             <td class="py-5 font-medium text-sm">Sharia compliant</td>
             <td class="py-5 compare-nufaa px-3">
               <span class="inline-flex items-center gap-1.5 font-bold text-brand-accent">
@@ -840,6 +870,7 @@
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="font-bold text-brand-accent">Zero</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="font-bold text-brand-accent">Yes — 4.45% APY</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="font-bold text-brand-accent">Yes</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Mobile top-up?</span><span class="font-bold text-brand-accent">Instant, zero fees</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="font-bold text-brand-accent">Certified</span></div>
         </div>
       </div>
@@ -851,6 +882,7 @@
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="text-sm text-red-500">High per TX</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="text-sm text-brand-gray">No</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="text-sm text-brand-gray">Limited</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Mobile top-up?</span><span class="text-sm text-red-500">Yes, with fees</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="text-sm text-brand-gray">N/A</span></div>
         </div>
       </div>
@@ -862,6 +894,7 @@
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Fees</span><span class="text-sm text-red-500">Monthly + TX</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Money grows?</span><span class="text-sm text-brand-gray">No (debt grows)</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Buy groceries?</span><span class="text-sm text-brand-gray">No</span></div>
+          <div class="flex justify-between"><span class="text-sm text-brand-gray">Mobile top-up?</span><span class="text-sm text-brand-gray">No</span></div>
           <div class="flex justify-between"><span class="text-sm text-brand-gray">Sharia compliant</span><span class="text-sm text-red-500">No</span></div>
         </div>
       </div>
