@@ -35,8 +35,15 @@ const server = http.createServer((req, res) => {
   // Default to index.html
   if (urlPath === "/") urlPath = "/index.html";
 
-  const filePath = path.join(__dirname, urlPath);
-  const ext = path.extname(filePath).toLowerCase();
+  let filePath = path.join(__dirname, urlPath);
+  let ext = path.extname(filePath).toLowerCase();
+
+  // If there's no extension, append .html
+  if (!ext && urlPath !== "/") {
+    filePath += ".html";
+    ext = ".html";
+  }
+
   const contentType = MIME_TYPES[ext] || "application/octet-stream";
 
   fs.readFile(filePath, (err, data) => {
