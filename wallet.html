@@ -1,367 +1,465 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wallet | Nufaa — Stake, Grow, and Spend With Zero Interest</title>
-  <meta name="description" content="Manage your Nufaa wallet. Stake digital assets on Cardano, Solana, and more. Earn variable estimated APY while paying for essentials — zero interest, transparent fees.">
-  <meta property="og:title" content="Nufaa Wallet | Your Money Grows While You Sleep">
-  <meta property="og:description" content="Deposit, stake, and spend. Earn real blockchain rewards while you buy electricity, airtime, and groceries. Zero interest.">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
+
+  <title>The Dalasi wallet | Nufaa</title>
+  <meta name="description" content="One wallet, denominated in Gambian Dalasi. Top up with mobile money, bank transfer, cash or crypto, pay for orders, collect cashback and withdraw — all in Dalasi.">
+  <meta name="theme-color" content="#F6F7F2">
+  <meta property="og:title" content="The Nufaa Dalasi wallet">
+  <meta property="og:description" content="Top up, pay, collect cashback and withdraw. Denominated in Dalasi, funded by Dalasi or crypto.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/hijabi-topup.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: { extend: {
-        fontFamily: { sans: ['Satoshi','sans-serif'], display: ['Outfit','sans-serif'], mono: ['JetBrains Mono','monospace'] },
-        colors: { brand: { black:'#0a0a0a', dark:'#171717', gray:'#737373', light:'#fafafa', white:'#ffffff', accent:'#059669', accentDark:'#047857', accentLight:'#d1fae5' } }
-      } }
-    }
-  </script>
-
-  <style>
-    body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-    body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
-
-    .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
-    .nav-scrolled .nav-pill { background:rgba(255,255,255,0.95); box-shadow:0 8px 32px -4px rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.06); }
-    .nav-link { position:relative; color:#737373; font-weight:500; transition:color 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .nav-link:hover { color:#0a0a0a; }
-    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:#059669; transition:width 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .nav-link:hover::after, .nav-link.active::after { width:100%; }
-    .nav-link.active { color:#0a0a0a; }
-
-    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.97); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
-    .mobile-overlay.open { opacity:1; pointer-events:auto; }
-    .mobile-overlay .mobile-link { transform:translateY(2rem); opacity:0; transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .mobile-overlay.open .mobile-link { transform:translateY(0); opacity:1; }
-    .mobile-overlay.open .mobile-link:nth-child(1){transition-delay:.08s} .mobile-overlay.open .mobile-link:nth-child(2){transition-delay:.14s} .mobile-overlay.open .mobile-link:nth-child(3){transition-delay:.2s} .mobile-overlay.open .mobile-link:nth-child(4){transition-delay:.26s} .mobile-overlay.open .mobile-link:nth-child(5){transition-delay:.32s} .mobile-overlay.open .mobile-link:nth-child(6){transition-delay:.38s}
-    .mobile-link-active { color:#059669 !important; position:relative; }
-    .mobile-link-active::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:24px; height:2px; background:#059669; border-radius:1px; }
-    .hamburger span { display:block; width:22px; height:2px; background:#0a0a0a; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
-    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-    .reveal { opacity:0; transform:translateY(2.5rem); filter:blur(4px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); filter:blur(0); }
-    .reveal-delay-1 { transition-delay:0.1s; }
-    .reveal-delay-2 { transition-delay:0.2s; }
-    .reveal-delay-3 { transition-delay:0.3s; }
-
-    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s; box-shadow:0 8px 24px -8px rgba(0,0,0,0.4); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(0,0,0,0.5); background-color:#171717; }
-    .btn-primary:active { transform:translateY(1px) scale(0.98); }
-
-    .bento-card { background:#ffffff; border:none; border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08); transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s; }
-    .bento-card:hover { transform:translateY(-4px); box-shadow:0 28px 60px -15px rgba(0,0,0,0.07); }
-
-    .img-cover { width:100%; height:100%; object-fit:cover; }
-
-    .bezel-shell { padding:0; background:transparent; border:none; border-radius:2.25rem; }
-    .bezel-inner { border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08); }
-
-    @keyframes meshShift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-20px) scale(1.05)} 66%{transform:translate(-20px,15px) scale(0.97)} }
-    .ambient-glow { animation: meshShift 20s ease-in-out infinite; }
-
-    .cta-refraction { box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02); }
-
-    @keyframes stakePulse { 0%,100%{box-shadow:0 0 0 0 rgba(5,150,105,0.3)} 50%{box-shadow:0 0 0 10px rgba(5,150,105,0)} }
-    .stake-pulse { animation:stakePulse 2.5s ease-in-out infinite; }
-
-    @keyframes balancePulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-    .balance-pulse { animation: balancePulse 3s ease-in-out infinite; }
-
-    /* Action button for mobile */
-    .action-btn { min-height:48px; min-width:48px; }
-
-    /* Feature card hover */
-    .feature-card { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s; }
-    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.06); }
-
-    /* Editorial photo treatment */
-    .photo-frame { position:relative; overflow:hidden; background:#f5f5f4; }
-    .photo-frame img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .photo-frame::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.18), transparent 55%); pointer-events:none; }
-  </style>
+  <script src="/assets/tailwind.config.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/nufaa.css">
 </head>
-<body class="relative">
+<body>
 
-  <!-- Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
-    <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group"><div class="w-8 h-8 flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg></div><span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span></a>
-      <div class="hidden md:flex items-center gap-7 text-sm">
-        <a href="/" class="nav-link">Home</a><a href="wallet" class="nav-link active">Wallet</a><a href="how-it-works" class="nav-link">How it works</a><a href="about" class="nav-link">About</a><a href="contact" class="nav-link">Contact</a>
-      </div>
-      <a href="contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]">Get Early Access</a>
-      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="blob blob-drift" style="right:-10%;top:-4%;width:44vw;height:44vw;background:radial-gradient(circle,rgba(67,167,78,0.12) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="left:-14%;top:48%;width:36vw;height:36vw;background:radial-gradient(circle,rgba(46,90,143,0.09) 0%,transparent 70%);animation-delay:-8s;"></div>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav-shell" id="main-nav" aria-label="Primary">
+  <div class="nav-pill">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0" aria-label="Nufaa home">
+      <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
+      <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="/" class="nav-link">Home</a>
+      <a href="marketplace" class="nav-link">Marketplace</a>
+      <a href="how-it-works" class="nav-link">How cashback works</a>
+      <a href="wallet" class="nav-link" aria-current="page">Wallet</a>
+      <a href="about" class="nav-link">About</a>
+      <a href="contact" class="nav-link">Contact</a>
     </div>
-  </nav>
+    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify &amp; join</a>
+    <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <div class="mobile-overlay" id="mobile-menu">
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
-      <a href="wallet" class="mobile-link mobile-link-active font-display font-bold text-3xl">Wallet</a>
-      <a href="how-it-works" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
-      <a href="about" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
-      <a href="contact" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
-      <a href="contact" class="mobile-link btn-primary mt-4">Get Early Access</a>
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
+    <a href="/" class="mobile-link font-display font-semibold text-3xl">Home</a>
+    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl">Marketplace</a>
+    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
+    <a href="wallet" class="mobile-link font-display font-semibold text-3xl" aria-current="page">Wallet</a>
+    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
+    <a href="contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
+    <a href="kyc" class="mobile-link btn btn-primary mt-2">Verify &amp; join</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="pt-32 pb-16 md:pt-44 md:pb-20">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <div class="lg:col-span-6">
+        <p class="eyebrow reveal mb-5">The wallet</p>
+        <h1 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.3rem,5vw,3.8rem)">
+          One balance,<br>read in Dalasi.
+        </h1>
+        <p class="reveal d2 text-lg text-slate2 leading-[1.7] measure mb-8">
+          Money in, money out, cashback in between — the wallet is denominated in Gambian
+          Dalasi and nothing else. Crypto can fund it, but it is converted before your
+          balance changes, so you never have to think in two currencies at once.
+        </p>
+        <div class="reveal d3 flex flex-col sm:flex-row gap-3">
+          <a href="kyc" class="btn btn-primary">Open a wallet</a>
+          <a href="how-it-works" class="btn btn-outline">See the whole flow</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 reveal d1">
+        <div class="relative mx-auto max-w-[340px]">
+          <div class="phone floaty">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="px-5 pt-9 pb-6">
+                <div class="flex items-center justify-between mb-5">
+                  <div>
+                    <p class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold">Nufaa wallet</p>
+                    <p class="text-xs text-slate2">Ousman C.</p>
+                  </div>
+                  <span class="cashback-pill">KYC verified</span>
+                </div>
+
+                <div class="rounded-2xl p-5 mb-4 relative overflow-hidden" style="background:linear-gradient(150deg,#11264A 0%,#0B1524 70%);box-shadow:0 20px 40px -18px rgba(11,21,36,0.6)">
+                  <div class="blob" style="right:-20%;top:-40%;width:70%;height:120%;background:radial-gradient(circle,rgba(140,198,63,0.35),transparent 70%);filter:blur(28px)"></div>
+                  <p class="text-[10px] uppercase tracking-[0.16em] text-white/50 font-semibold mb-1.5 relative">Available balance</p>
+                  <p class="price text-white text-[1.9rem] font-bold leading-none mb-3 relative">D 9,204<span class="text-white/45 text-lg">.15</span></p>
+                  <div class="flex items-center gap-2 relative">
+                    <span class="text-[11px] px-2 py-1 rounded-md bg-white/10 text-white/80 font-semibold">Cashback this month D 1,204.60</span>
+                  </div>
+                </div>
+
+                <div class="flex gap-2 mb-5">
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg text-white" style="background:var(--pine)">Top up</span>
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg" style="background:var(--sand)">Withdraw</span>
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg" style="background:var(--sand)">History</span>
+                </div>
+
+                <p class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold mb-2.5">This week</p>
+                <div class="space-y-2">
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Cashback &middot; mattress order</p>
+                      <p class="text-[10px] text-slate2">Household &middot; 18%</p>
+                    </div>
+                    <p class="price text-xs font-bold shrink-0" style="color:var(--pine)">+D 846.00</p>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Withdrawal &middot; mobile money</p>
+                      <p class="text-[10px] text-slate2">Completed in 14 minutes</p>
+                    </div>
+                    <p class="price text-xs font-bold shrink-0">&minus;D 3,000</p>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Top up &middot; agent, Brikama</p>
+                      <p class="text-[10px] text-slate2">Cash received</p>
+                    </div>
+                    <p class="price text-xs font-bold shrink-0" style="color:var(--pine)">+D 5,000</p>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Airtime &middot; Africell</p>
+                      <p class="text-[10px] text-slate2">10% back credited</p>
+                    </div>
+                    <p class="price text-xs font-bold shrink-0">&minus;D 200</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+</section>
 
-  <!-- Hero -->
-  <section class="pt-36 md:pt-44 pb-16 md:pb-20 px-5 md:px-6 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      <div class="reveal">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-6 md:mb-7">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
-          Wallet
-        </div>
-        <h1 class="font-display font-bold text-brand-black tracking-tight mb-6" style="font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.05;">Your wallet.<br><span class="text-brand-gray">Always working.</span></h1>
-        <p class="text-brand-gray text-base md:text-xl leading-relaxed mb-8 max-w-[52ch]">Deposit, stake, send, spend — all from one place. Your balance is staked across Cardano, Solana, and Ethereum, generating real on-chain rewards while you go about your day.</p>
-        <a href="contact" class="btn-primary">
-          Get your wallet
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <div class="reveal reveal-delay-2 flex justify-center">
-        <div class="relative max-w-sm w-full">
-          <div class="bezel-shell" style="border-radius:2.75rem;">
-            <div class="photo-frame" style="border-radius:2rem; overflow:hidden; box-shadow:0 40px 80px -20px rgba(0,0,0,0.15); aspect-ratio: 4/5;">
-              <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80" alt="Hand using a card and laptop — the daily wallet at work" loading="eager">
-            </div>
-          </div>
-          <!-- Floating badge -->
-          <div class="absolute -bottom-3 left-2 md:-left-8 bg-white rounded-2xl p-3.5 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.1),_0_0_0_1px_rgba(0,0,0,0.03)]" style="animation: meshShift 10s ease-in-out infinite;">
-            <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-full bg-brand-accentLight flex items-center justify-center">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-brand-black">Staking active</p>
-                <p class="text-[10px] text-brand-gray font-mono">~3–12% APY</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ══════════════════ WHAT IT DOES ══════════════════ -->
+<section class="border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="eyebrow reveal mb-5">Four things it does</p>
+      <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06]" style="font-size:clamp(2rem,4vw,3.2rem)">
+        Top up. Pay.<br><span class="text-slate2">Collect. Withdraw.</span>
+      </h2>
     </div>
-  </section>
 
-  <!-- Quick Actions -->
-  <section class="py-16 md:py-24 max-w-5xl mx-auto px-5 md:px-6 border-t border-black/5">
-    <div class="mb-12 reveal">
-      <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-3">Everything from one place.</h2>
-      <p class="text-brand-gray text-lg max-w-[50ch]">Quick actions to manage, grow, and spend your money.</p>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal reveal-delay-1">
-      <div class="action-btn p-5 md:p-6 rounded-2xl bg-white border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)] cursor-pointer">
-        <div class="w-12 h-12 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mx-auto mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    <div class="grid md:grid-cols-12 gap-5">
+      <article class="md:col-span-7 surface-raised spotlight p-7 md:p-9 reveal">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Topping up</h3>
+          <span class="cashback-pill cashback-pill--quiet">From D 25</span>
         </div>
-        <p class="font-semibold text-brand-black text-sm">Deposit</p>
-      </div>
-      <div class="action-btn p-5 md:p-6 rounded-2xl bg-white border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)] cursor-pointer">
-        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-        </div>
-        <p class="font-semibold text-brand-black text-sm">Transfer</p>
-      </div>
-      <div class="action-btn p-5 md:p-6 rounded-2xl bg-white border border-black/5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.06)] cursor-pointer">
-        <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mx-auto mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <p class="font-semibold text-brand-black text-sm">Pay bills</p>
-      </div>
-      <div class="action-btn p-5 md:p-6 rounded-2xl bg-white border border-black/5 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.06)] cursor-pointer">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-4">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        </div>
-        <p class="font-semibold text-brand-black text-sm">Buy essentials</p>
-      </div>
-    </div>
-  </section>
+        <p class="text-slate2 leading-[1.7] mb-6">
+          Four routes in. Pick whichever suits the money you are holding — the balance
+          reads the same afterwards.
+        </p>
+        <ul class="grid sm:grid-cols-2 gap-3">
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Mobile money</p>
+            <p class="text-xs text-slate2 leading-relaxed">Push to your wallet reference. Lands in under a minute.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Bank transfer</p>
+            <p class="text-xs text-slate2 leading-relaxed">From an account in your own name. Same working day.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Cash at an agent</p>
+            <p class="text-xs text-slate2 leading-relaxed">Hand over notes, see the balance move before you leave.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Crypto</p>
+            <p class="text-xs text-slate2 leading-relaxed">USDT, USDC or BTC, converted at a rate you approve.</p>
+          </li>
+        </ul>
+      </article>
 
-  <!-- Feature Grid -->
-  <section class="py-20 md:py-36 max-w-7xl mx-auto px-5 md:px-6 border-t border-black/5">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- Staking Feature — large -->
-      <div class="feature-card bento-card overflow-hidden group reveal md:row-span-2">
-        <div class="p-8 md:p-10 flex flex-col h-full">
-          <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-2xl md:text-3xl text-brand-black mb-3">Sharia-compliant staking</h3>
-          <p class="text-brand-gray leading-relaxed mb-6">Your deposits acquire digital assets staked across Cardano, Solana, and Ethereum. You retain full ownership. The generated yields reduce your balance or grow your wallet.</p>
-          <div class="mt-auto bg-brand-light rounded-2xl p-6 border border-black/5">
-            <div class="flex justify-between items-end mb-4">
-              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray">Est. Annual Yield</span>
-              <span class="font-mono text-3xl font-bold text-brand-accent balance-pulse">3–12%</span>
-            </div>
-            <div class="flex gap-3 flex-wrap">
-              <span class="text-xs text-brand-gray bg-white px-3 py-1.5 rounded-full border border-black/5">Cardano</span>
-              <span class="text-xs text-brand-gray bg-white px-3 py-1.5 rounded-full border border-black/5">Solana</span>
-              <span class="text-xs text-brand-gray bg-white px-3 py-1.5 rounded-full border border-black/5">Ethereum</span>
-              <span class="text-xs text-brand-gray bg-white px-3 py-1.5 rounded-full border border-black/5">+more</span>
-            </div>
+      <article class="md:col-span-5 surface-raised spotlight p-7 md:p-9 reveal d1 flex flex-col">
+        <h3 class="font-display text-2xl font-semibold tracking-tight mb-6">Paying</h3>
+        <p class="text-slate2 leading-[1.7] mb-6 flex-1">
+          Orders draw from the wallet balance. There is no card, no overdraft and no
+          borrowing — if the balance will not cover the basket, the order will not go through.
+        </p>
+        <div class="rounded-2xl p-5" style="background:var(--cream)">
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-slate2">Basket</span><span class="price font-semibold">D 1,450.00</span></div>
+            <div class="flex justify-between"><span class="text-slate2">Balance before</span><span class="price font-semibold">D 9,204.15</span></div>
+            <hr class="rule">
+            <div class="flex justify-between"><span class="font-semibold">Balance after</span><span class="price font-bold">D 7,754.15</span></div>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Transaction History -->
-      <div class="feature-card bento-card overflow-hidden group reveal reveal-delay-1">
-        <div class="p-8 md:p-10">
-          <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Full transaction history</h3>
-          <p class="text-brand-gray leading-relaxed">See every deposit, staking reward, transfer, and purchase in your activity feed. Filter by type, date, or status. Export if you need records.</p>
-        </div>
-      </div>
-
-      <!-- Security -->
-      <div class="feature-card bento-card overflow-hidden group reveal reveal-delay-2">
-        <div class="p-8 md:p-10">
-          <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-6">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3">Enterprise-grade security</h3>
-          <p class="text-brand-gray leading-relaxed">AES-256 encryption at rest. TLS 1.3 in transit. Multi-factor authentication. Your assets are diversified across blockchains and protected by institutional-grade infrastructure.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Staking Simulation — Dark -->
-  <section class="py-20 md:py-36 bg-brand-black text-white relative overflow-hidden">
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-accent rounded-full filter blur-[120px] opacity-10 ambient-glow"></div>
-    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-accentDark rounded-full filter blur-[120px] opacity-10 ambient-glow" style="animation-delay:-7s;"></div>
-
-    <div class="max-w-5xl mx-auto px-5 md:px-6 relative z-10">
-      <div class="text-center mb-12 reveal">
-        <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-4">See your money grow.</h2>
-        <p class="text-white/60 text-lg max-w-[50ch] mx-auto">Adjust the slider to see how staking rewards reduce your balance over time. No interest. Just real blockchain yields.</p>
-      </div>
-
-      <div class="bg-white/[0.03] border border-white/[0.06] rounded-[2rem] p-8 md:p-12 reveal reveal-delay-1 cta-refraction">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <article class="md:col-span-5 surface-raised spotlight p-7 md:p-9 reveal d1 flex flex-col">
+        <h3 class="font-display text-2xl font-semibold tracking-tight mb-6">Collecting cashback</h3>
+        <p class="text-slate2 leading-[1.7] mb-6 flex-1">
+          Cashback arrives as ordinary Dalasi, not as points. It appears as its own line in
+          the ledger so you can see exactly which order produced it.
+        </p>
+        <div class="ledger-row" style="background:rgba(67,167,78,0.06);border-color:rgba(67,167,78,0.18)">
           <div>
-            <label class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] block mb-4">Deposit amount</label>
-            <input type="range" id="stake-slider" min="100" max="5000" value="1000" step="50" class="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer mb-3 accent-[#059669]" style="min-height:48px;">
-            <div class="flex justify-between text-sm text-white/30 font-mono">
-              <span>D 100</span>
-              <span id="slider-val" class="text-white font-bold">D 1,000</span>
-              <span>D 5,000</span>
+            <p class="text-sm font-semibold">Cookware set &middot; 18%</p>
+            <p class="text-xs text-slate2">Confirmed 14:32</p>
+          </div>
+          <p class="price font-bold" style="color:var(--pine)">+D 261.00</p>
+        </div>
+      </article>
+
+      <article class="md:col-span-7 surface-raised spotlight p-7 md:p-9 reveal d2">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <h3 class="font-display text-2xl font-semibold tracking-tight">Withdrawing</h3>
+          <span class="cashback-pill cashback-pill--quiet">D 20,000 / day</span>
+        </div>
+        <p class="text-slate2 leading-[1.7] mb-6">
+          Your balance is yours. Move it out to mobile money or collect it as cash from an
+          agent. Cashback withdraws on exactly the same terms as the rest of the balance —
+          there is no waiting period and no minimum you have to reach first.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">To mobile money</p>
+            <p class="text-xs text-slate2 leading-relaxed">Usually under an hour, to a number registered on your verified account.</p>
+          </div>
+          <div class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Cash from an agent</p>
+            <p class="text-xs text-slate2 leading-relaxed">Show the code in your app. The agent hands over Dalasi notes.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CRYPTO CONVERSION ══════════════════ -->
+<section style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-6">
+        <p class="eyebrow reveal mb-5">Crypto, handled quietly</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-6" style="font-size:clamp(2rem,4vw,3.2rem)">
+          You send crypto.<br><span class="text-slate2">You hold Dalasi.</span>
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure mb-6">
+          Money reaching Gambian families from abroad increasingly arrives as stablecoin.
+          Nufaa accepts it, converts it and forgets about it — what stays in your account is
+          Dalasi, at the figure you were quoted before you sent anything.
+        </p>
+        <ul class="reveal d3 space-y-3">
+          <li class="flex gap-3 text-sm text-slate2 leading-[1.7]">
+            <span class="shrink-0 w-5 h-5 rounded-md grid place-items-center mt-0.5" style="background:rgba(67,167,78,0.12)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            No crypto balance is ever held in your name on Nufaa.
+          </li>
+          <li class="flex gap-3 text-sm text-slate2 leading-[1.7]">
+            <span class="shrink-0 w-5 h-5 rounded-md grid place-items-center mt-0.5" style="background:rgba(67,167,78,0.12)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            Withdrawals leave in Dalasi only, never back out as crypto.
+          </li>
+          <li class="flex gap-3 text-sm text-slate2 leading-[1.7]">
+            <span class="shrink-0 w-5 h-5 rounded-md grid place-items-center mt-0.5" style="background:rgba(67,167,78,0.12)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            If the market moves during confirmation, the quoted Dalasi figure still stands.
+          </li>
+        </ul>
+      </div>
+
+      <div class="lg:col-span-6 reveal d1">
+        <div class="relative overflow-hidden rounded-[1.75rem] p-7 md:p-9 text-white" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 72%)">
+          <div class="blob blob-drift" style="right:-25%;top:-30%;width:80%;height:80%;background:radial-gradient(circle,rgba(46,90,143,0.7),transparent 70%);filter:blur(48px)"></div>
+          <div class="relative">
+            <div class="flex items-center justify-between mb-6">
+              <p class="text-[10px] uppercase tracking-[0.16em] text-white/50 font-semibold">Top up quote</p>
+              <span class="text-[11px] px-2 py-1 rounded-md bg-white/10 font-semibold pulse-ring">Locked 47s</span>
             </div>
-          </div>
-          <div class="text-center md:text-right">
-            <p class="text-white/40 text-xs font-bold uppercase tracking-[0.2em] mb-3">After 12 months</p>
-            <p class="font-mono text-4xl md:text-5xl font-bold text-brand-accentLight mb-2" id="reward-val">D 1,044.50</p>
-            <p class="text-white/40 text-sm">
-              <span class="text-brand-accentLight font-semibold" id="reward-earned">+D 44.50</span> earned in staking rewards
+
+            <div class="space-y-3 mb-6">
+              <div class="flex items-center justify-between px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10">
+                <span class="text-sm text-white/60">You send</span>
+                <span class="price text-lg font-bold">28.40 USDT</span>
+              </div>
+              <div class="flex justify-center">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+              </div>
+              <div class="flex items-center justify-between px-4 py-3.5 rounded-xl" style="background:rgba(67,167,78,0.16);border:1px solid rgba(140,198,63,0.3)">
+                <span class="text-sm text-white/70">Credited to wallet</span>
+                <span class="price text-lg font-bold" style="color:var(--lime)">D 2,000.00</span>
+              </div>
+            </div>
+
+            <dl class="text-xs space-y-2 text-white/50">
+              <div class="flex justify-between"><dt>Rate applied</dt><dd class="price">1 USDT = D 70.42</dd></div>
+              <div class="flex justify-between"><dt>Network</dt><dd class="price">TRC-20</dd></div>
+              <div class="flex justify-between"><dt>Conversion fee</dt><dd class="price">Included in rate</dd></div>
+            </dl>
+
+            <p class="text-white/35 text-[11px] leading-relaxed mt-6">
+              Illustrative figures. The live rate is quoted in the app at the moment you top up.
             </p>
-            <p class="text-white/25 text-[10px] mt-3">Estimates shown before 10% Ujrah (agency fee). Actual yields are variable and not guaranteed.</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Security Grid -->
-  <section class="py-20 md:py-36 max-w-5xl mx-auto px-5 md:px-6">
-    <div class="mb-12 reveal">
-      <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight text-brand-black mb-3">Built to protect you.</h2>
-      <p class="text-brand-gray text-lg max-w-[50ch]">Security is not an afterthought. It is the foundation.</p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 reveal reveal-delay-1">
-      <div class="p-6 rounded-2xl bg-white border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
-        <div class="w-10 h-10 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h4 class="font-display font-bold text-brand-black mb-1.5">End-to-end encryption</h4>
-        <p class="text-sm text-brand-gray leading-relaxed">AES-256 at rest, TLS 1.3 in transit. Your data and assets are always encrypted.</p>
+<!-- ══════════════════ SAFETY ══════════════════ -->
+<section class="border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-4">
+        <p class="eyebrow reveal mb-5">Keeping it safe</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-5" style="font-size:clamp(2rem,4vw,3rem)">
+          What protects<br><span class="text-slate2">the balance.</span>
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] text-sm">
+          And, just as importantly, what does not. We would rather you know the limits
+          of this before you put money in than after.
+        </p>
       </div>
-      <div class="p-6 rounded-2xl bg-white border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
-        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4 class="font-display font-bold text-brand-black mb-1.5">Multi-chain diversification</h4>
-        <p class="text-sm text-brand-gray leading-relaxed">Assets spread across Cardano, Solana, and Ethereum for stability and risk mitigation.</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-white border-none shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-8px_rgba(0,0,0,0.1)]">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h4 class="font-display font-bold text-brand-black mb-1.5">Verified agent network</h4>
-        <p class="text-sm text-brand-gray leading-relaxed">All Nufaa agents are KYC-verified and authorized. In-person help when you need it.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="py-24 md:py-40 w-full max-w-7xl mx-auto px-5 md:px-6 mb-8">
-    <div class="reveal bento-card bg-brand-black text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none cta-refraction">
-      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15 ambient-glow"></div>
-      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15 ambient-glow" style="animation-delay:-10s;"></div>
-      <div class="relative z-10 max-w-2xl mx-auto">
-        <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Start growing today.</h2>
-        <p class="text-white/65 text-lg mb-9 max-w-[45ch] mx-auto">Join the waitlist and be the first to access staking rewards and the lowest fee structure on the platform.</p>
-        <a href="contact" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]">
-          Get your wallet <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+      <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5">
+        <div class="surface p-6 reveal">
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">Funds held separately</h3>
+          <p class="text-sm text-slate2 leading-[1.7]">Customer balances sit in a separate account from the company's own money and are not used to run the business.</p>
+        </div>
+        <div class="surface p-6 reveal d1">
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">Verified accounts only</h3>
+          <p class="text-sm text-slate2 leading-[1.7]">Every wallet is attached to a KYC-checked person with a document on file, which is what makes fraud traceable.</p>
+        </div>
+        <div class="surface p-6 reveal d1">
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">Withdrawals to your own details</h3>
+          <p class="text-sm text-slate2 leading-[1.7]">Money leaves only to a number or account registered on your verified profile. Changing those triggers a review.</p>
+        </div>
+        <div class="surface p-6 reveal d2" style="border:1.5px solid rgba(192,57,43,0.18)">
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">No deposit guarantee</h3>
+          <p class="text-sm text-slate2 leading-[1.7]">Nufaa is not a bank. No government scheme in the UK or The Gambia insures your balance. Keep in the wallet only what you plan to spend.</p>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+<!-- ══════════════════ CTA ══════════════════ -->
+<section style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="reveal relative overflow-hidden rounded-[2.25rem] px-7 py-14 md:px-16 md:py-20 text-center text-white" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 68%)">
+      <div class="blob blob-drift" style="left:-10%;top:-40%;width:60%;height:150%;background:radial-gradient(circle,rgba(67,167,78,0.35),transparent 68%);filter:blur(60px)"></div>
+      <div class="relative">
+        <h2 class="font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-4" style="font-size:clamp(1.9rem,4vw,3rem)">
+          The wallet opens<br>once you are verified.
+        </h2>
+        <p class="text-white/60 leading-[1.7] max-w-lg mx-auto mb-8">
+          Five minutes with your NID or passport, and it is done for good.
+        </p>
+        <a href="kyc" class="btn btn-light">Verify your account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
       <div class="col-span-2 md:col-span-5">
-        <a href="/" class="flex items-center gap-2.5 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg><span class="font-display font-bold text-xl tracking-tight">Nufaa</span></a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Transparent fees. Real growth.</p>
+        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+          <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
+          <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+        </a>
+        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
+          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
+          Dalasi or crypto, and keep part of what you spend.
+        </p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
-          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nufaa.now@hotmail.com</a>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +44 7982 144203
+          </a>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nufaa.now@hotmail.com
+          </a>
         </div>
       </div>
-      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
-      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
-      <div class="col-span-2 md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button></form></div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
+        <ul class="space-y-3">
+          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
+          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
+          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
+          <li><a href="kyc" class="footer-link">Verify your account</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
+        <ul class="space-y-3">
+          <li><a href="about" class="footer-link">About Nufaa</a></li>
+          <li><a href="contact" class="footer-link">Contact</a></li>
+          <li><a href="terms" class="footer-link">Terms of service</a></li>
+          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-2 md:col-span-3">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
+        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
+        <form class="flex gap-2" data-subscribe novalidate>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
+                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
+          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
+        </form>
+        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
+      </div>
     </div>
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col items-center gap-4"><p class="text-brand-gray/30 text-[11px] leading-relaxed text-center max-w-3xl">Nufaa is a technology platform and does not provide regulated financial services, lending, or deposit-taking. Staking rewards are variable and not guaranteed. Your capital is not protected by any government deposit scheme. Past performance is not indicative of future results.</p><div class="flex flex-col md:flex-row items-center justify-between w-full gap-3"><p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p><p class="text-brand-gray/40 text-sm">Made for Gambia.</p></div></div>
-  </footer>
 
-  <script>
-    // Menu
-    const menuToggle=document.getElementById('menu-toggle');const mobileMenu=document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
-    mobileMenu.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});
-    // Scroll-aware nav
-    const mainNav=document.getElementById('main-nav');
-    window.addEventListener('scroll',()=>{if(window.scrollY>60){mainNav.classList.add('nav-scrolled');}else{mainNav.classList.remove('nav-scrolled');}},{passive:true});
-    // Scroll reveal
-    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    <hr class="rule mb-7">
 
-    // Staking Simulator
-    const slider=document.getElementById('stake-slider');
-    const sliderVal=document.getElementById('slider-val');
-    const rewardVal=document.getElementById('reward-val');
-    const rewardEarned=document.getElementById('reward-earned');
-    function updateSim(){
-      const v=parseInt(slider.value);
-      const earned=Math.round(v*0.0445*100)/100;
-      sliderVal.textContent='D '+v.toLocaleString();
-      rewardVal.textContent='D '+(v+earned).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-      rewardEarned.textContent='+D '+earned.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-    }
-    slider.addEventListener('input',updateSim);
-    updateSim();
-  </script>
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
+        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
+        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
+        and does not pay interest. Cashback is a discount funded by merchant margin, is
+        variable by category, and can change. Wallet balances are not covered by any deposit
+        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
+        funding method and is converted to Dalasi before your balance updates.
+      </p>
+      <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
+        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/config.js"></script>
+<script src="/assets/nufaa.js"></script>
 </body>
 </html>

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
+
+  <title>Verify your account | Nufaa KYC</title>
+  <meta name="description" content="Complete Nufaa's KYC verification: your details, address, a passport or Gambian NID number, a photo of that document and a photo of you. Takes about five minutes.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F6F7F2">
+  <meta property="og:title" content="Verify your Nufaa account">
+  <meta property="og:description" content="One verification opens topping up, shopping, selling and withdrawing in Dalasi.">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/tailwind.config.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/nufaa.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="blob blob-drift" style="right:-12%;top:-6%;width:44vw;height:44vw;background:radial-gradient(circle,rgba(67,167,78,0.12) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="left:-16%;top:45%;width:36vw;height:36vw;background:radial-gradient(circle,rgba(46,90,143,0.09) 0%,transparent 70%);animation-delay:-8s;"></div>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav-shell" id="main-nav" aria-label="Primary">
+  <div class="nav-pill">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0" aria-label="Nufaa home">
+      <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
+      <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="/" class="nav-link">Home</a>
+      <a href="marketplace" class="nav-link">Marketplace</a>
+      <a href="how-it-works" class="nav-link">How cashback works</a>
+      <a href="wallet" class="nav-link">Wallet</a>
+      <a href="about" class="nav-link">About</a>
+      <a href="contact" class="nav-link">Contact</a>
+    </div>
+    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm" aria-current="page">Verify &amp; join</a>
+    <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
+    <a href="/" class="mobile-link font-display font-semibold text-3xl">Home</a>
+    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl">Marketplace</a>
+    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
+    <a href="wallet" class="mobile-link font-display font-semibold text-3xl">Wallet</a>
+    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
+    <a href="contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
+    <a href="kyc" class="mobile-link btn btn-primary mt-2" aria-current="page">Verify &amp; join</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<section class="pt-32 pb-10 md:pt-44 md:pb-14">
+  <div class="mx-auto w-full max-w-4xl px-5 md:px-8">
+    <a href="/" class="text-link text-sm mb-7">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Back to home
+    </a>
+    <p class="eyebrow mt-6 mb-5">Account verification</p>
+    <h1 class="font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.3rem,5vw,3.6rem)">
+      Verify your account
+    </h1>
+    <p class="text-lg text-slate2 leading-[1.7] measure">
+      Nufaa is registered in the United Kingdom and The Gambia, so every account has to be
+      verified before it can top up, shop, sell or withdraw. Have your passport or Gambian
+      NID card with you — you will need the number and a photo of it.
+    </p>
+
+    <div class="flex flex-wrap gap-2 mt-7">
+      <span class="chip">About 5 minutes</span>
+      <span class="chip">Done once</span>
+      <span class="chip">Reviewed within 1 working day</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FORM ══════════════════ -->
+<section class="pb-24 md:pb-32">
+  <div class="mx-auto w-full max-w-4xl px-5 md:px-8">
+
+    <!-- Stepper -->
+    <div id="kyc-stepper" class="mb-6">
+      <div class="flex items-center justify-between gap-2 mb-4 overflow-x-auto rail">
+        <button type="button" class="step is-active flex items-center gap-2.5 shrink-0" data-step>
+          <span class="step-dot">1</span><span class="step-label">About you</span>
+        </button>
+        <span class="hidden sm:block flex-1 h-px" style="background:var(--line-firm)"></span>
+        <button type="button" class="step flex items-center gap-2.5 shrink-0" data-step>
+          <span class="step-dot">2</span><span class="step-label">Address</span>
+        </button>
+        <span class="hidden sm:block flex-1 h-px" style="background:var(--line-firm)"></span>
+        <button type="button" class="step flex items-center gap-2.5 shrink-0" data-step>
+          <span class="step-dot">3</span><span class="step-label">Identity</span>
+        </button>
+        <span class="hidden sm:block flex-1 h-px" style="background:var(--line-firm)"></span>
+        <button type="button" class="step flex items-center gap-2.5 shrink-0" data-step>
+          <span class="step-dot">4</span><span class="step-label">Review</span>
+        </button>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="kyc-progress"></div></div>
+      <p class="text-xs text-slate2 mt-2 font-semibold" id="kyc-progress-label">Step 1 of 4</p>
+    </div>
+
+    <!-- Card -->
+    <div class="surface p-6 md:p-10" id="kyc-card">
+      <form id="kyc-form" novalidate autocomplete="on">
+
+        <!-- ── PANEL 1: ABOUT YOU ── -->
+        <div data-panel>
+          <h2 class="font-display text-2xl font-semibold tracking-tight mb-1.5">About you</h2>
+          <p class="text-sm text-slate2 leading-relaxed mb-8">
+            Enter your details exactly as they appear on the identity document you will upload.
+            A mismatch is the most common reason an application is sent back.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <label class="field">
+              <span class="field-label">First name <span class="req">*</span></span>
+              <input type="text" name="firstName" class="input" required data-validate="name"
+                     autocomplete="given-name" placeholder="Fatoumata">
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Middle name <span class="text-slate2 font-normal">(if on document)</span></span>
+              <input type="text" name="middleName" class="input" data-validate="name"
+                     autocomplete="additional-name" placeholder="Binta">
+              <span class="error-msg"><span>Use letters only.</span></span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Surname <span class="req">*</span></span>
+            <input type="text" name="lastName" class="input" required data-validate="name"
+                   autocomplete="family-name" placeholder="Jallow">
+            <span class="error-msg"><span>This field is required.</span></span>
+          </label>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <label class="field">
+              <span class="field-label">Date of birth <span class="req">*</span></span>
+              <input type="date" name="dob" class="input" required data-validate="dob" autocomplete="bday">
+              <span class="field-hint">You must be 18 or older.</span>
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Gender <span class="req">*</span></span>
+              <select name="gender" class="select" required>
+                <option value="">Select</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+                <option value="unspecified">Prefer not to say</option>
+              </select>
+              <span class="error-msg"><span>Choose an option.</span></span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Nationality <span class="req">*</span></span>
+            <select name="nationality" class="select" required>
+              <option value="">Select your nationality</option>
+              <option value="gambian">Gambian</option>
+              <option value="senegalese">Senegalese</option>
+              <option value="bissau-guinean">Bissau-Guinean</option>
+              <option value="malian">Malian</option>
+              <option value="mauritanian">Mauritanian</option>
+              <option value="sierra-leonean">Sierra Leonean</option>
+              <option value="nigerian">Nigerian</option>
+              <option value="ghanaian">Ghanaian</option>
+              <option value="british">British</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="error-msg"><span>Choose an option.</span></span>
+          </label>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <div class="field">
+              <span class="field-label">Mobile number <span class="req">*</span></span>
+              <div class="input-group">
+                <select name="dialCode" class="input-prefix" aria-label="Country dialling code">
+                  <option value="+220">+220</option>
+                  <option value="+44">+44</option>
+                  <option value="+221">+221</option>
+                  <option value="+1">+1</option>
+                </select>
+                <input type="tel" name="phone" class="input" required data-validate="phone"
+                       autocomplete="tel-national" placeholder="7012345" inputmode="numeric">
+              </div>
+              <span class="field-hint">The number that will receive your order codes.</span>
+              <span class="error-msg"><span>This field is required.</span></span>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Email address <span class="req">*</span></span>
+              <input type="email" name="email" class="input" required data-validate="email"
+                     autocomplete="email" placeholder="you@email.com">
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ── PANEL 2: ADDRESS ── -->
+        <div data-panel hidden>
+          <h2 class="font-display text-2xl font-semibold tracking-tight mb-1.5">Where you live</h2>
+          <p class="text-sm text-slate2 leading-relaxed mb-8">
+            Your residential address, not a PO box. Deliveries and agent collection points
+            are matched to this location.
+          </p>
+
+          <label class="field">
+            <span class="field-label">Country of residence <span class="req">*</span></span>
+            <select name="country" class="select" required>
+              <option value="">Select a country</option>
+              <option value="The Gambia">The Gambia</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Senegal">Senegal</option>
+              <option value="Guinea-Bissau">Guinea-Bissau</option>
+              <option value="Mali">Mali</option>
+              <option value="Mauritania">Mauritania</option>
+              <option value="Sierra Leone">Sierra Leone</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Ghana">Ghana</option>
+              <option value="United States">United States</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg"><span>Choose an option.</span></span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Street address <span class="req">*</span></span>
+            <input type="text" name="addressLine" class="input" required
+                   autocomplete="street-address" placeholder="24 Kairaba Avenue">
+            <span class="error-msg"><span>This field is required.</span></span>
+          </label>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <label class="field">
+              <span class="field-label">Town or city <span class="req">*</span></span>
+              <input type="text" name="city" class="input" required
+                     autocomplete="address-level2" placeholder="Serrekunda">
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Region or district <span class="req">*</span></span>
+              <input type="text" name="region" class="input" required
+                     autocomplete="address-level1" placeholder="Kanifing Municipal">
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field-label">Postcode <span class="text-slate2 font-normal">(if you have one)</span></span>
+            <input type="text" name="postcode" class="input" autocomplete="postal-code" placeholder="Leave blank if none">
+            <span class="field-hint">Most Gambian addresses do not have a postcode. That is fine.</span>
+          </label>
+
+          <div class="rounded-2xl p-5 mt-2" style="background:var(--sand)">
+            <p class="font-semibold text-sm mb-1.5">Why we ask for this</p>
+            <p class="text-xs text-slate2 leading-[1.7]">
+              Anti-money-laundering rules in both jurisdictions we are registered in require a
+              verified residential address before an account can hold or move value. We may
+              later ask for a utility bill or bank statement dated within the last three months.
+            </p>
+          </div>
+        </div>
+
+        <!-- ── PANEL 3: IDENTITY ── -->
+        <div data-panel hidden>
+          <h2 class="font-display text-2xl font-semibold tracking-tight mb-1.5">Identity document</h2>
+          <p class="text-sm text-slate2 leading-relaxed mb-8">
+            Choose the document you are holding, type its number, then photograph it.
+            Photos must show all four corners, with no glare across the printed details.
+          </p>
+
+          <div class="field">
+            <span class="field-label">Document type <span class="req">*</span></span>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="opt-card">
+                <input type="radio" name="idType" value="gambian-nid" required>
+                <span class="opt-mark"></span>
+                <span>
+                  <span class="block font-semibold text-sm" data-opt-title>Gambian NID card</span>
+                  <span class="block text-xs text-slate2 mt-0.5">National identity card, both sides</span>
+                </span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="idType" value="passport">
+                <span class="opt-mark"></span>
+                <span>
+                  <span class="block font-semibold text-sm" data-opt-title>Passport</span>
+                  <span class="block text-xs text-slate2 mt-0.5">Any nationality, data page only</span>
+                </span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="idType" value="drivers-licence">
+                <span class="opt-mark"></span>
+                <span>
+                  <span class="block font-semibold text-sm" data-opt-title>Driving licence</span>
+                  <span class="block text-xs text-slate2 mt-0.5">Card format, both sides</span>
+                </span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="idType" value="voters-card">
+                <span class="opt-mark"></span>
+                <span>
+                  <span class="block font-semibold text-sm" data-opt-title>Voter's card</span>
+                  <span class="block text-xs text-slate2 mt-0.5">Gambian voter registration card</span>
+                </span>
+              </label>
+            </div>
+            <span class="error-msg"><span>Choose one option.</span></span>
+          </div>
+
+          <label class="field">
+            <span class="field-label" id="id-number-label">Passport number or NID number <span class="req">*</span></span>
+            <input type="text" name="idNumber" class="input font-mono tracking-wider uppercase" required
+                   data-validate="idnumber" placeholder="e.g. A01234567" spellcheck="false">
+            <span class="field-hint">Copy it character for character, including any letters.</span>
+            <span class="error-msg"><span>This field is required.</span></span>
+          </label>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <label class="field">
+              <span class="field-label">Issuing country <span class="req">*</span></span>
+              <select name="idCountry" class="select" required>
+                <option value="">Select a country</option>
+                <option value="The Gambia">The Gambia</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Guinea-Bissau">Guinea-Bissau</option>
+                <option value="Mali">Mali</option>
+                <option value="Mauritania">Mauritania</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="error-msg"><span>Choose an option.</span></span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Expiry date <span class="req">*</span></span>
+              <input type="date" name="idExpiry" class="input" required data-validate="future">
+              <span class="field-hint">The document must still be valid today.</span>
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+          </div>
+
+          <hr class="rule my-8">
+
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-1.5">Photographs</h3>
+          <p class="text-sm text-slate2 leading-relaxed mb-6">
+            JPG, PNG, WEBP or PDF. Up to 8 MB per file. Take the photo on a flat, dark
+            surface in daylight if you can.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="field">
+              <span class="field-label" id="id-front-label">Photo of your document <span class="req">*</span></span>
+              <div class="drop">
+                <input type="file" name="idFront" id="id-front" accept="image/jpeg,image/png,image/webp,application/pdf" required
+                       aria-label="Upload a photo of your identity document">
+                <div class="drop-idle transition-opacity duration-300">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5B6B7F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="3"/><path d="M2 15l5-4 4 3 4-5 7 6"/><circle cx="8.5" cy="9" r="1.4"/>
+                  </svg>
+                  <p class="text-sm font-semibold">Tap to upload, or drop a file</p>
+                  <p class="text-xs text-slate2 mt-1">All four corners visible</p>
+                </div>
+                <div class="drop-preview"></div>
+                <div class="drop-file-bar">
+                  <span data-file-name class="truncate"></span>
+                  <button type="button" class="drop-clear">Remove</button>
+                </div>
+              </div>
+              <span class="error-msg"><span>Upload this document to continue.</span></span>
+            </div>
+
+            <div class="field" id="id-back-wrap">
+              <span class="field-label">Photo of the back of your card <span class="req">*</span></span>
+              <div class="drop">
+                <input type="file" name="idBack" id="id-back" accept="image/jpeg,image/png,image/webp,application/pdf" data-required="true"
+                       aria-label="Upload a photo of the back of your identity card">
+                <div class="drop-idle transition-opacity duration-300">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5B6B7F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2" aria-hidden="true">
+                    <rect x="2" y="4" width="20" height="16" rx="3"/><path d="M6 10h7M6 14h11"/>
+                  </svg>
+                  <p class="text-sm font-semibold">Tap to upload, or drop a file</p>
+                  <p class="text-xs text-slate2 mt-1">Not needed for a passport</p>
+                </div>
+                <div class="drop-preview"></div>
+                <div class="drop-file-bar">
+                  <span data-file-name class="truncate"></span>
+                  <button type="button" class="drop-clear">Remove</button>
+                </div>
+              </div>
+              <span class="error-msg"><span>Upload this document to continue.</span></span>
+            </div>
+
+            <div class="field sm:col-span-2">
+              <span class="field-label">Photo of you <span class="req">*</span></span>
+              <div class="drop" style="min-height:9rem">
+                <input type="file" name="selfie" id="selfie" accept="image/jpeg,image/png,image/webp" capture="user" required
+                       aria-label="Upload a photo of your face">
+                <div class="drop-idle transition-opacity duration-300">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5B6B7F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-2" aria-hidden="true">
+                    <circle cx="12" cy="9" r="3.6"/><path d="M4.5 20a7.8 7.8 0 0 1 15 0"/>
+                  </svg>
+                  <p class="text-sm font-semibold">Take or upload a photo of your face</p>
+                  <p class="text-xs text-slate2 mt-1">Look straight at the camera, no hat, no sunglasses</p>
+                </div>
+                <div class="drop-preview"></div>
+                <div class="drop-file-bar">
+                  <span data-file-name class="truncate"></span>
+                  <button type="button" class="drop-clear">Remove</button>
+                </div>
+              </div>
+              <span class="field-hint">We compare this photo against your document. A headscarf is fine as long as your face is visible.</span>
+              <span class="error-msg"><span>Upload a photo to continue.</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL 4: USE + DECLARATIONS + REVIEW ── -->
+        <div data-panel hidden>
+          <h2 class="font-display text-2xl font-semibold tracking-tight mb-1.5">How you will use Nufaa</h2>
+          <p class="text-sm text-slate2 leading-relaxed mb-8">
+            Last part. These answers set your starting limits and satisfy the source-of-funds
+            checks we are required to run.
+          </p>
+
+          <div class="field">
+            <span class="field-label">What will this account do? <span class="req">*</span></span>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <label class="opt-card">
+                <input type="radio" name="accountUse" value="buy" required>
+                <span class="opt-mark"></span>
+                <span class="block font-semibold text-sm" data-opt-title>Buy only</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="accountUse" value="sell">
+                <span class="opt-mark"></span>
+                <span class="block font-semibold text-sm" data-opt-title>Sell only</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="accountUse" value="both">
+                <span class="opt-mark"></span>
+                <span class="block font-semibold text-sm" data-opt-title>Buy and sell</span>
+              </label>
+            </div>
+            <span class="error-msg"><span>Choose one option.</span></span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-x-5">
+            <div class="field">
+              <span class="field-label">Expected monthly spend <span class="req">*</span></span>
+              <div class="input-group">
+                <span class="input-prefix">D</span>
+                <input type="text" name="monthlySpend" class="input price" required data-validate="amount"
+                       inputmode="numeric" placeholder="3,500">
+              </div>
+              <span class="field-hint">A rough figure in Dalasi is fine.</span>
+              <span class="error-msg"><span>This field is required.</span></span>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Main source of funds <span class="req">*</span></span>
+              <select name="fundsSource" class="select" required>
+                <option value="">Select a source</option>
+                <option value="salary">Salary or wages</option>
+                <option value="business">Business or trading income</option>
+                <option value="remittance">Money sent from abroad</option>
+                <option value="farming">Farming or fishing income</option>
+                <option value="pension">Pension</option>
+                <option value="savings">Savings</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-msg"><span>Choose an option.</span></span>
+            </label>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Are you, or is a close family member, a politically exposed person? <span class="req">*</span></span>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <label class="opt-card">
+                <input type="radio" name="pep" value="no" required>
+                <span class="opt-mark"></span>
+                <span class="block font-semibold text-sm" data-opt-title>No</span>
+              </label>
+              <label class="opt-card">
+                <input type="radio" name="pep" value="yes">
+                <span class="opt-mark"></span>
+                <span>
+                  <span class="block font-semibold text-sm" data-opt-title>Yes</span>
+                  <span class="block text-xs text-slate2 mt-0.5">We will contact you for extra detail</span>
+                </span>
+              </label>
+            </div>
+            <span class="field-hint">A politically exposed person holds, or recently held, a prominent public position.</span>
+            <span class="error-msg"><span>Choose one option.</span></span>
+          </div>
+
+          <hr class="rule my-8">
+
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-4">Check your answers</h3>
+          <dl class="rounded-2xl px-5 py-2 mb-8" style="background:var(--cream)" id="kyc-review"></dl>
+
+          <div class="mb-6">
+            <div class="field" style="margin-bottom:0.75rem">
+              <label class="opt-card">
+                <input type="checkbox" name="consentTruth" required>
+                <span class="opt-mark opt-mark--box"></span>
+                <span class="text-sm leading-[1.6]">
+                  I confirm the information and documents I have given are true, current and mine.
+                </span>
+              </label>
+              <span class="error-msg"><span>This confirmation is required.</span></span>
+            </div>
+            <div class="field" style="margin-bottom:0.75rem">
+              <label class="opt-card">
+                <input type="checkbox" name="consentData" required>
+                <span class="opt-mark opt-mark--box"></span>
+                <span class="text-sm leading-[1.6]">
+                  I agree that Nufaa may store and check my identity documents for anti-money-laundering
+                  purposes, as set out in the <a href="privacy" class="text-link" style="display:inline">privacy policy</a>.
+                </span>
+              </label>
+              <span class="error-msg"><span>This confirmation is required.</span></span>
+            </div>
+            <div class="field" style="margin-bottom:0">
+              <label class="opt-card">
+                <input type="checkbox" name="consentTerms" required>
+                <span class="opt-mark opt-mark--box"></span>
+                <span class="text-sm leading-[1.6]">
+                  I accept the <a href="terms" class="text-link" style="display:inline">terms of service</a>,
+                  including that cashback is a merchant-funded discount paid in Dalasi and can change by category.
+                </span>
+              </label>
+              <span class="error-msg"><span>This confirmation is required.</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <hr class="rule mb-6">
+        <p id="kyc-send-error" hidden role="alert"
+           class="flex items-start gap-2 mb-5 px-4 py-3 rounded-xl text-sm font-medium"
+           style="background:#FEF7F6;border:1.5px solid rgba(192,57,43,0.25);color:#C0392B">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+          <span></span>
+        </p>
+        <div class="flex items-center justify-between gap-3">
+          <button type="button" class="btn btn-outline" id="kyc-back" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Back
+          </button>
+          <span class="flex-1"></span>
+          <button type="button" class="btn btn-ink" id="kyc-next">
+            Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <button type="submit" class="btn btn-primary" id="kyc-submit" hidden>Submit for verification</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success -->
+    <div class="surface p-8 md:p-12 text-center" id="kyc-done" hidden>
+      <div class="w-14 h-14 rounded-2xl grid place-items-center mx-auto mb-6" style="background:linear-gradient(135deg,var(--pine),var(--leaf));box-shadow:var(--shadow-leaf)">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-3">
+        Thank you, <span id="kyc-done-name">there</span>. Your application is in.
+      </h2>
+      <p class="text-slate2 leading-[1.7] max-w-lg mx-auto mb-7">
+        A compliance reviewer checks every submission by hand. You will hear from us within
+        one working day, by email and on the mobile number you gave. Keep your reference safe.
+      </p>
+      <div class="inline-flex flex-col items-center gap-1.5 px-6 py-4 rounded-2xl mb-8" style="background:var(--cream)">
+        <span class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold">Your reference</span>
+        <span class="price text-xl font-bold" id="kyc-ref">NFA-0000-XXXXX</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="marketplace" class="btn btn-ink">Look around the marketplace</a>
+        <a href="how-it-works" class="btn btn-quiet">How cashback is calculated</a>
+      </div>
+    </div>
+
+    <!-- Reassurance -->
+    <div class="grid sm:grid-cols-3 gap-4 mt-8">
+      <div class="surface p-5">
+        <p class="font-semibold text-sm mb-1.5">Where documents go</p>
+        <p class="text-xs text-slate2 leading-[1.7]">Sent over an encrypted connection to a monitored Nufaa mailbox, and seen only by the people who review applications.</p>
+      </div>
+      <div class="surface p-5">
+        <p class="font-semibold text-sm mb-1.5">How long we keep them</p>
+        <p class="text-xs text-slate2 leading-[1.7]">Five years after your account closes, which is the retention period both regulators expect.</p>
+      </div>
+      <div class="surface p-5">
+        <p class="font-semibold text-sm mb-1.5">If something is wrong</p>
+        <p class="text-xs text-slate2 leading-[1.7]">Write to <a href="mailto:nufaa.now@hotmail.com" class="text-link" style="display:inline">nufaa.now@hotmail.com</a> and we will correct or erase your record.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
+      <div class="col-span-2 md:col-span-5">
+        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+          <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
+          <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+        </a>
+        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
+          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
+          Dalasi or crypto, and keep part of what you spend.
+        </p>
+        <div class="space-y-2">
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +44 7982 144203
+          </a>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nufaa.now@hotmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
+        <ul class="space-y-3">
+          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
+          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
+          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
+          <li><a href="kyc" class="footer-link">Verify your account</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
+        <ul class="space-y-3">
+          <li><a href="about" class="footer-link">About Nufaa</a></li>
+          <li><a href="contact" class="footer-link">Contact</a></li>
+          <li><a href="terms" class="footer-link">Terms of service</a></li>
+          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-2 md:col-span-3">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
+        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
+        <form class="flex gap-2" data-subscribe novalidate>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
+                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
+          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
+        </form>
+        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
+      </div>
+    </div>
+
+    <hr class="rule mb-7">
+
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
+        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
+        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
+        and does not pay interest. Cashback is a discount funded by merchant margin, is
+        variable by category, and can change. Wallet balances are not covered by any deposit
+        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
+        funding method and is converted to Dalasi before your balance updates.
+      </p>
+      <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
+        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/config.js"></script>
+<script src="/assets/nufaa.js"></script>
+<script src="/assets/kyc.js"></script>
+</body>
+</html>

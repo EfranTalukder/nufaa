@@ -1,326 +1,353 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Early Access | Nufaa — Join the Waitlist</title>
-  <meta name="description" content="Join the Nufaa waitlist for priority access to zero-interest payments and staking rewards in Gambia. Or contact us directly via WhatsApp or email.">
-  <meta property="og:title" content="Get Early Access to Nufaa">
-  <meta property="og:description" content="Join Gambians who are already growing their money through Nufaa. Limited early access spots available.">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
+
+  <title>Contact Nufaa | Buyers, sellers and agents</title>
+  <meta name="description" content="Talk to Nufaa about buying, selling on the marketplace, running an agent point, or a question about cashback in Dalasi. WhatsApp, email or the form.">
+  <meta name="theme-color" content="#F6F7F2">
+  <meta property="og:title" content="Contact Nufaa">
+  <meta property="og:description" content="Questions about the marketplace, selling, agent points or verification.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/local-agent.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: { extend: {
-        fontFamily: { sans: ['Satoshi','sans-serif'], display: ['Outfit','sans-serif'], mono: ['JetBrains Mono','monospace'] },
-        colors: { brand: { black:'#0a0a0a', dark:'#171717', gray:'#737373', light:'#fafafa', white:'#ffffff', accent:'#059669', accentDark:'#047857', accentLight:'#d1fae5' } }
-      } }
-    }
-  </script>
-
-  <style>
-    body { background-color:#fafafa; color:#0a0a0a; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-    body::after { content:""; position:fixed; inset:0; z-index:50; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:0.03; mix-blend-mode:multiply; }
-
-    .nav-pill { background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border:1px solid rgba(0,0,0,0.03); box-shadow:0 4px 20px -4px rgba(0,0,0,0.04); transition: background 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s, border-color 0.5s; }
-    .nav-scrolled .nav-pill { background:rgba(255,255,255,0.95); box-shadow:0 8px 32px -4px rgba(0,0,0,0.08); border-color:rgba(0,0,0,0.06); }
-    .nav-link { position:relative; color:#737373; font-weight:500; transition:color 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .nav-link:hover { color:#0a0a0a; }
-    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1.5px; background:#059669; transition:width 0.4s cubic-bezier(0.16,1,0.3,1); }
-    .nav-link:hover::after, .nav-link.active::after { width:100%; }
-    .nav-link.active { color:#0a0a0a; }
-
-    .mobile-overlay { position:fixed; inset:0; z-index:60; background:rgba(250,250,250,0.97); backdrop-filter:blur(40px) saturate(180%); -webkit-backdrop-filter:blur(40px) saturate(180%); opacity:0; pointer-events:none; transition:opacity 0.5s cubic-bezier(0.16,1,0.3,1); }
-    .mobile-overlay.open { opacity:1; pointer-events:auto; }
-    .mobile-overlay .mobile-link { transform:translateY(2rem); opacity:0; transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), opacity 0.6s cubic-bezier(0.16,1,0.3,1); }
-    .mobile-overlay.open .mobile-link { transform:translateY(0); opacity:1; }
-    .mobile-overlay.open .mobile-link:nth-child(1){transition-delay:.08s} .mobile-overlay.open .mobile-link:nth-child(2){transition-delay:.14s} .mobile-overlay.open .mobile-link:nth-child(3){transition-delay:.2s} .mobile-overlay.open .mobile-link:nth-child(4){transition-delay:.26s} .mobile-overlay.open .mobile-link:nth-child(5){transition-delay:.32s} .mobile-overlay.open .mobile-link:nth-child(6){transition-delay:.38s}
-    .mobile-link-active { color:#059669 !important; position:relative; }
-    .mobile-link-active::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:24px; height:2px; background:#059669; border-radius:1px; }
-    .hamburger span { display:block; width:22px; height:2px; background:#0a0a0a; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s; }
-    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)} .hamburger.open span:nth-child(2){opacity:0} .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-    .reveal { opacity:0; transform:translateY(2.5rem); filter:blur(4px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); filter:blur(0); }
-    .reveal-delay-1 { transition-delay:0.1s; }
-
-    .bento-card { background:#ffffff; border:none; border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08); }
-
-    .bezel-shell { padding:0; background:transparent; border:none; border-radius:2.5rem; }
-
-    .btn-primary { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; background-color:#0a0a0a; color:#fff; padding:1rem 2.25rem; border-radius:999px; font-weight:600; transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s; box-shadow:0 8px 24px -8px rgba(0,0,0,0.4); }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(0,0,0,0.5); background-color:#171717; }
-    .btn-primary:active { transform:translateY(1px) scale(0.98); }
-
-    .cta-refraction { box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02); }
-
-    /* Form styles */
-    input, select, textarea {
-      width:100%; padding:0.875rem 1.25rem; background:#f4f4f5; border:1px solid transparent;
-      border-radius:1rem; font-family:'Satoshi',sans-serif; font-size:0.9375rem;
-      transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
-    }
-    input:focus, select:focus, textarea:focus { outline:none; border-color:#059669; background:#ffffff; box-shadow:0 0 0 4px rgba(5,150,105,0.08); }
-    label { display:block; margin-bottom:0.375rem; font-weight:600; font-size:0.8125rem; color:#171717; }
-
-    /* Mobile-friendly sizing */
-    @media (max-width:767px) {
-      input, select, textarea { font-size:16px; padding:1rem 1.25rem; }
-    }
-
-    .btn-submit {
-      display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
-      background-color:#0a0a0a; color:#ffffff; width:100%;
-      padding:1rem 2rem; border-radius:999px; cursor:pointer; border:none;
-      font-family:'Satoshi',sans-serif; font-size:1rem;
-      font-weight:600; letter-spacing:-0.01em;
-      transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s, background-color 0.3s;
-      box-shadow:0 8px 24px -8px rgba(0,0,0,0.4);
-    }
-    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(0,0,0,0.5); background-color:#171717; }
-    .btn-submit:active { transform:translateY(1px) scale(0.98); }
-
-    .btn-whatsapp {
-      display:inline-flex; align-items:center; justify-content:center; gap:0.75rem;
-      background-color:#25D366; color:#ffffff; width:100%;
-      padding:1rem 2rem; border-radius:999px; cursor:pointer;
-      font-weight:600; text-decoration:none;
-      transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), background-color 0.3s, box-shadow 0.4s;
-    }
-    .btn-whatsapp:hover { background-color:#128C7E; transform:translateY(-2px); box-shadow:0 12px 28px -8px rgba(37,211,102,0.4); }
-    .btn-whatsapp:active { transform:translateY(1px) scale(0.98); }
-
-    .form-success { display:none; text-align:center; padding:3rem 2rem; }
-    .form-success.show { display:block; }
-    .form-fields.hidden { display:none; }
-
-    /* Contact row hover */
-    .contact-row { transition:all 0.3s cubic-bezier(0.16,1,0.3,1); }
-    .contact-row:hover { transform:translateX(4px); }
-
-    /* Floating avatar breathing */
-    @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
-    .avatar-breathe { animation:breathe 4s ease-in-out infinite; }
-    .avatar-breathe:nth-child(2) { animation-delay:0.5s; }
-    .avatar-breathe:nth-child(3) { animation-delay:1s; }
-  </style>
+  <script src="/assets/tailwind.config.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/nufaa.css">
 </head>
-<body class="relative">
+<body>
 
-  <!-- Ambient shapes -->
-  <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-accent rounded-full filter blur-[200px] opacity-[0.04] pointer-events-none"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Nav -->
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
-    <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group"><div class="w-8 h-8 flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg></div><span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span></a>
-      <div class="hidden md:flex items-center gap-7 text-sm">
-        <a href="/" class="nav-link">Home</a><a href="wallet" class="nav-link">Wallet</a><a href="how-it-works" class="nav-link">How it works</a><a href="about" class="nav-link">About</a><a href="contact" class="nav-link active">Contact</a>
-      </div>
-      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+<div class="blob blob-drift" style="right:-10%;top:-4%;width:44vw;height:44vw;background:radial-gradient(circle,rgba(67,167,78,0.12) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="left:-14%;top:52%;width:36vw;height:36vw;background:radial-gradient(circle,rgba(46,90,143,0.09) 0%,transparent 70%);animation-delay:-8s;"></div>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav-shell" id="main-nav" aria-label="Primary">
+  <div class="nav-pill">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0" aria-label="Nufaa home">
+      <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
+      <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="/" class="nav-link">Home</a>
+      <a href="marketplace" class="nav-link">Marketplace</a>
+      <a href="how-it-works" class="nav-link">How cashback works</a>
+      <a href="wallet" class="nav-link">Wallet</a>
+      <a href="about" class="nav-link">About</a>
+      <a href="contact" class="nav-link" aria-current="page">Contact</a>
     </div>
-  </nav>
+    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify &amp; join</a>
+    <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <div class="mobile-overlay" id="mobile-menu">
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link font-display font-bold text-3xl text-brand-black">Home</a>
-      <a href="wallet" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
-      <a href="how-it-works" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
-      <a href="about" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
-      <a href="contact" class="mobile-link mobile-link-active font-display font-bold text-3xl">Contact</a>
-      <a href="contact" class="mobile-link btn-primary mt-4">Get Early Access</a>
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
+    <a href="/" class="mobile-link font-display font-semibold text-3xl">Home</a>
+    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl">Marketplace</a>
+    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
+    <a href="wallet" class="mobile-link font-display font-semibold text-3xl">Wallet</a>
+    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
+    <a href="contact" class="mobile-link font-display font-semibold text-3xl" aria-current="page">Contact</a>
+    <a href="kyc" class="mobile-link btn btn-primary mt-2">Verify &amp; join</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<section class="pt-32 pb-10 md:pt-44 md:pb-14">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="max-w-2xl">
+      <p class="eyebrow reveal mb-5">Contact</p>
+      <h1 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.3rem,5vw,3.8rem)">
+        Talk to a person.
+      </h1>
+      <p class="reveal d2 text-lg text-slate2 leading-[1.7]">
+        Whether you want to sell on the marketplace, run an agent point, or just work out
+        whether cashback in Dalasi is worth your time — this reaches us directly.
+      </p>
     </div>
   </div>
+</section>
 
-  <!-- Hero -->
-  <header class="pt-40 md:pt-48 pb-10 md:pb-14 px-5 md:px-6 max-w-5xl mx-auto text-center reveal">
-    <h1 class="font-display font-bold text-brand-black tracking-tight mb-5" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.05;">Claim your spot.</h1>
-    <p class="text-brand-gray text-xl max-w-2xl mx-auto leading-relaxed">Join Gambians who are already on the waitlist. Early members get priority access to staking rewards and the best positions.</p>
-    <!-- Social proof with breathing avatars -->
-    <div class="mt-6 inline-flex items-center gap-3 px-4 py-2.5 rounded-full bg-brand-accentLight/50 border border-brand-accent/15">
-      <div class="flex -space-x-2">
-        <div class="w-7 h-7 rounded-full bg-brand-accent text-white text-[10px] font-bold flex items-center justify-center border-2 border-white avatar-breathe">A</div>
-        <div class="w-7 h-7 rounded-full bg-brand-dark text-white text-[10px] font-bold flex items-center justify-center border-2 border-white avatar-breathe">F</div>
-        <div class="w-7 h-7 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center border-2 border-white avatar-breathe">M</div>
-      </div>
-      <span class="text-sm font-medium text-brand-accentDark">200+ Gambians on the waitlist</span>
+<!-- ══════════════════ CHANNELS ══════════════════ -->
+<section class="pb-12">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://wa.me/447982144203" class="surface-raised spotlight p-6 reveal block group">
+        <div class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-1">WhatsApp</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-3">Fastest route. Usually answered the same day.</p>
+        <span class="price text-sm font-semibold group-hover:text-pine transition-colors">+44 7982 144203</span>
+      </a>
+
+      <a href="mailto:nufaa.now@hotmail.com" class="surface-raised spotlight p-6 reveal d1 block group">
+        <div class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-1">Email</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-3">Better for seller applications with documents attached.</p>
+        <span class="text-sm font-semibold group-hover:text-pine transition-colors break-all">nufaa.now@hotmail.com</span>
+      </a>
+
+      <a href="kyc" class="surface-raised spotlight p-6 reveal d2 block group">
+        <div class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-1">Verification</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-3">Opening an account does not need a conversation first.</p>
+        <span class="text-sm font-semibold group-hover:text-pine transition-colors">Go to the KYC form</span>
+      </a>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Form + Contact Grid -->
-  <section class="py-10 md:py-14 max-w-5xl mx-auto px-5 md:px-6 mb-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- ══════════════════ FORM ══════════════════ -->
+<section class="pb-24 md:pb-32">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
-      <!-- Waitlist Form — Double Bezel -->
-      <div class="reveal">
-        <div class="bezel-shell">
-          <div style="border-radius:2rem; overflow:hidden; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08);">
-            <div class="bg-white p-8 md:p-10">
-              <h3 class="font-display font-bold text-2xl mb-2">Join the waitlist</h3>
-              <p class="text-brand-gray text-sm mb-7">Get notified when Nufaa launches in your area.</p>
+      <div class="lg:col-span-7">
+        <div class="surface p-6 md:p-9">
+          <h2 class="font-display text-2xl font-semibold tracking-tight mb-1.5">Send a message</h2>
+          <p class="text-sm text-slate2 leading-relaxed mb-8">
+            Do not send identity documents here — those belong on the
+            <a href="kyc" class="text-link" style="display:inline">verification form</a>, which handles them properly.
+          </p>
 
-              <div class="form-fields" id="form-fields">
-                <form class="space-y-5" id="waitlist-form">
-                  <!-- FormSubmit config (submissions delivered to nufaa.now@hotmail.com) -->
-                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-                  <input type="hidden" name="_subject" value="New Nufaa waitlist signup">
-                  <input type="hidden" name="_template" value="table">
-                  <input type="hidden" name="_captcha" value="false">
-                  <div>
-                    <label for="name">Full name</label>
-                    <input type="text" id="name" name="name" placeholder="Aminata Ceesay" required>
-                  </div>
-                  <div>
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" placeholder="aminata@email.com">
-                  </div>
-                  <div>
-                    <label for="phone">Phone number (Gambia)</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+220 XXX XXXX" required>
-                  </div>
-                  <div>
-                    <label for="interest">What interests you most?</label>
-                    <select id="interest" name="interest" class="appearance-none">
-                      <option value="">Select one...</option>
-                      <option value="bills">Paying bills (Nawec, Africell)</option>
-                      <option value="groceries">Buying groceries & essentials</option>
-                      <option value="staking">Staking & growing my money</option>
-                      <option value="all">All of the above</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="message">Anything else? (optional)</label>
-                    <textarea id="message" name="message" rows="3" placeholder="Tell us what you would like to see..."></textarea>
-                  </div>
-                  <button type="submit" class="btn-submit mt-2">
-                    Secure your spot
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </button>
-                </form>
+          <form data-contact-form novalidate>
+            <div class="field">
+              <span class="field-label">What is this about? <span class="req">*</span></span>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <label class="opt-card">
+                  <input type="radio" name="topic" value="buying" required>
+                  <span class="opt-mark"></span>
+                  <span class="block font-semibold text-sm">Buying on Nufaa</span>
+                </label>
+                <label class="opt-card">
+                  <input type="radio" name="topic" value="selling">
+                  <span class="opt-mark"></span>
+                  <span class="block font-semibold text-sm">Selling on Nufaa</span>
+                </label>
+                <label class="opt-card">
+                  <input type="radio" name="topic" value="agent">
+                  <span class="opt-mark"></span>
+                  <span class="block font-semibold text-sm">Becoming an agent</span>
+                </label>
+                <label class="opt-card">
+                  <input type="radio" name="topic" value="other">
+                  <span class="opt-mark"></span>
+                  <span class="block font-semibold text-sm">Something else</span>
+                </label>
               </div>
-
-              <div class="form-success" id="form-success">
-                <div class="w-16 h-16 rounded-full bg-brand-accentLight text-brand-accent flex items-center justify-center mx-auto mb-5">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <h3 class="font-display font-bold text-2xl text-brand-black mb-2">You are on the list.</h3>
-                <p class="text-brand-gray">We will reach out when Nufaa launches in your area. Early members get priority staking positions.</p>
-              </div>
+              <span class="error-msg"><span>Choose one option.</span></span>
             </div>
+
+            <div class="grid sm:grid-cols-2 gap-x-5">
+              <label class="field">
+                <span class="field-label">Your name <span class="req">*</span></span>
+                <input type="text" name="name" class="input" required autocomplete="name" placeholder="Awa Sanneh">
+                <span class="error-msg"><span>This field is required.</span></span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Email <span class="req">*</span></span>
+                <input type="email" name="email" class="input" required autocomplete="email" placeholder="you@email.com">
+                <span class="error-msg"><span>This field is required.</span></span>
+              </label>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-x-5">
+              <label class="field">
+                <span class="field-label">Phone <span class="text-slate2 font-normal">(optional)</span></span>
+                <input type="tel" name="phone" class="input" autocomplete="tel" placeholder="+220 7012345">
+                <span class="error-msg"><span>Use digits, spaces or a leading plus sign.</span></span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Where are you? <span class="req">*</span></span>
+                <select name="location" class="select" required>
+                  <option value="">Select</option>
+                  <option value="gambia">The Gambia</option>
+                  <option value="uk">United Kingdom</option>
+                  <option value="senegal">Senegal</option>
+                  <option value="elsewhere">Somewhere else</option>
+                </select>
+                <span class="error-msg"><span>Choose an option.</span></span>
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field-label">Your message <span class="req">*</span></span>
+              <textarea name="message" class="textarea" required placeholder="If you are applying to sell, tell us what you stock and roughly where you trade."></textarea>
+              <span class="error-msg"><span>This field is required.</span></span>
+            </label>
+
+            <p id="contact-error" hidden role="alert"
+               class="flex items-start gap-2 mb-5 px-4 py-3 rounded-xl text-sm font-medium"
+               style="background:#FEF7F6;border:1.5px solid rgba(192,57,43,0.25);color:#C0392B">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>
+              <span>We could not send your message just now. Please try again, or reach us on WhatsApp.</span>
+            </p>
+
+            <button type="submit" class="btn btn-primary w-full sm:w-auto">Send message</button>
+          </form>
+
+          <div id="contact-sent" hidden class="text-center py-8">
+            <div class="w-12 h-12 rounded-2xl grid place-items-center mx-auto mb-5" style="background:linear-gradient(135deg,var(--pine),var(--leaf));box-shadow:var(--shadow-leaf)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Message sent</h3>
+            <p class="text-slate2 leading-[1.7] max-w-sm mx-auto mb-6">
+              We reply to most messages within a working day. If it is urgent, WhatsApp is faster.
+            </p>
+            <a href="marketplace" class="btn btn-outline btn-sm">Look around the marketplace</a>
           </div>
         </div>
       </div>
 
-      <!-- Direct Contact -->
-      <div class="flex flex-col gap-6 reveal reveal-delay-1">
-
-        <div class="bento-card p-8 md:p-10 bg-brand-light border-none shadow-none flex-1">
-          <h3 class="font-display font-bold text-2xl mb-3">Direct contact</h3>
-          <p class="text-brand-gray mb-6">Have a specific question about Sharia compliance, staking, or our agent network? Reach out instantly.</p>
-
-          <a href="https://wa.me/447982144203" class="btn-whatsapp mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.108 1.537 5.842L.412 23.588l5.88-1.094A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.974c-1.898 0-3.69-.496-5.263-1.416l-.377-.22-3.896.724.739-3.8-2.42-.387A9.957 9.957 0 0 1 2.026 12C2.026 6.49 6.49 2.026 12 2.026S21.974 6.49 21.974 12c0 5.51-4.464 9.974-9.974 9.974z"/></svg>
-            Message on WhatsApp
-          </a>
-
-          <div class="space-y-4 mt-4">
-            <a href="https://wa.me/447982144203" class="contact-row flex items-center gap-3 p-3 -mx-3 rounded-xl hover:bg-white/80">
-              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center border-none shadow-[0_4px_12px_-4px_rgba(0,0,0,0.08)] shrink-0">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.83.38 1.86.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.95.32 1.98.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div>
-                <p class="text-xs text-brand-gray uppercase tracking-widest font-semibold">Phone / WhatsApp</p>
-                <p class="font-mono font-medium text-sm text-brand-black">+44 7982 144203</p>
-              </div>
-            </a>
-            <a href="mailto:nufaa.now@hotmail.com" class="contact-row flex items-center gap-3 p-3 -mx-3 rounded-xl hover:bg-white/80">
-              <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center border-none shadow-[0_4px_12px_-4px_rgba(0,0,0,0.08)] shrink-0">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div>
-                <p class="text-xs text-brand-gray uppercase tracking-widest font-semibold">Email</p>
-                <p class="font-mono font-medium text-sm text-brand-black">nufaa.now@hotmail.com</p>
-              </div>
-            </a>
+      <aside class="lg:col-span-5 space-y-5">
+        <div class="reveal rounded-[1.75rem] overflow-hidden" style="box-shadow:var(--shadow-lg)">
+          <div class="tile" style="aspect-ratio:4/3">
+            <img src="/images/local-agent.png" alt="A Nufaa agent serving a customer at a local shop counter">
           </div>
         </div>
 
-        <!-- Why join early — dark card -->
-        <div class="bento-card p-8 bg-brand-black text-white border-none cta-refraction relative overflow-hidden">
-          <div class="absolute -top-16 -right-16 w-40 h-40 bg-brand-accent rounded-full filter blur-[80px] opacity-10"></div>
-          <h4 class="font-display font-bold text-lg mb-3 text-white relative z-10">Why join early?</h4>
-          <ul class="space-y-3 relative z-10">
-            <li class="flex items-start gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-white/75 text-sm">Priority access to staking rewards</span>
+        <div class="surface p-6 reveal d1">
+          <h2 class="font-display text-lg font-semibold tracking-tight mb-4">If you want to sell</h2>
+          <p class="text-sm text-slate2 leading-[1.7] mb-4">Have these ready and the application moves quickly:</p>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex gap-2.5">
+              <span class="shrink-0 w-4 h-4 rounded grid place-items-center mt-1" style="background:rgba(67,167,78,0.12)">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="text-slate2 leading-[1.6]">What you stock and roughly what it sells for in Dalasi</span>
             </li>
-            <li class="flex items-start gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-white/75 text-sm">First to access the rewards marketplace</span>
+            <li class="flex gap-2.5">
+              <span class="shrink-0 w-4 h-4 rounded grid place-items-center mt-1" style="background:rgba(67,167,78,0.12)">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="text-slate2 leading-[1.6]">Where you trade from, and whether you can deliver</span>
             </li>
-            <li class="flex items-start gap-3">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-              <span class="text-white/75 text-sm">Shape the product — your feedback matters</span>
+            <li class="flex gap-2.5">
+              <span class="shrink-0 w-4 h-4 rounded grid place-items-center mt-1" style="background:rgba(67,167,78,0.12)">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="text-slate2 leading-[1.6]">The mobile money account you want to be settled into</span>
+            </li>
+            <li class="flex gap-2.5">
+              <span class="shrink-0 w-4 h-4 rounded grid place-items-center mt-1" style="background:rgba(67,167,78,0.12)">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <span class="text-slate2 leading-[1.6]">A completed KYC, which sellers need just as buyers do</span>
             </li>
           </ul>
         </div>
 
-      </div>
+        <div class="surface p-6 reveal d2">
+          <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Where we are</h2>
+          <p class="text-sm text-slate2 leading-[1.7]">
+            Registered in the United Kingdom and in The Gambia. Day-to-day trading, agents
+            and seller settlement all run from the Gambian entity.
+          </p>
+        </div>
+      </aside>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
       <div class="col-span-2 md:col-span-5">
-        <a href="/" class="flex items-center gap-2.5 mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/></svg><span class="font-display font-bold text-xl tracking-tight">Nufaa</span></a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Transparent fees. Real growth.</p>
+        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+          <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
+          <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+        </a>
+        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
+          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
+          Dalasi or crypto, and keep part of what you spend.
+        </p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +44 7982 144203</a>
-          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> nufaa.now@hotmail.com</a>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +44 7982 144203
+          </a>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nufaa.now@hotmail.com
+          </a>
         </div>
       </div>
-      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4><ul class="space-y-3"><li><a href="wallet" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li><li><a href="how-it-works" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li><li><a href="about" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li><li><a href="contact" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li></ul></div>
-      <div class="col-span-1 md:col-span-2"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4><ul class="space-y-3"><li><a href="terms" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li><li><a href="privacy" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li></ul></div>
-      <div class="col-span-2 md:col-span-3"><h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4><p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p><form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';"><input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0"><button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button></form></div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
+        <ul class="space-y-3">
+          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
+          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
+          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
+          <li><a href="kyc" class="footer-link">Verify your account</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
+        <ul class="space-y-3">
+          <li><a href="about" class="footer-link">About Nufaa</a></li>
+          <li><a href="contact" class="footer-link">Contact</a></li>
+          <li><a href="terms" class="footer-link">Terms of service</a></li>
+          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-2 md:col-span-3">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
+        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
+        <form class="flex gap-2" data-subscribe novalidate>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
+                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
+          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
+        </form>
+        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
+      </div>
     </div>
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col items-center gap-4"><p class="text-brand-gray/30 text-[11px] leading-relaxed text-center max-w-3xl">Nufaa is a technology platform and does not provide regulated financial services, lending, or deposit-taking. Staking rewards are variable and not guaranteed. Your capital is not protected by any government deposit scheme. Past performance is not indicative of future results.</p><div class="flex flex-col md:flex-row items-center justify-between w-full gap-3"><p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p><p class="text-brand-gray/40 text-sm">Made for Gambia.</p></div></div>
-  </footer>
 
-  <script>
-    const menuToggle=document.getElementById('menu-toggle');const mobileMenu=document.getElementById('mobile-menu');
-    menuToggle.addEventListener('click',()=>{menuToggle.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
-    mobileMenu.querySelectorAll('a').forEach(l=>{l.addEventListener('click',()=>{menuToggle.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';});});
-    const mainNav=document.getElementById('main-nav');
-    window.addEventListener('scroll',()=>{if(window.scrollY>60){mainNav.classList.add('nav-scrolled');}else{mainNav.classList.remove('nav-scrolled');}},{passive:true});
-    const ro=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');ro.unobserve(en.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    <hr class="rule mb-7">
 
-    // Form submission — posts to FormSubmit (free, unlimited, no account) then shows success
-    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('.btn-submit');
-      btn.disabled = true;
-      try {
-        const res = await fetch('https://formsubmit.co/ajax/nufaa.now@hotmail.com', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form),
-        });
-        if (!res.ok) throw new Error('Submission failed');
-        document.getElementById('form-fields').classList.add('hidden');
-        document.getElementById('form-success').classList.add('show');
-      } catch (err) {
-        btn.disabled = false;
-        alert('Something went wrong — please reach us on WhatsApp or email instead.');
-      }
-    });
-  </script>
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
+        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
+        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
+        and does not pay interest. Cashback is a discount funded by merchant margin, is
+        variable by category, and can change. Wallet balances are not covered by any deposit
+        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
+        funding method and is converted to Dalasi before your balance updates.
+      </p>
+      <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
+        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/config.js"></script>
+<script src="/assets/nufaa.js"></script>
 </body>
 </html>

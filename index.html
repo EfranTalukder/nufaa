@@ -1,1027 +1,830 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nufaa | Zero-Interest Payments & Staking Rewards in Gambia</title>
-  <meta name="description" content="Buy electricity, airtime, rice, and everyday essentials across Gambia with zero interest and transparent fees. Your balance shrinks automatically through blockchain staking rewards.">
-  <meta property="og:title" content="Nufaa | Your Money Works For You">
-  <meta property="og:description" content="Zero-interest payments for electricity, airtime, groceries, and essentials in Gambia. Earn staking rewards while you spend.">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
+
+  <title>Nufaa | Cashback marketplace for The Gambia — pay in Dalasi or crypto</title>
+  <meta name="description" content="Nufaa is a cashback marketplace registered in the UK and The Gambia. Shop groceries, cashpower, airtime and household goods, pay in Dalasi or crypto, and get your cashback paid back in Dalasi.">
+  <meta name="theme-color" content="#F6F7F2">
+  <meta property="og:title" content="Nufaa | Shop in Dalasi. Get paid back in Dalasi.">
+  <meta property="og:description" content="A cashback marketplace for The Gambia. 10% to 20% back in Dalasi. Top up, shop, sell and withdraw — all in Dalasi, with crypto accepted at checkout.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/hero.png">
+  <meta name="twitter:card" content="summary_large_image">
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Satoshi', 'sans-serif'],
-            display: ['Outfit', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          colors: {
-            brand: {
-              black: '#0a0a0a',
-              dark: '#171717',
-              gray: '#737373',
-              light: '#fafafa',
-              white: '#ffffff',
-              accent: '#059669',
-              accentDark: '#047857',
-              accentLight: '#d1fae5',
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    html, body {
-      overflow-x: hidden;
-      width: 100%;
-      position: relative;
-    }
-    
-    body {
-      background-color: #fafafa;
-      color: #0a0a0a;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Grain Overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      mix-blend-mode: multiply;
-    }
-
-    /* Nav — scroll-aware */
-    .nav-pill {
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.04);
-      transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .nav-scrolled .nav-pill {
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.08);
-      border-color: rgba(0, 0, 0, 0.06);
-    }
-    .nav-link {
-      position: relative; color: #737373; font-weight: 500;
-      transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .nav-link:hover { color: #0a0a0a; }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px;
-      background: #059669; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link.active { color: #0a0a0a; }
-
-    /* Mobile Menu Overlay */
-    .mobile-overlay {
-      position: fixed; inset: 0; z-index: 60;
-      background: rgba(250, 250, 250, 0.97);
-      backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
-    .mobile-overlay .mobile-link {
-      transform: translateY(2rem); opacity: 0;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .mobile-overlay.open .mobile-link {
-      transform: translateY(0); opacity: 1;
-    }
-    .mobile-overlay.open .mobile-link:nth-child(1) { transition-delay: 0.08s; }
-    .mobile-overlay.open .mobile-link:nth-child(2) { transition-delay: 0.14s; }
-    .mobile-overlay.open .mobile-link:nth-child(3) { transition-delay: 0.20s; }
-    .mobile-overlay.open .mobile-link:nth-child(4) { transition-delay: 0.26s; }
-    .mobile-overlay.open .mobile-link:nth-child(5) { transition-delay: 0.32s; }
-    .mobile-overlay.open .mobile-link:nth-child(6) { transition-delay: 0.38s; }
-    .mobile-link-active {
-      color: #059669 !important;
-      position: relative;
-    }
-    .mobile-link-active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 24px;
-      height: 2px;
-      background: #059669;
-      border-radius: 1px;
-    }
-
-    /* Hamburger Morph */
-    .hamburger span {
-      display: block; width: 22px; height: 2px; background: #0a0a0a;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* Scroll Reveal — enhanced with blur */
-    .reveal {
-      opacity: 0; transform: translateY(2.5rem); filter: blur(4px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* Floating Shapes */
-    .hero-shape {
-      position: absolute; border-radius: 50%; filter: blur(80px);
-      z-index: -1; animation: heroFloat 14s ease-in-out infinite;
-    }
-    @keyframes heroFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-30px) scale(1.04); }
-    }
-
-    /* Marquee — pauses on hover */
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .marquee-track { display: flex; width: max-content; animation: marquee 40s linear infinite; }
-    .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
-
-    /* Buttons */
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background-color: #0a0a0a; color: #ffffff;
-      padding: 1rem 2.25rem; border-radius: 999px;
-      font-weight: 600; letter-spacing: -0.01em;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
-      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.5);
-      background-color: #171717;
-    }
-    .btn-primary:active { transform: translateY(1px) scale(0.98); }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background-color: transparent; color: #0a0a0a;
-      padding: 1rem 2.25rem; border-radius: 999px;
-      border: 1.5px solid rgba(0,0,0,0.12);
-      font-weight: 600; letter-spacing: -0.01em;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, background-color 0.3s;
-    }
-    .btn-secondary:hover {
-      background-color: rgba(0,0,0,0.02);
-      border-color: rgba(0,0,0,0.25);
-      transform: translateY(-1px);
-    }
-    .btn-secondary:active { transform: translateY(1px) scale(0.98); }
-
-    /* Double-Bezel — outer shell for premium depth */
-    .bezel-shell { padding:0; background:transparent; border:none; border-radius:2.25rem; }
-    .bezel-inner { border-radius:1.5rem; overflow:hidden; box-shadow:0 20px 40px -10px rgba(0,0,0,0.08); }
-
-    /* Bento Card */
-    .bento-card { background:#ffffff; border:none; border-radius:2rem; box-shadow:0 20px 50px -15px rgba(0,0,0,0.08); transition:transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-    .bento-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.07);
-    }
-
-    /* Image Treatment */
-    .img-cover {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-
-    /* Wallet Card */
-    .wallet-card {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-      border-radius: 1.5rem; padding: 2rem; color: white;
-      position: relative; overflow: hidden;
-      box-shadow: 0 24px 48px -12px rgba(0,0,0,0.3);
-      transform: rotate(-2deg);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .wallet-card:hover { transform: rotate(0deg) scale(1.02); }
-    .wallet-card::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom right, rgba(255,255,255,0.08), transparent);
-      pointer-events: none;
-    }
-
-    .tx-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.875rem 1rem; border-radius: 1rem;
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.8);
-      transform: translateX(1rem); opacity: 0;
-      animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .tx-row:nth-child(2) { animation-delay: 0.15s; }
-    .tx-row:nth-child(3) { animation-delay: 0.3s; }
-    .tx-row:nth-child(4) { animation-delay: 0.45s; }
-    @keyframes slideIn { to { transform: translateX(0); opacity: 1; } }
-
-    /* Counter Animation */
-    .count-up { font-variant-numeric: tabular-nums; }
-
-    /* Comparison Table */
-    .compare-nufaa {
-      background: #f0fdf4;
-      border-left: 3px solid #059669;
-    }
-    /* Mobile comparison cards */
-    .compare-mobile-card {
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.04);
-    }
-    .compare-mobile-card.nufaa-card {
-      background: #f0fdf4;
-      border: 1.5px solid rgba(5,150,105,0.2);
-      box-shadow: 0 12px 32px -8px rgba(5,150,105,0.1);
-    }
-
-    /* Staking pulse */
-    @keyframes stakePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(5,150,105,0.3); }
-      50% { box-shadow: 0 0 0 10px rgba(5,150,105,0); }
-    }
-    .stake-pulse { animation: stakePulse 2.5s ease-in-out infinite; }
-
-    /* Ambient mesh gradient for dark sections */
-    @keyframes meshShift {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(30px, -20px) scale(1.05); }
-      66% { transform: translate(-20px, 15px) scale(0.97); }
-    }
-    .ambient-glow {
-      animation: meshShift 20s ease-in-out infinite;
-    }
-
-    /* CTA inner refraction */
-    .cta-refraction {
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(255,255,255,0.02);
-    }
-
-    /* Floating notification with glow */
-    .float-notification {
-      animation: heroFloat 8s ease-in-out infinite;
-      box-shadow: 0 16px 40px -10px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.03);
-    }
-
-    /* Stats separator line */
-    .stat-divider {
-      width: 1px;
-      height: 2.5rem;
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.08), transparent);
-    }
-
-    /* Editorial image treatment for photos */
-    .photo-frame {
-      position: relative;
-      overflow: hidden;
-      background: #f5f5f4;
-    }
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .photo-frame::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,0.18), transparent 55%);
-      pointer-events: none;
-    }
-    .group:hover .photo-frame img { transform: scale(1.04); }
-
-    /* Bento card mobile uniformity — image always on top, consistent ratio */
-    .bento-img-mobile {
-      aspect-ratio: 16 / 10;
-    }
-    @media (min-width: 768px) {
-      .bento-img-mobile {
-        aspect-ratio: auto;
-        height: 100%;
-        min-height: 280px;
-      }
-    }
-  </style>
+  <script src="/assets/tailwind.config.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/nufaa.css">
 </head>
-<body class="relative">
+<body>
 
-  <!-- Background Shapes -->
-  <div class="hero-shape" style="right:-8%;top:5%;width:45vw;height:45vw;background:radial-gradient(circle,rgba(5,150,105,0.06) 0%,transparent 70%);"></div>
-  <div class="hero-shape" style="left:-12%;bottom:10%;width:35vw;height:35vw;background:radial-gradient(circle,rgba(10,10,10,0.02) 0%,transparent 70%);animation-delay:-7s;animation-duration:18s;"></div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- NAVIGATION                                  -->
-  <!-- ═══════════════════════════════════════════ -->
-  <nav class="fixed top-0 left-0 right-0 z-40 px-4 pt-5 md:pt-7 flex justify-center" id="main-nav">
-    <div class="nav-pill w-full max-w-5xl rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2.5 group" id="nav-logo">
-        <div class="w-8 h-8 flex items-center justify-center">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-500 group-hover:rotate-90">
-            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <span class="font-display font-bold text-xl tracking-tight text-brand-black">Nufaa</span>
-      </a>
+<!-- Ambient mesh -->
+<div class="blob blob-drift" style="right:-10%;top:-4%;width:48vw;height:48vw;background:radial-gradient(circle,rgba(67,167,78,0.13) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="left:-14%;top:38%;width:38vw;height:38vw;background:radial-gradient(circle,rgba(46,90,143,0.10) 0%,transparent 70%);animation-delay:-9s;"></div>
+<div class="blob blob-drift" style="right:8%;bottom:6%;width:32vw;height:32vw;background:radial-gradient(circle,rgba(140,198,63,0.10) 0%,transparent 70%);animation-delay:-15s;"></div>
 
-      <div class="hidden md:flex items-center gap-7 text-sm">
-        <a href="/" class="nav-link active">Home</a>
-        <a href="wallet" class="nav-link">Wallet</a>
-        <a href="how-it-works" class="nav-link">How it works</a>
-        <a href="about" class="nav-link">About</a>
-        <a href="contact" class="nav-link">Contact</a>
-      </div>
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav-shell" id="main-nav" aria-label="Primary">
+  <div class="nav-pill">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0" aria-label="Nufaa home">
+      <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
+      <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+    </a>
 
-      <a href="contact" class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-px active:scale-[0.98]" id="nav-cta">
-        Get Early Access
-      </a>
-
-      <button class="md:hidden hamburger p-2 flex flex-col gap-[5px] relative z-[70]" id="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="/" class="nav-link" aria-current="page">Home</a>
+      <a href="marketplace" class="nav-link">Marketplace</a>
+      <a href="how-it-works" class="nav-link">How cashback works</a>
+      <a href="wallet" class="nav-link">Wallet</a>
+      <a href="about" class="nav-link">About</a>
+      <a href="contact" class="nav-link">Contact</a>
     </div>
-  </nav>
 
-  <!-- Mobile Menu Overlay -->
-  <div class="mobile-overlay" id="mobile-menu">
-    <div class="flex flex-col items-center justify-center h-full gap-8">
-      <a href="/" class="mobile-link mobile-link-active font-display font-bold text-3xl">Home</a>
-      <a href="wallet" class="mobile-link font-display font-bold text-3xl text-brand-black">Wallet</a>
-      <a href="how-it-works" class="mobile-link font-display font-bold text-3xl text-brand-black">How it works</a>
-      <a href="about" class="mobile-link font-display font-bold text-3xl text-brand-black">About</a>
-      <a href="contact" class="mobile-link font-display font-bold text-3xl text-brand-black">Contact</a>
-      <a href="contact" class="mobile-link btn-primary mt-4">Get Early Access</a>
-    </div>
+    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify &amp; join</a>
+
+    <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HERO                                        -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="relative flex items-center min-h-[100dvh] pt-28 pb-16 md:pt-40 md:pb-24">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
+    <a href="/" class="mobile-link font-display font-semibold text-3xl" aria-current="page">Home</a>
+    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl">Marketplace</a>
+    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
+    <a href="wallet" class="mobile-link font-display font-semibold text-3xl">Wallet</a>
+    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
+    <a href="contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
+    <a href="kyc" class="mobile-link btn btn-primary mt-2">Verify &amp; join</a>
+  </div>
+</div>
 
-      <!-- Left Content -->
-      <div class="max-w-xl reveal">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-7">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
-          Sharia-compliant rewards marketplace
+<main id="main">
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="relative pt-32 pb-16 md:pt-44 md:pb-24">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+      <div class="lg:col-span-7 xl:col-span-6 relative" style="z-index:var(--z-raised)">
+        <div class="reveal flex flex-wrap items-center gap-2 mb-6">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-white text-[11px] font-semibold tracking-wide" style="box-shadow:var(--shadow-sm)">
+            <span class="w-1.5 h-1.5 rounded-full bg-leaf pulse-ring"></span>
+            Registered in the UK &amp; The Gambia
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 border border-white text-[11px] font-semibold tracking-wide" style="box-shadow:var(--shadow-sm)">
+            Prices and cashback in Dalasi
+          </span>
         </div>
 
-        <h1 class="font-display font-bold text-brand-black leading-[1.05] tracking-tight mb-5" style="font-size: clamp(2.4rem, 5.5vw, 4.2rem);">
-          Your money works<br>for you.<br>
-          <span class="text-brand-gray">Not against you.</span>
+        <h1 class="reveal d1 font-display font-semibold leading-[1.02] tracking-[-0.03em] mb-6" style="font-size:clamp(2.6rem,6vw,4.6rem)">
+          Shop in Dalasi.<br>
+          Get paid back<br>
+          <span class="relative inline-block">
+            <span style="background:linear-gradient(120deg,var(--pine),var(--leaf) 55%,var(--lime));-webkit-background-clip:text;background-clip:text;color:transparent;">in Dalasi.</span>
+          </span>
         </h1>
 
-        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-9 max-w-[52ch]">
-          A Sharia-compliant marketplace for everyday life in Gambia — electricity, airtime, rice, household essentials. Zero interest. Transparent fees. Your balance quietly shrinks through blockchain staking rewards.
+        <p class="reveal d2 text-lg md:text-xl leading-[1.65] text-slate2 measure mb-9">
+          Nufaa is a cashback marketplace built for Gambian households. Buy your groceries,
+          cashpower, airtime and household goods in the app, pay with Dalasi or crypto, and
+          10% to 20% of every order comes straight back to your Dalasi wallet.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <a href="contact" class="btn-primary text-center" id="hero-cta-primary">
-            Get early access
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="reveal d3 flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="kyc" class="btn btn-primary">
+            Verify your account
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="how-it-works" class="btn-secondary text-center" id="hero-cta-secondary">See how it works</a>
+          <a href="marketplace" class="btn btn-outline">Browse the marketplace</a>
         </div>
 
-        <div class="mt-10 flex items-center justify-center sm:justify-start gap-8 sm:gap-8 md:gap-10 border-t border-black/5 pt-7">
-          <div class="text-center sm:text-left">
-            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-black">0%</p>
-            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Interest</p>
+        <dl class="reveal d4 flex flex-wrap items-center gap-x-9 gap-y-5">
+          <div>
+            <dt class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-1">Cashback range</dt>
+            <dd class="font-display text-2xl font-semibold tnum">10&ndash;20<span class="text-lime">%</span></dd>
           </div>
-          <div class="stat-divider"></div>
-          <div class="text-center sm:text-left">
-            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-accent">3–12%</p>
-            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Est. APY (variable)</p>
+          <div class="hidden sm:block w-px h-9" style="background:linear-gradient(to bottom,transparent,var(--line-firm),transparent)"></div>
+          <div>
+            <dt class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-1">Settlement currency</dt>
+            <dd class="font-display text-2xl font-semibold">Dalasi (GMD)</dd>
           </div>
-          <div class="stat-divider"></div>
-          <div class="text-center sm:text-left">
-            <p class="font-display font-bold text-xl sm:text-2xl tracking-tight text-brand-black">100%</p>
-            <p class="text-[10px] sm:text-[11px] text-brand-gray uppercase tracking-[0.15em] font-semibold mt-0.5">Asset-backed</p>
+          <div class="hidden sm:block w-px h-9" style="background:linear-gradient(to bottom,transparent,var(--line-firm),transparent)"></div>
+          <div>
+            <dt class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-1">Checkout options</dt>
+            <dd class="font-display text-2xl font-semibold">Dalasi + crypto</dd>
           </div>
-        </div>
+        </dl>
       </div>
 
-      <!-- Right — Hero Image + Wallet UI (Double-Bezel) -->
-      <div class="relative flex flex-col justify-center items-center reveal reveal-delay-2">
-        <div class="relative w-full max-w-sm mx-auto">
-          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08);">
-            <img src="images/hero.png" alt="Gambian woman using Nufaa app at a market" class="img-cover aspect-[4/5]" loading="eager">
-          </div>
-          <!-- Floating Wallet Card -->
-          <div class="absolute -bottom-4 left-2 md:-left-8 bg-white rounded-2xl p-3 md:p-4 float-notification w-48 md:w-60">
-            <div class="flex items-center gap-2.5 mb-2.5">
-              <div class="w-8 h-8 rounded-full bg-brand-accentLight flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <div>
-                <p class="text-xs font-semibold text-brand-black">Staking reward</p>
-                <p class="text-[10px] text-brand-gray">Just now</p>
+      <!-- Phone mock -->
+      <div class="lg:col-span-5 xl:col-span-6 relative">
+        <div class="reveal d2 relative mx-auto max-w-[330px] lg:max-w-[360px] xl:ml-auto xl:mr-4">
+          <div class="phone floaty">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="px-5 pt-9 pb-6">
+                <div class="flex items-center justify-between mb-5">
+                  <div>
+                    <p class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold">Nufaa wallet</p>
+                    <p class="text-xs text-slate2">Fatoumata J.</p>
+                  </div>
+                  <span class="cashback-pill">KYC verified</span>
+                </div>
+
+                <div class="rounded-2xl p-5 mb-4 relative overflow-hidden" style="background:linear-gradient(150deg,#11264A 0%,#0B1524 70%);box-shadow:0 20px 40px -18px rgba(11,21,36,0.6)">
+                  <div class="blob" style="right:-20%;top:-40%;width:70%;height:120%;background:radial-gradient(circle,rgba(140,198,63,0.35),transparent 70%);filter:blur(28px)"></div>
+                  <p class="text-[10px] uppercase tracking-[0.16em] text-white/50 font-semibold mb-1.5 relative">Available balance</p>
+                  <p class="price text-white text-[1.9rem] font-bold leading-none mb-3 relative">D 4,318<span class="text-white/45 text-lg">.60</span></p>
+                  <div class="flex items-center gap-2 relative">
+                    <span class="text-[11px] px-2 py-1 rounded-md bg-white/10 text-white/80 font-semibold">Cashback earned D 612.40</span>
+                  </div>
+                </div>
+
+                <div class="flex gap-2 mb-5">
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg" style="background:var(--sand)">Top up</span>
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg" style="background:var(--sand)">Send</span>
+                  <span class="flex-1 text-center text-[11px] font-semibold py-2 rounded-lg text-white" style="background:var(--pine)">Shop</span>
+                </div>
+
+                <p class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold mb-2.5">Recent activity</p>
+                <div class="space-y-2">
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Serrekunda market basket</p>
+                      <p class="text-[10px] text-slate2">Groceries &middot; 12% back</p>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <p class="price text-xs font-bold">&minus;D 840</p>
+                      <p class="price text-[10px] text-pine font-bold">+D 100.80</p>
+                    </div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">NAWEC cashpower</p>
+                      <p class="text-[10px] text-slate2">Utilities &middot; 10% back</p>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <p class="price text-xs font-bold">&minus;D 500</p>
+                      <p class="price text-[10px] text-pine font-bold">+D 50.00</p>
+                    </div>
+                  </div>
+                  <div class="ledger-row">
+                    <div class="min-w-0">
+                      <p class="text-xs font-semibold truncate">Top up &middot; USDT converted</p>
+                      <p class="text-[10px] text-slate2">Crypto &middot; rate locked 60s</p>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <p class="price text-xs font-bold text-pine">+D 2,000</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="font-mono font-bold text-base md:text-lg text-brand-accent">+D 42.50</p>
+          </div>
+
+          <!-- Floating cashback receipt -->
+          <div class="surface-float absolute -left-6 md:-left-24 bottom-16 p-3.5 w-[186px] floaty" style="animation-delay:-2.5s">
+            <p class="text-[10px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-1">Cashback paid</p>
+            <p class="price font-bold text-lg leading-none mb-1">D 100.80</p>
+            <p class="text-[10px] text-slate2 leading-snug">Credited in Dalasi, 4 seconds after checkout.</p>
           </div>
         </div>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- TRUST MARQUEE                               -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="marquee-wrapper w-full overflow-hidden border-y border-black/5 py-7 bg-white/50">
-    <div class="marquee-track">
-      <div class="flex items-center gap-14 px-8">
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Powered by</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Solana</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Cardano</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Ethereum</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">ATOM</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Sharia Certified</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Zero Interest</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Built for Gambia</span>
-        <span class="text-brand-gray/20 mr-14">&#8226;</span>
+<!-- ══════════════════ CATEGORY MARQUEE ══════════════════ -->
+<section class="py-6 border-y" style="border-color:var(--line);background:rgba(255,255,255,0.55)" aria-label="Categories on Nufaa">
+  <div class="marquee-mask overflow-hidden">
+    <div class="marquee-track gap-3">
+      <div class="flex gap-3 pr-3">
+        <span class="chip">Rice &amp; oil <span class="cashback-pill cashback-pill--quiet">12%</span></span>
+        <span class="chip">NAWEC cashpower <span class="cashback-pill cashback-pill--quiet">10%</span></span>
+        <span class="chip">Airtime &amp; data <span class="cashback-pill cashback-pill--quiet">10%</span></span>
+        <span class="chip">Fresh produce <span class="cashback-pill cashback-pill--quiet">13%</span></span>
+        <span class="chip">Household goods <span class="cashback-pill cashback-pill--quiet">18%</span></span>
+        <span class="chip">Fabric &amp; tailoring <span class="cashback-pill cashback-pill--quiet">20%</span></span>
+        <span class="chip">School supplies <span class="cashback-pill cashback-pill--quiet">15%</span></span>
+        <span class="chip">Gas refill <span class="cashback-pill cashback-pill--quiet">11%</span></span>
       </div>
-      <div class="flex items-center gap-14 px-8">
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Powered by</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Solana</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Cardano</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">Ethereum</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">ATOM</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="font-display font-bold text-lg text-brand-black tracking-tight whitespace-nowrap">ATOM</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Sharia Certified</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Zero Interest</span>
-        <span class="text-brand-gray/20">&#8226;</span>
-        <span class="text-brand-gray text-xs font-semibold uppercase tracking-[0.2em] whitespace-nowrap">Built for Gambia</span>
-        <span class="text-brand-gray/20 mr-14">&#8226;</span>
+      <div class="flex gap-3 pr-3" aria-hidden="true">
+        <span class="chip">Rice &amp; oil <span class="cashback-pill cashback-pill--quiet">12%</span></span>
+        <span class="chip">NAWEC cashpower <span class="cashback-pill cashback-pill--quiet">10%</span></span>
+        <span class="chip">Airtime &amp; data <span class="cashback-pill cashback-pill--quiet">10%</span></span>
+        <span class="chip">Fresh produce <span class="cashback-pill cashback-pill--quiet">13%</span></span>
+        <span class="chip">Household goods <span class="cashback-pill cashback-pill--quiet">18%</span></span>
+        <span class="chip">Fabric &amp; tailoring <span class="cashback-pill cashback-pill--quiet">20%</span></span>
+        <span class="chip">School supplies <span class="cashback-pill cashback-pill--quiet">15%</span></span>
+        <span class="chip">Gas refill <span class="cashback-pill cashback-pill--quiet">11%</span></span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- PRODUCT SHOWCASE — What you can do           -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
-    <div class="max-w-2xl mb-14 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The marketplace</div>
-      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-5">Built for the<br><span class="text-brand-gray">life you live.</span></h2>
-      <p class="text-brand-gray text-lg leading-relaxed max-w-[55ch]">Electricity, mobile top-up, groceries, household goods — every purchase is interest-free, and every Dalasi you hold quietly compounds in the background.</p>
-    </div>
-
-    <!-- Asymmetric Product Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
-
-      <!-- Wallet & Staking — Large -->
-      <div class="md:col-span-7 bento-card overflow-hidden group reveal">
-        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
-          <div class="photo-frame bento-img-mobile md:order-2">
-            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80" alt="Hand holding a smartphone with a finance app open">
-          </div>
-          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-1">
-            <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-5 md:mb-6">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.5"/></svg>
-            </div>
-            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">A wallet that earns</h3>
-            <p class="text-brand-gray leading-relaxed mb-5">Every Dalasi you deposit is staked across Cardano, Solana, and Ethereum. You spend like normal — the network pays you the difference.</p>
-            <a href="wallet" class="text-sm font-semibold text-brand-black inline-flex items-center gap-1.5 group/link hover:text-brand-accent transition-colors">
-              Open the wallet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
+<!-- ══════════════════ PAY IN DALASI OR CRYPTO ══════════════════ -->
+<section class="relative" style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-12">
+      <div class="lg:col-span-7">
+        <p class="eyebrow reveal mb-5">Two ways to pay, one currency out</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06]" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+          Pay with Dalasi or crypto.<br>
+          <span class="text-slate2">Cashback is always Dalasi.</span>
+        </h2>
       </div>
-
-      <!-- Buy Essentials -->
-      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-1 flex flex-col">
-        <div class="photo-frame bento-img-mobile md:!min-h-0 md:aspect-[16/10]">
-          <img src="images/groceries.png" alt="A spread of groceries including tin milk, sugar, rice, oil, ketchup and mayonnaise">
-        </div>
-        <div class="p-7 sm:p-8 flex-1">
-          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Stock the kitchen</h3>
-          <p class="text-brand-gray leading-relaxed">Rice, cooking oil, household goods — sourced from neighbourhood merchants, paid without a single percent of interest.</p>
-        </div>
-      </div>
-
-      <!-- Bill Payments -->
-      <div class="md:col-span-5 bento-card overflow-hidden group reveal reveal-delay-2 flex flex-col">
-        <div class="photo-frame bento-img-mobile md:!min-h-0 md:aspect-[16/10]">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1400&q=80" alt="Hand using a contactless mobile payment at a terminal">
-        </div>
-        <div class="p-7 sm:p-8 flex-1">
-          <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Bills, settled instantly</h3>
-          <p class="text-brand-gray leading-relaxed">NAWEC electricity, Africell airtime, water — settle them from the app or your nearest Nufaa agent. No fees, no queues.</p>
-        </div>
-      </div>
-
-      <!-- Mobile Top Up — Wide -->
-      <div class="md:col-span-7 bento-card overflow-hidden group reveal reveal-delay-2">
-        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
-          <div class="photo-frame bento-img-mobile md:order-1">
-            <img src="images/hijabi-topup.png" alt="An African hijabi woman using her mobile phone">
-          </div>
-          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-2">
-            <div class="w-11 h-11 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-5 md:mb-6">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-            </div>
-            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">Top up, tap, done</h3>
-            <p class="text-brand-gray leading-relaxed mb-5">Africell, Qcell, Comium — recharge any Gambian network instantly from your wallet. No scratching cards, no queues.</p>
-            <a href="contact" class="text-sm font-semibold text-brand-black inline-flex items-center gap-1.5 group/link hover:text-brand-accent transition-colors">
-              Recharge now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="transition-transform group-hover/link:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Community — Full Width -->
-      <div class="md:col-span-12 bento-card overflow-hidden group reveal reveal-delay-3">
-        <div class="flex flex-col md:grid md:grid-cols-2 h-full">
-          <div class="photo-frame bento-img-mobile md:order-1">
-            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1400&q=80" alt="A group of joyful children waving — community in motion">
-          </div>
-          <div class="p-7 sm:p-8 md:p-10 flex flex-col justify-center md:order-2">
-            <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-5 md:mb-6">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <h3 class="font-display font-bold text-2xl text-brand-black mb-3 tracking-tight">A network, not a number</h3>
-            <p class="text-brand-gray leading-relaxed">Every member is part of a shared system. Refer a neighbour, share a tip — when one balance grows, the whole community does.</p>
-          </div>
-        </div>
+      <div class="lg:col-span-5">
+        <p class="reveal d2 text-slate2 leading-[1.7] measure">
+          Every price on Nufaa is quoted in Gambian Dalasi. If you pay with crypto,
+          we lock a conversion rate for 60 seconds and settle the merchant in Dalasi —
+          so nobody in the chain carries the volatility, and your reward lands in the
+          currency you actually spend.
+        </p>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOW IT WORKS                                -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-36 bg-white border-y border-black/5">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-        <div class="reveal">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The mechanism</div>
-          <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-9">Three steps.<br><span class="text-brand-gray">Zero complexity.</span></h2>
-
-          <div class="space-y-8">
-            <div class="flex gap-5 reveal">
-              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">01</div>
-              <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Choose</h4>
-                <p class="text-brand-gray leading-relaxed">Pick from the marketplace or visit a Nufaa agent. Electricity, airtime, rice, household goods — settle them on your terms.</p>
-              </div>
-            </div>
-            <div class="flex gap-5 reveal reveal-delay-1">
-              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">02</div>
-              <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">We stake on your behalf</h4>
-                <p class="text-brand-gray leading-relaxed">Your funds acquire Sharia-compliant digital assets across Cardano, Solana, and Ethereum. Ownership stays with you, always.</p>
-              </div>
-            </div>
-            <div class="flex gap-5 reveal reveal-delay-2">
-              <div class="font-mono text-lg font-bold text-brand-gray/25 pt-1 shrink-0">03</div>
-              <div>
-                <h4 class="font-display font-bold text-xl text-brand-black mb-1.5">Watch the balance melt</h4>
-                <p class="text-brand-gray leading-relaxed">Staking rewards quietly settle your balance every day. No interest. No deadlines. No fine print.</p>
-              </div>
-            </div>
+    <div class="grid lg:grid-cols-12 gap-5">
+      <!-- Dalasi rails -->
+      <article class="lg:col-span-7 surface-raised spotlight reveal p-7 md:p-9">
+        <div class="flex items-start justify-between gap-4 mb-7">
+          <div>
+            <span class="cashback-pill cashback-pill--quiet mb-3">Primary rail</span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">Dalasi in, Dalasi out</h3>
           </div>
-
-          <div class="mt-10">
-            <a href="how-it-works" class="font-semibold text-brand-black border-b-2 border-brand-accent pb-1 hover:text-brand-accent transition-colors inline-flex items-center gap-2">
-              Read the full breakdown <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
+          <span class="price text-3xl font-bold" style="color:var(--pine)">D</span>
         </div>
 
-        <!-- Balance Reduction Visual -->
-        <div class="reveal reveal-delay-2 w-full max-w-md mx-auto">
-          <div style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 50px -15px rgba(0,0,0,0.08);">
-            <div class="bg-white p-6 md:p-10">
-                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gray mb-8">Example balance reduction</p>
-                <div class="space-y-5">
-                  <div class="flex justify-between items-end border-b border-black/8 pb-4">
-                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-gray">Your purchase</span>
-                    <span class="font-mono text-2xl font-bold text-brand-black">D 1,000.00</span>
-                  </div>
-                  <div class="flex justify-between items-end border-b border-black/8 pb-4">
-                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-accent">Staking rewards applied</span>
-                    <span class="font-mono text-2xl font-bold text-brand-accent">-D 387.50</span>
-                  </div>
-                  <div class="flex justify-between items-end pt-2">
-                    <span class="text-sm font-semibold uppercase tracking-[0.1em] text-brand-black">Remaining balance</span>
-                    <span class="font-mono text-3xl font-bold text-brand-black">D 612.50</span>
-                  </div>
-                  <div class="mt-4 h-2 rounded-full bg-black/5 overflow-hidden">
-                    <div class="h-full bg-brand-accent rounded-full" style="width: 38.75%;"></div>
-                  </div>
-                  <p class="text-xs text-brand-gray text-right">38.75% paid by staking rewards — and counting</p>
-                  <p class="text-[10px] text-brand-gray/50 text-right mt-2">Illustrative example only. Actual timelines depend on variable staking yields.</p>
-                </div>
+        <ul class="grid sm:grid-cols-2 gap-3">
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Mobile money top-up</p>
+            <p class="text-xs text-slate2 leading-relaxed">Load your wallet from your mobile money account. Balance shows in D immediately.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Bank transfer</p>
+            <p class="text-xs text-slate2 leading-relaxed">Transfer from a Gambian bank account using your personal wallet reference.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Cash at an agent</p>
+            <p class="text-xs text-slate2 leading-relaxed">Hand cash to a listed Nufaa agent, and the Dalasi appears in your wallet.</p>
+          </li>
+          <li class="rounded-2xl p-4" style="background:var(--cream)">
+            <p class="font-semibold text-sm mb-1">Withdraw any time</p>
+            <p class="text-xs text-slate2 leading-relaxed">Move your balance and cashback back out to mobile money or an agent.</p>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Crypto rail -->
+      <article class="lg:col-span-5 reveal d1 relative overflow-hidden rounded-[1.75rem] p-7 md:p-9 text-white" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 72%)">
+        <div class="blob blob-drift" style="right:-25%;top:-30%;width:80%;height:80%;background:radial-gradient(circle,rgba(46,90,143,0.7),transparent 70%);filter:blur(48px)"></div>
+        <div class="relative">
+          <span class="inline-flex items-center px-2.5 py-1 rounded-md bg-white/10 text-[11px] font-bold tracking-wide mb-3">Also accepted</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-tight mb-5">Crypto at checkout</h3>
+          <p class="text-white/65 text-sm leading-[1.7] mb-7">
+            Useful if your money arrives from abroad. Send USDT, USDC or BTC,
+            we convert at a rate you see before you confirm, and your wallet
+            is credited in Dalasi.
+          </p>
+
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.06] border border-white/10">
+              <span class="text-sm font-semibold">USDT &middot; TRC-20</span>
+              <span class="price text-xs text-white/60">rate locked 60s</span>
+            </div>
+            <div class="flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.06] border border-white/10">
+              <span class="text-sm font-semibold">USDC &middot; ERC-20</span>
+              <span class="price text-xs text-white/60">rate locked 60s</span>
+            </div>
+            <div class="flex items-center justify-between px-4 py-3 rounded-xl bg-white/[0.06] border border-white/10">
+              <span class="text-sm font-semibold">BTC &middot; on-chain</span>
+              <span class="price text-xs text-white/60">1 confirmation</span>
             </div>
           </div>
-        </div>
 
+          <p class="text-white/40 text-xs leading-relaxed mt-6">
+            Crypto is a funding method only. You never hold a crypto balance on Nufaa,
+            and cashback is never paid in crypto.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ NUMBERS ══════════════════ -->
+<section class="relative" style="padding-block:clamp(2rem,4vw,3.5rem)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="surface reveal grid grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden" style="background:var(--line)">
+      <div class="bg-white p-7 md:p-9">
+        <p class="font-display text-3xl md:text-4xl font-semibold tnum mb-1"><span data-count-to="20">20</span>%</p>
+        <p class="text-xs text-slate2 leading-relaxed">Top cashback rate, on fabric and tailoring orders</p>
+      </div>
+      <div class="bg-white p-7 md:p-9">
+        <p class="font-display text-3xl md:text-4xl font-semibold tnum mb-1">D&nbsp;<span data-count-to="25">25</span></p>
+        <p class="text-xs text-slate2 leading-relaxed">Minimum top-up, so a small budget still works</p>
+      </div>
+      <div class="bg-white p-7 md:p-9">
+        <p class="font-display text-3xl md:text-4xl font-semibold tnum mb-1"><span data-count-to="2">2</span></p>
+        <p class="text-xs text-slate2 leading-relaxed">Registered entities — one in the UK, one in The Gambia</p>
+      </div>
+      <div class="bg-white p-7 md:p-9">
+        <p class="font-display text-3xl md:text-4xl font-semibold tnum mb-1"><span data-count-to="0">0</span></p>
+        <p class="text-xs text-slate2 leading-relaxed">Interest charged, ever. Nufaa earns from merchant margin</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- WALLET PREVIEW                              -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-36 w-full max-w-7xl mx-auto px-5 md:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+<!-- ══════════════════ MARKETPLACE PREVIEW ══════════════════ -->
+<section class="relative" style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+      <div>
+        <p class="eyebrow reveal mb-5">What people actually buy</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06]" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+          The weekly shop,<br><span class="text-slate2">with money coming back.</span>
+        </h2>
+      </div>
+      <a href="marketplace" class="reveal d2 text-link">See all categories
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
 
-      <!-- Wallet App Image (Double-Bezel) -->
-      <div class="reveal order-2 lg:order-1 flex justify-center">
-        <div class="relative max-w-md w-full mx-auto">
-          <div class="photo-frame" style="border-radius: 2rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15); aspect-ratio: 4/5;">
-            <img src="images/product-wallet.png" alt="Nufaa wallet app — deposit, stake, send and spend" style="width:100%;height:100%;object-fit:cover;">
+    <!-- Asymmetric bento -->
+    <div class="grid md:grid-cols-12 gap-5">
+      <a href="marketplace" class="group md:col-span-7 reveal relative block overflow-hidden rounded-[1.75rem]" style="min-height:23rem">
+        <div class="tile absolute inset-0 rounded-[1.75rem]">
+          <img src="/images/groceries.png" alt="Rice, oil and staple foods packed for a household order">
+          <span class="tile-tint"></span>
+        </div>
+        <div class="relative h-full flex flex-col justify-end p-7 md:p-9">
+          <span class="cashback-pill self-start mb-3">12% back in D</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-white tracking-tight mb-2">Groceries &amp; staples</h3>
+          <p class="text-white/70 text-sm leading-relaxed max-w-sm">Rice, oil, sugar, onions, fish. Order the full basket and collect from your nearest agent point.</p>
+        </div>
+      </a>
+
+      <div class="md:col-span-5 grid gap-5">
+        <a href="marketplace" class="group reveal d1 relative block overflow-hidden rounded-[1.75rem]" style="min-height:11rem">
+          <div class="tile absolute inset-0 rounded-[1.75rem]">
+            <img src="/images/hijabi-topup.png" alt="A customer topping up airtime on her phone">
+            <span class="tile-tint"></span>
           </div>
-          <!-- Floating stat -->
-          <div class="absolute -top-4 -right-2 md:-right-8 bg-brand-black text-white rounded-2xl px-5 py-4 shadow-[0_16px_40px_-10px_rgba(0,0,0,0.3)]" style="animation: heroFloat 10s ease-in-out infinite;">
-            <p class="text-[10px] text-white/50 uppercase tracking-[0.15em] font-semibold mb-1">Est. Annual Yield</p>
-            <p class="font-mono font-bold text-2xl text-brand-accentLight">3–12%</p>
+          <div class="relative h-full flex flex-col justify-end p-6">
+            <span class="cashback-pill self-start mb-2">10% back in D</span>
+            <h3 class="font-display text-xl font-semibold text-white tracking-tight">Airtime &amp; data</h3>
+          </div>
+        </a>
+        <a href="marketplace" class="group reveal d2 relative block overflow-hidden rounded-[1.75rem]" style="min-height:11rem">
+          <div class="tile absolute inset-0 rounded-[1.75rem]">
+            <img src="/images/local-agent.png" alt="A Nufaa agent serving a customer at a local shop counter">
+            <span class="tile-tint"></span>
+          </div>
+          <div class="relative h-full flex flex-col justify-end p-6">
+            <span class="cashback-pill self-start mb-2">Cash in &amp; out</span>
+            <h3 class="font-display text-xl font-semibold text-white tracking-tight">Agent network</h3>
+          </div>
+        </a>
+      </div>
+
+      <article class="md:col-span-4 surface-raised spotlight reveal d1 p-7">
+        <span class="cashback-pill cashback-pill--quiet mb-4">10% back in D</span>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Cashpower &amp; utilities</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">Buy NAWEC units and pay bills without leaving the app. Tokens arrive by SMS and in your order history.</p>
+      </article>
+      <article class="md:col-span-4 surface-raised spotlight reveal d2 p-7">
+        <span class="cashback-pill cashback-pill--quiet mb-4">18% back in D</span>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Household &amp; home</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">Mattresses, cookware, fans, buckets, cleaning supplies. Bigger baskets carry the bigger rates.</p>
+      </article>
+      <article class="md:col-span-4 surface-raised spotlight reveal d3 p-7">
+        <span class="cashback-pill cashback-pill--quiet mb-4">20% back in D</span>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Fabric &amp; tailoring</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">Order cloth by the yard from listed sellers, then book a tailor through the same order.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW IT WORKS ══════════════════ -->
+<section class="relative border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+
+      <div class="lg:col-span-5">
+        <p class="eyebrow reveal mb-5">Four steps, all in the app</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-6" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+          Verify. Top up.<br>Shop. Get paid back.
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure mb-8">
+          There is no credit, no interest and no hidden charge. You spend money you
+          already hold, and the merchant funds your cashback out of their margin.
+        </p>
+        <a href="how-it-works" class="reveal d3 btn btn-ink">Read the full flow</a>
+
+        <div class="reveal d4 mt-10 rounded-[1.5rem] overflow-hidden" style="box-shadow:var(--shadow-md)">
+          <div class="tile" style="aspect-ratio:4/3">
+            <img src="/images/product-pay.png" alt="A customer paying for her order from the Nufaa app at a counter">
           </div>
         </div>
       </div>
 
-      <!-- Text -->
-      <div class="reveal order-1 lg:order-2">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-accentLight text-brand-accentDark text-[10px] font-bold tracking-[0.15em] uppercase mb-5 border border-brand-accent/20">
-          <span class="w-1.5 h-1.5 rounded-full bg-brand-accent stake-pulse"></span>
-          Wallet
+      <ol class="lg:col-span-7 relative">
+        <li class="reveal relative pl-14 pb-10 border-l-2" style="border-color:var(--line-firm)">
+          <span class="absolute -left-[1.05rem] top-0 w-8 h-8 rounded-full grid place-items-center text-white text-xs font-bold" style="background:var(--ink)">1</span>
+          <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Pass KYC once</h3>
+          <p class="text-slate2 leading-[1.7] text-[0.95rem] mb-3">
+            Give us your name, date of birth, address and a Gambian NID or passport number,
+            plus a photo of that document and a selfie. We are registered in two jurisdictions,
+            so this is a legal requirement, not a preference.
+          </p>
+          <a href="kyc" class="text-link text-sm">Start verification
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </li>
+
+        <li class="reveal d1 relative pl-14 pb-10 border-l-2" style="border-color:var(--line-firm)">
+          <span class="absolute -left-[1.05rem] top-0 w-8 h-8 rounded-full grid place-items-center text-white text-xs font-bold" style="background:var(--ink)">2</span>
+          <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Top up your Dalasi wallet</h3>
+          <p class="text-slate2 leading-[1.7] text-[0.95rem]">
+            Mobile money, bank transfer, cash at an agent, or crypto converted at a rate
+            you approve first. Minimum top-up is D&nbsp;25. Whatever you send, your balance
+            reads in Dalasi.
+          </p>
+        </li>
+
+        <li class="reveal d2 relative pl-14 pb-10 border-l-2" style="border-color:var(--line-firm)">
+          <span class="absolute -left-[1.05rem] top-0 w-8 h-8 rounded-full grid place-items-center text-white text-xs font-bold" style="background:var(--ink)">3</span>
+          <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Shop, or list and sell</h3>
+          <p class="text-slate2 leading-[1.7] text-[0.95rem]">
+            Buy from listed merchants, or become one. Sellers list stock in Dalasi, get paid
+            in Dalasi, and set the cashback rate that brings buyers to their shop.
+          </p>
+        </li>
+
+        <li class="reveal d3 relative pl-14">
+          <span class="absolute -left-[1.05rem] top-0 w-8 h-8 rounded-full grid place-items-center text-white text-xs font-bold" style="background:linear-gradient(135deg,var(--pine),var(--leaf))">4</span>
+          <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Cashback lands in Dalasi</h3>
+          <p class="text-slate2 leading-[1.7] text-[0.95rem] mb-4">
+            Confirmed orders release cashback into the same wallet within seconds. Spend it on
+            the next order or withdraw it — it behaves exactly like the rest of your balance.
+          </p>
+          <div class="surface p-4 flex items-center justify-between gap-4 max-w-sm">
+            <div>
+              <p class="text-xs text-slate2 mb-0.5">Basket D 1,240 &middot; 12%</p>
+              <p class="font-semibold text-sm">Cashback credited</p>
+            </div>
+            <p class="price font-bold text-lg" style="color:var(--pine)">+D 148.80</p>
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SELL ON NUFAA ══════════════════ -->
+<section class="relative" style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+      <div class="reveal order-2 lg:order-1 relative">
+        <div class="rounded-[1.75rem] overflow-hidden" style="box-shadow:var(--shadow-lg)">
+          <div class="tile" style="aspect-ratio:5/4">
+            <img src="/images/market-seller.jpg" alt="A trader in Serrekunda market showing a tray of goods to a customer">
+          </div>
         </div>
-        <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">Your balance<br><span class="text-brand-gray">never sits idle.</span></h2>
-        <p class="text-brand-gray text-base md:text-lg leading-relaxed mb-8 max-w-[50ch]">
-          Deposit, stake, send, spend. Every Dalasi works in the background — earning real on-chain rewards across multiple networks. Transfers, bills, groceries: one place, transparent pricing.
+        <div class="surface-float absolute -bottom-6 -right-2 md:right-6 p-4 w-[210px]">
+          <p class="text-[10px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-1.5">Seller payout</p>
+          <p class="price font-bold text-xl leading-none mb-1">D 18,470</p>
+          <p class="text-[11px] text-slate2">Settled to mobile money, same day</p>
+        </div>
+        <p class="text-[10px] text-slate2/60 mt-12 lg:mt-14">
+          Serrekunda market. Photo by Mustapha Ceesay,
+          <a href="https://commons.wikimedia.org/wiki/File:Seller_and_buyer_in_Serrekunda_Market.jpg" class="underline hover:text-ink transition-colors" rel="noopener">CC BY-SA 4.0</a>.
+        </p>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <p class="eyebrow reveal mb-5">For shops, agents and traders</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-6" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+          Sell on Nufaa.<br><span class="text-slate2">Get paid in Dalasi.</span>
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure mb-8">
+          The same app that customers shop in is where sellers run their stock. List
+          products, set your own cashback rate, and take payment from buyers whether
+          they funded their wallet with Dalasi or crypto — you are always settled in Dalasi.
         </p>
 
-        <div class="grid grid-cols-2 gap-4 mb-8">
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
-            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">D 0</p>
-            <p class="text-xs text-brand-gray">Hidden fees</p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-9">
+          <div class="reveal d2 rounded-2xl p-5" style="background:var(--sand)">
+            <p class="font-semibold text-sm mb-1.5">You set the rate</p>
+            <p class="text-xs text-slate2 leading-relaxed">Choose cashback between 10% and 20%. Higher rates push your listings up the category page.</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
-            <p class="font-mono font-bold text-xl text-brand-accent mb-0.5">3–12%</p>
-            <p class="text-xs text-brand-gray">Est. variable yield</p>
+          <div class="reveal d3 rounded-2xl p-5" style="background:var(--sand)">
+            <p class="font-semibold text-sm mb-1.5">Same-day settlement</p>
+            <p class="text-xs text-slate2 leading-relaxed">Confirmed orders pay out to your mobile money or bank account in Dalasi.</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
-            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">24/7</p>
-            <p class="text-xs text-brand-gray">Access</p>
+          <div class="reveal d3 rounded-2xl p-5" style="background:var(--sand)">
+            <p class="font-semibold text-sm mb-1.5">Verified buyers only</p>
+            <p class="text-xs text-slate2 leading-relaxed">Every buyer has passed KYC before they can place an order, which cuts disputes.</p>
           </div>
-          <div class="p-4 rounded-xl bg-brand-light border border-black/5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.06)]">
-            <p class="font-mono font-bold text-xl text-brand-black mb-0.5">100%</p>
-            <p class="text-xs text-brand-gray">Your ownership</p>
+          <div class="reveal d4 rounded-2xl p-5" style="background:var(--sand)">
+            <p class="font-semibold text-sm mb-1.5">No listing fee at launch</p>
+            <p class="text-xs text-slate2 leading-relaxed">Nufaa takes a commission per completed sale. Nothing upfront, nothing monthly.</p>
           </div>
         </div>
 
-        <a href="wallet" class="btn-primary" id="wallet-cta">
-          Explore your wallet
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <a href="contact" class="reveal d4 btn btn-primary">Apply as a seller</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ KYC ══════════════════ -->
+<section class="relative border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)" id="kyc-preview">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+
+      <div class="lg:col-span-6">
+        <p class="eyebrow reveal mb-5">Know your customer</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-6" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+          One verification,<br><span class="text-slate2">then the wallet opens.</span>
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure mb-8">
+          Because Nufaa is registered in the United Kingdom and The Gambia and moves
+          real money, we verify every account before it can top up, shop or sell.
+          It takes about five minutes and you only do it once.
+        </p>
+        <div class="reveal d3 flex flex-col sm:flex-row gap-3">
+          <a href="kyc" class="btn btn-primary">Open the KYC form</a>
+          <a href="privacy" class="btn btn-quiet">How we store your documents</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6">
+        <div class="surface reveal d2 p-7 md:p-8">
+          <p class="text-xs uppercase tracking-[0.14em] text-slate2 font-semibold mb-5">What you will need</p>
+          <ul class="space-y-4">
+            <li class="flex gap-3.5">
+              <span class="shrink-0 w-7 h-7 rounded-lg grid place-items-center" style="background:rgba(67,167,78,0.12)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-sm mb-0.5">Your full legal name and date of birth</p>
+                <p class="text-xs text-slate2 leading-relaxed">Exactly as printed on your identity document.</p>
+              </div>
+            </li>
+            <li class="flex gap-3.5">
+              <span class="shrink-0 w-7 h-7 rounded-lg grid place-items-center" style="background:rgba(67,167,78,0.12)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-sm mb-0.5">A passport number or Gambian NID number</p>
+                <p class="text-xs text-slate2 leading-relaxed">Driving licence and voter's card are accepted as alternatives.</p>
+              </div>
+            </li>
+            <li class="flex gap-3.5">
+              <span class="shrink-0 w-7 h-7 rounded-lg grid place-items-center" style="background:rgba(67,167,78,0.12)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-sm mb-0.5">A photo of that document</p>
+                <p class="text-xs text-slate2 leading-relaxed">Both sides for an NID card. All four corners visible, no glare.</p>
+              </div>
+            </li>
+            <li class="flex gap-3.5">
+              <span class="shrink-0 w-7 h-7 rounded-lg grid place-items-center" style="background:rgba(67,167,78,0.12)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-sm mb-0.5">A photo of your face</p>
+                <p class="text-xs text-slate2 leading-relaxed">A plain selfie, so we can match it against the document.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ROADMAP ══════════════════ -->
+<section class="relative" style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="eyebrow reveal mb-5">Where we are</p>
+      <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-5" style="font-size:clamp(2.1rem,4.2vw,3.4rem)">
+        Built in order,<br><span class="text-slate2">not all at once.</span>
+      </h2>
+      <p class="reveal d2 text-slate2 leading-[1.7]">
+        Dalasi first, everywhere. Crypto sits on top as a way to fund a wallet, not as a
+        currency you have to understand.
+      </p>
+    </div>
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <li class="reveal surface-raised p-7">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="cashback-pill">Now</span>
+          <span class="text-xs text-slate2 font-semibold">Step 1</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-3">Registration and Dalasi trading</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">
+          Company registration completed in the United Kingdom and The Gambia. Selling
+          starts with payments taken in Dalasi and cashback paid in Dalasi.
+        </p>
+      </li>
+
+      <li class="reveal d1 surface-raised p-7">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="cashback-pill cashback-pill--quiet">In build</span>
+          <span class="text-xs text-slate2 font-semibold">Step 2</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-3">Everything inside the app</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">
+          Top up, buy, list, sell, withdraw &mdash; the whole loop in one place, priced in
+          Dalasi from the first screen to the receipt.
+        </p>
+      </li>
+
+      <li class="reveal d2 surface-raised p-7">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="cashback-pill cashback-pill--quiet">Next</span>
+          <span class="text-xs text-slate2 font-semibold">Step 3</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-3">Crypto checkout</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">
+          Customers pay with USDT, USDC or BTC at checkout. Conversion happens before
+          confirmation, and the seller still receives Dalasi.
+        </p>
+      </li>
+
+      <li class="reveal d3 surface-raised p-7">
+        <div class="flex items-center gap-2 mb-5">
+          <span class="cashback-pill cashback-pill--quiet">Planned</span>
+          <span class="text-xs text-slate2 font-semibold">Step 4</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold tracking-tight mb-3">Diaspora ordering</h3>
+        <p class="text-sm text-slate2 leading-[1.7]">
+          Pay from the UK for a basket collected in Banjul or Brikama, with the
+          cashback credited to the family member who picks it up.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════ TRUST / FOUNDER ══════════════════ -->
+<section class="relative border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="lg:col-span-5 reveal">
+        <div class="rounded-[1.75rem] overflow-hidden" style="box-shadow:var(--shadow-lg)">
+          <div class="tile" style="aspect-ratio:4/5">
+            <img src="/images/founder.png" alt="Nufaa's founder standing outside a market in The Gambia">
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="eyebrow reveal mb-6">Why this exists</p>
+        <blockquote class="reveal d1 font-display font-medium tracking-[-0.02em] leading-[1.25] mb-7" style="font-size:clamp(1.5rem,2.8vw,2.2rem)">
+          &ldquo;Families here already spend the money. The problem was never the spending —
+          it was that none of it ever came back.&rdquo;
+        </blockquote>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure mb-6">
+          Nufaa started from a simple observation about how households in the Greater Banjul
+          area buy: in cash, at whatever price the day gives, with no record and no reward.
+          A marketplace that quotes in Dalasi, keeps a receipt, and pays part of the margin
+          back to the buyer changes the arithmetic of an ordinary week.
+        </p>
+        <a href="about" class="reveal d3 text-link">Read the full story
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- VALUES — Sharia & Community                  -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-36 bg-brand-black text-white relative overflow-hidden">
-    <!-- Ambient mesh gradient glows -->
-    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-accent rounded-full filter blur-[120px] opacity-10 ambient-glow"></div>
-    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-accentDark rounded-full filter blur-[120px] opacity-10 ambient-glow" style="animation-delay: -7s;"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/5 rounded-full filter blur-[150px] ambient-glow" style="animation-delay: -13s;"></div>
+<!-- ══════════════════ FINAL CTA ══════════════════ -->
+<section class="relative" style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="reveal relative overflow-hidden rounded-[2.25rem] px-7 py-16 md:px-16 md:py-24 text-center text-white" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 68%)">
+      <div class="blob blob-drift" style="left:-10%;top:-40%;width:60%;height:150%;background:radial-gradient(circle,rgba(67,167,78,0.35),transparent 68%);filter:blur(60px)"></div>
+      <div class="blob blob-drift" style="right:-10%;bottom:-50%;width:55%;height:150%;background:radial-gradient(circle,rgba(46,90,143,0.55),transparent 68%);filter:blur(60px);animation-delay:-11s"></div>
 
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-        <!-- Image -->
-        <div class="reveal w-full max-w-lg mx-auto">
-          <div class="photo-frame" style="border-radius: 1.5rem; overflow: hidden; box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4); aspect-ratio: 4/3;">
-            <img src="images/value-sharia.png" alt="Sunlight on ornate mosque arches symbolising ethical finance principles">
-          </div>
-        </div>
-
-        <!-- Text -->
-        <div class="reveal reveal-delay-1">
-          <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-6">Finance rooted<br><span class="text-white/50">in fairness.</span></h2>
-          <p class="text-white/70 text-base md:text-lg leading-relaxed mb-7 max-w-[50ch]">
-            Islamic finance forbids interest because it taxes the most vulnerable hardest. Conventional banks built their whole model on that asymmetry. We didn't want to participate.
-          </p>
-          <p class="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-[50ch]">
-            Nufaa runs on a Wakala (agency) structure. You aren't borrowing — the platform stakes on your behalf, the network yields the value, and your transaction settles. Transparent. Audited. Shared.
-          </p>
-
-          <div class="flex flex-wrap gap-3">
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Sharia certified
-            </span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Zero interest (Riba-free)
-            </span>
-            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 transition-all duration-300 hover:bg-white/8 hover:border-white/15">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Wakala model
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- WHY NUFAA                                    -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-20 md:py-36 w-full max-w-5xl mx-auto px-5 md:px-6">
-    <div class="mb-12 md:mb-14 reveal">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The difference</div>
-      <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-4">Why Nufaa?</h2>
-      <p class="text-brand-gray text-base md:text-lg max-w-[55ch]">Everything you need to manage daily life — without the hidden costs, interest traps, or complexity of traditional finance.</p>
-    </div>
-
-    <!-- Why Nufaa — Value Proposition Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal reveal-delay-1">
-
-      <!-- Card 1: Zero Interest -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Zero interest, always</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">No Riba, no hidden charges. Nufaa is built on Islamic finance principles — your purchases never accrue interest.</p>
-      </div>
-
-      <!-- Card 2: Staking Rewards -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Your money grows</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">Every Dalasi you hold is staked across Solana, Cardano, Cosmos, and more — earning variable staking rewards that reduce your balance automatically.</p>
-      </div>
-
-      <!-- Card 3: Grocery Marketplace -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Buy everyday essentials</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">Rice, cooking oil, sugar, tin milk, ketchup — shop from local merchants and pay with your wallet. No middlemen, no markup.</p>
-      </div>
-
-      <!-- Card 4: Transparent Pricing -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Transparent pricing</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">A small one-time setup fee and 10% Ujrah on staking rewards. No interest, no hidden charges, no penalties — ever.</p>
-      </div>
-
-      <!-- Card 5: Sharia Certified -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-brand-accentLight text-brand-accentDark flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Sharia certified</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">Built on a Wakala (agency) model. Fully audited, fully transparent — finance that aligns with your values.</p>
-      </div>
-
-      <!-- Card 6: Community -->
-      <div class="bento-card p-7 sm:p-8 flex flex-col">
-        <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-5">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="font-display font-bold text-xl text-brand-black mb-2 tracking-tight">Community-powered</h3>
-        <p class="text-brand-gray leading-relaxed text-sm">Refer neighbours, share tips — when one wallet grows, the whole network benefits. Built for Gambia, by Gambians.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- FOUNDER                                     -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 bg-white border-y border-black/5">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-        <div class="reveal">
-          <div class="bezel-shell">
-            <div class="bezel-inner photo-frame" style="aspect-ratio: 4/5;">
-              <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1400&q=80" alt="A coastal scene in Gambia — the country Nufaa was built for">
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal reveal-delay-1">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-black/5 text-brand-black text-[10px] font-bold tracking-[0.15em] uppercase mb-5">The founder</div>
-          <h2 class="font-display font-bold text-brand-black text-4xl md:text-5xl tracking-tight mb-6">Built by someone<br><span class="text-brand-gray">who lived the problem.</span></h2>
-          <p class="text-brand-gray text-lg leading-relaxed mb-6 max-w-[50ch]">
-            Alhassan Bah grew up in Gambia, watching families work three jobs only to lose half of it to interest on a phone bill or a sack of rice. Conventional banking didn't fail by accident — it was built to extract.
-          </p>
-          <p class="text-brand-gray text-lg leading-relaxed mb-8 max-w-[50ch]">
-            Nufaa is his answer. A system where technology, not interest, settles the bill — and where every transaction is grounded in Islamic finance principles. Fairness, here, is operational. Not aspirational.
-          </p>
-          <div class="border-t border-black/5 pt-6">
-            <p class="font-display font-bold text-xl text-brand-black">Alhassan Bah</p>
-            <p class="text-brand-gray text-sm">Founder &amp; CEO, Nufaa</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- CTA                                         -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 w-full max-w-7xl mx-auto px-5 md:px-6">
-    <div class="reveal bento-card bg-brand-black text-center py-16 md:py-24 px-6 md:px-12 relative overflow-hidden border-none cta-refraction">
-      <!-- Ambient Glows -->
-      <div class="absolute -top-32 -right-32 w-72 h-72 bg-brand-accent rounded-full filter blur-[100px] opacity-15 ambient-glow"></div>
-      <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-brand-accentDark rounded-full filter blur-[100px] opacity-15 ambient-glow" style="animation-delay:-10s;"></div>
-
-      <div class="relative z-10 max-w-2xl mx-auto">
-        <h2 class="font-display font-bold text-white text-4xl md:text-5xl tracking-tight mb-5">Your next bill could<br>pay itself.</h2>
-        <p class="text-white/65 text-base md:text-lg mb-4 max-w-[48ch] mx-auto">Early members get priority access to staking yields and the lowest fee tier. The longer you're in, the more it compounds.</p>
-        <p class="text-white/40 text-sm mb-9 font-mono">nufaa.now@hotmail.com</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a href="contact" class="inline-flex items-center justify-center gap-2 bg-white text-brand-black px-8 py-4 rounded-full font-bold hover:scale-[1.03] active:scale-[0.98] transition-transform shadow-[0_8px_24px_-8px_rgba(255,255,255,0.3)]" id="cta-primary">
-            Claim your spot
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="https://wa.me/447982144203" class="inline-flex items-center justify-center gap-2 text-white/80 px-6 py-4 rounded-full font-medium border border-white/10 hover:border-white/25 hover:bg-white/5 active:scale-[0.98] transition-all" id="cta-whatsapp">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity="0.8"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.12.553 4.108 1.537 5.842L.412 23.588l5.88-1.094A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.974c-1.898 0-3.69-.496-5.263-1.416l-.377-.22-3.896.724.739-3.8-2.42-.387A9.957 9.957 0 0 1 2.026 12C2.026 6.49 6.49 2.026 12 2.026S21.974 6.49 21.974 12c0 5.51-4.464 9.974-9.974 9.974z"/></svg>
-            Message us
+      <div class="relative">
+        <h2 class="font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-5" style="font-size:clamp(2.1rem,4.6vw,3.6rem)">
+          Your next basket<br>can pay you back.
+        </h2>
+        <p class="text-white/60 leading-[1.7] max-w-xl mx-auto mb-9">
+          Verification is open now. Get your account approved before the Gambia
+          rollout so you can shop from day one.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="kyc" class="btn btn-light">Start KYC verification</a>
+          <a href="https://wa.me/447982144203" class="btn btn-outline text-white" style="border-color:rgba(255,255,255,0.22)">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Ask a question
           </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- FOOTER                                      -->
-  <!-- ═══════════════════════════════════════════ -->
-  <footer class="border-t border-black/5 bg-white pt-20 pb-8">
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-14">
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
+
       <div class="col-span-2 md:col-span-5">
-        <a href="/" class="flex items-center gap-2.5 mb-5">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M4 18V6L12 20V6" stroke="#0a0a0a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 6L18 13.5" stroke="#059669" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          <span class="font-display font-bold text-xl tracking-tight">Nufaa</span>
+        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+          <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
+          <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
         </a>
-        <p class="text-brand-gray max-w-xs mb-5 leading-relaxed">Sharia-compliant rewards marketplace for everyday essentials in Gambia. Zero interest. Transparent fees. Real growth.</p>
+        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
+          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
+          Dalasi or crypto, and keep part of what you spend.
+        </p>
         <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 text-brand-black font-semibold hover:text-brand-accent transition-colors text-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             +44 7982 144203
           </a>
-          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 text-brand-gray hover:text-brand-black transition-colors text-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             nufaa.now@hotmail.com
           </a>
         </div>
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Platform</h4>
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
         <ul class="space-y-3">
-          <li><a href="wallet" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Wallet</a></li>
-          <li><a href="how-it-works" class="text-brand-gray hover:text-brand-black transition-colors text-sm">How it works</a></li>
-          <li><a href="about" class="text-brand-gray hover:text-brand-black transition-colors text-sm">About us</a></li>
-          <li><a href="contact" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Contact</a></li>
+          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
+          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
+          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
+          <li><a href="kyc" class="footer-link">Verify your account</a></li>
         </ul>
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Legal</h4>
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
         <ul class="space-y-3">
-          <li><a href="terms" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Terms of service</a></li>
-          <li><a href="privacy" class="text-brand-gray hover:text-brand-black transition-colors text-sm">Privacy policy</a></li>
+          <li><a href="about" class="footer-link">About Nufaa</a></li>
+          <li><a href="contact" class="footer-link">Contact</a></li>
+          <li><a href="terms" class="footer-link">Terms of service</a></li>
+          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
         </ul>
       </div>
 
       <div class="col-span-2 md:col-span-3">
-        <h4 class="font-bold mb-5 uppercase tracking-[0.15em] text-[10px] text-brand-gray">Stay updated</h4>
-        <p class="text-brand-gray text-sm mb-4">Get notified when we launch new features.</p>
-        <form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed'; this.querySelector('input').value='';">
-          <input type="email" placeholder="you@email.com" required class="flex-1 px-4 py-2.5 bg-brand-light border border-black/8 rounded-full text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/10 transition-all min-w-0" id="footer-email">
-          <button type="submit" class="px-4 py-2.5 bg-brand-black text-white text-sm font-semibold rounded-full hover:bg-brand-dark active:scale-[0.98] transition-all shrink-0">Join</button>
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
+        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
+        <form class="flex gap-2" data-subscribe novalidate>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
+                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
+          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
         </form>
+        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
       </div>
     </div>
 
-    <div class="w-full max-w-7xl mx-auto px-5 md:px-6 pt-7 border-t border-black/5 flex flex-col items-center gap-4">
-      <p class="text-brand-gray/30 text-[11px] leading-relaxed text-center max-w-3xl">Nufaa is a technology platform and does not provide regulated financial services, lending, or deposit-taking. Staking rewards are variable and not guaranteed. Your capital is not protected by any government deposit scheme. Past performance is not indicative of future results.</p>
+    <hr class="rule mb-7">
+
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
+        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
+        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
+        and does not pay interest. Cashback is a discount funded by merchant margin, is
+        variable by category, and can change. Wallet balances are not covered by any deposit
+        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
+        funding method and is converted to Dalasi before your balance updates.
+      </p>
       <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
-        <p class="text-brand-gray text-sm">&copy; 2026 Nufaa. All rights reserved.</p>
-        <p class="text-brand-gray/40 text-sm">Made for Gambia.</p>
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
+        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- JAVASCRIPT                                  -->
-  <!-- ═══════════════════════════════════════════ -->
-  <script>
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-    });
-
-    // Close menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // Scroll-aware nav
-    const mainNav = document.getElementById('main-nav');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > 60) {
-        mainNav.classList.add('nav-scrolled');
-      } else {
-        mainNav.classList.remove('nav-scrolled');
-      }
-      lastScroll = currentScroll;
-    }, { passive: true });
-
-    // Scroll Reveal
-    const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    revealElements.forEach(el => revealObserver.observe(el));
-  </script>
-
+<script src="/assets/config.js"></script>
+<script src="/assets/nufaa.js"></script>
 </body>
 </html>

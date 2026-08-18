@@ -49,8 +49,16 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       if (err.code === "ENOENT") {
-        res.writeHead(404, { "Content-Type": "text/plain" });
-        res.end(`404 Not Found: ${urlPath}`);
+        // Serve the branded 404 page, matching how Vercel handles a missing route.
+        fs.readFile(path.join(__dirname, "404.html"), (notFoundErr, notFoundPage) => {
+          if (notFoundErr) {
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end(`404 Not Found: ${urlPath}`);
+            return;
+          }
+          res.writeHead(404, { "Content-Type": "text/html", "Cache-Control": "no-cache" });
+          res.end(notFoundPage);
+        });
       } else {
         res.writeHead(500, { "Content-Type": "text/plain" });
         res.end("500 Internal Server Error");

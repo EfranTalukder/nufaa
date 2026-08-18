@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
+
+  <title>Marketplace | Nufaa — everyday goods priced in Dalasi</title>
+  <meta name="description" content="Browse the Nufaa marketplace: rice, cooking oil, cashpower, airtime, household goods, fabric and school supplies. Every price in Dalasi, every order pays cashback in Dalasi.">
+  <meta name="theme-color" content="#F6F7F2">
+  <meta property="og:title" content="Nufaa marketplace | Priced in Dalasi, cashback in Dalasi">
+  <meta property="og:description" content="Rice, cashpower, airtime, household goods and fabric — with 10% to 20% back on every confirmed order.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/product-marketplace.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/assets/tailwind.config.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/nufaa.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="blob blob-drift" style="right:-10%;top:-4%;width:44vw;height:44vw;background:radial-gradient(circle,rgba(67,167,78,0.12) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="left:-14%;top:52%;width:36vw;height:36vw;background:radial-gradient(circle,rgba(46,90,143,0.09) 0%,transparent 70%);animation-delay:-8s;"></div>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="nav-shell" id="main-nav" aria-label="Primary">
+  <div class="nav-pill">
+    <a href="/" class="flex items-center gap-2.5 group shrink-0" aria-label="Nufaa home">
+      <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
+      <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-7">
+      <a href="/" class="nav-link">Home</a>
+      <a href="marketplace" class="nav-link" aria-current="page">Marketplace</a>
+      <a href="how-it-works" class="nav-link">How cashback works</a>
+      <a href="wallet" class="nav-link">Wallet</a>
+      <a href="about" class="nav-link">About</a>
+      <a href="contact" class="nav-link">Contact</a>
+    </div>
+    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify &amp; join</a>
+    <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
+    <a href="/" class="mobile-link font-display font-semibold text-3xl">Home</a>
+    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl" aria-current="page">Marketplace</a>
+    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
+    <a href="wallet" class="mobile-link font-display font-semibold text-3xl">Wallet</a>
+    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
+    <a href="contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
+    <a href="kyc" class="mobile-link btn btn-primary mt-2">Verify &amp; join</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ══════════════════ HEADER ══════════════════ -->
+<section class="pt-32 pb-10 md:pt-44 md:pb-14">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-8 items-end">
+      <div class="lg:col-span-7">
+        <p class="eyebrow reveal mb-5">The marketplace</p>
+        <h1 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.3rem,5vw,3.8rem)">
+          Everything priced<br>in Dalasi.
+        </h1>
+        <p class="reveal d2 text-lg text-slate2 leading-[1.7] measure">
+          These are the categories open at launch. Every rate sits between 10% and 20%, and
+          that is what a verified buyer gets back in Dalasi on a confirmed order. Sellers set
+          them within the band, so they move — the app always shows the live rate before you pay.
+        </p>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="reveal d2 surface p-6">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <span class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold">Worked example</span>
+            <span class="cashback-pill">12%</span>
+          </div>
+          <div class="space-y-2.5 text-sm">
+            <div class="flex items-center justify-between"><span class="text-slate2">Basket total</span><span class="price font-semibold">D 2,150.00</span></div>
+            <div class="flex items-center justify-between"><span class="text-slate2">Paid from wallet</span><span class="price font-semibold">D 2,150.00</span></div>
+            <hr class="rule">
+            <div class="flex items-center justify-between"><span class="font-semibold">Cashback credited</span><span class="price font-bold" style="color:var(--pine)">+D 258.00</span></div>
+          </div>
+          <p class="text-xs text-slate2 leading-relaxed mt-4">Credited to the same wallet once the seller confirms the order was collected.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FEATURED ══════════════════ -->
+<section class="pb-12 md:pb-16">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="flex items-baseline justify-between gap-4 mb-6">
+      <h2 class="eyebrow">Featured this week</h2>
+      <p class="text-xs text-slate2">Rates confirmed with the seller on Monday</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      <article class="group surface-raised spotlight overflow-hidden reveal grid sm:grid-cols-2">
+        <div class="tile rounded-none" style="min-height:14rem">
+          <img src="/images/groceries.png" alt="Sacks of rice and bottles of cooking oil on a market shelf">
+          <span class="tile-tint"></span>
+          <span class="cashback-pill absolute top-3 left-3" style="z-index:var(--z-raised)">12% back</span>
+        </div>
+        <div class="p-6 flex flex-col justify-center">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-2">Groceries</p>
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">Local rice, 50kg bag</h3>
+          <p class="text-sm text-slate2 leading-[1.7] mb-5">Sourced through listed wholesalers in Serrekunda. Collected at your chosen agent point.</p>
+          <div class="flex items-end justify-between gap-3">
+            <div>
+              <p class="price text-xl font-bold leading-none">D 2,150</p>
+              <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 258.00 back</p>
+            </div>
+            <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group surface-raised spotlight overflow-hidden reveal d1 grid sm:grid-cols-2">
+        <div class="tile rounded-none" style="min-height:14rem">
+          <img src="/images/hijabi-topup.png" alt="A woman topping up her phone credit">
+          <span class="tile-tint"></span>
+          <span class="cashback-pill absolute top-3 left-3" style="z-index:var(--z-raised)">10% back</span>
+        </div>
+        <div class="p-6 flex flex-col justify-center">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold mb-2">Airtime &amp; data</p>
+          <h3 class="font-display text-lg font-semibold tracking-tight mb-2">Airtime top-up</h3>
+          <p class="text-sm text-slate2 leading-[1.7] mb-5">Africell, QCell and Gamcel. Send credit to your own number or to someone else's.</p>
+          <div class="flex items-end justify-between gap-3">
+            <div>
+              <p class="price text-xl font-bold leading-none">From D 25</p>
+              <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 20 on D 200</p>
+            </div>
+            <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FILTER + GRID ══════════════════ -->
+<section class="pb-20 md:pb-28">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+
+    <div class="flex flex-wrap gap-2 mb-8" data-filter-group role="group" aria-label="Filter by category">
+      <button type="button" class="chip" data-filter="all" aria-pressed="true">All categories</button>
+      <button type="button" class="chip" data-filter="groceries" aria-pressed="false">Groceries</button>
+      <button type="button" class="chip" data-filter="utilities" aria-pressed="false">Utilities</button>
+      <button type="button" class="chip" data-filter="airtime" aria-pressed="false">Airtime &amp; data</button>
+      <button type="button" class="chip" data-filter="household" aria-pressed="false">Household</button>
+      <button type="button" class="chip" data-filter="fabric" aria-pressed="false">Fabric &amp; tailoring</button>
+      <button type="button" class="chip" data-filter="school" aria-pressed="false">School</button>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Groceries -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d1" data-category="groceries">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Groceries</p>
+          <span class="cashback-pill cashback-pill--quiet">12% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Cooking oil, 20 litres</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Sealed jerrycan. Sold by the case to shops, or single to households.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 1,890</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 226.80 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d2" data-category="groceries">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Groceries</p>
+          <span class="cashback-pill cashback-pill--quiet">13% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Fresh produce basket</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Onions, tomatoes, okra, bitter tomato and pepper, picked the morning of collection.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 640</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 83.20 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- Utilities -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal" data-category="utilities">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Utilities</p>
+          <span class="cashback-pill cashback-pill--quiet">10% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">NAWEC cashpower units</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Enter your meter number once. The token arrives by SMS and stays in your order history.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">From D 100</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 50.00 on D 500</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d1" data-category="utilities">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Utilities</p>
+          <span class="cashback-pill cashback-pill--quiet">11% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Gas cylinder refill, 12kg</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Swap your empty cylinder at a listed depot. Delivery available in Kanifing and Banjul.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 950</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 104.50 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- Airtime -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal" data-category="airtime">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Airtime &amp; data</p>
+          <span class="cashback-pill cashback-pill--quiet">10% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Data bundle, 10GB monthly</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Activates on the number you enter, usually inside a minute.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 350</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 35.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- Household -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d1" data-category="household">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Household</p>
+          <span class="cashback-pill cashback-pill--quiet">18% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Double mattress</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Foam, 6 inch. Delivered to the address on your verified account within three days.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 4,700</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 846.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d2" data-category="household">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Household</p>
+          <span class="cashback-pill cashback-pill--quiet">18% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Rechargeable standing fan</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Holds charge through a cut. Sold with a twelve month replacement warranty.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 2,300</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 414.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <article class="surface-raised spotlight p-6 flex flex-col reveal" data-category="household">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Household</p>
+          <span class="cashback-pill cashback-pill--quiet">18% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Cookware set, 7 pieces</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Aluminium pots with lids, sized for a family cooking benachin on a weekend.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 1,450</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 261.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- Fabric -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d1" data-category="fabric">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Fabric &amp; tailoring</p>
+          <span class="cashback-pill cashback-pill--quiet">20% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Damask fabric, 6 yards</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Cut from the roll by listed traders. Pick your colour in the app before you pay.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 1,200</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 240.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <article class="surface-raised spotlight p-6 flex flex-col reveal d2" data-category="fabric">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Fabric &amp; tailoring</p>
+          <span class="cashback-pill cashback-pill--quiet">20% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Tailoring, men's kaftan</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Book a listed tailor with your measurements. Fabric bought separately or supplied by you.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 850</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 170.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- School -->
+      <article class="surface-raised spotlight p-6 flex flex-col reveal" data-category="school">
+        <div class="flex items-start justify-between gap-3 mb-5">
+          <p class="text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">School</p>
+          <span class="cashback-pill cashback-pill--quiet">15% back</span>
+        </div>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Primary starter pack</h2>
+        <p class="text-sm text-slate2 leading-[1.7] mb-5 flex-1">Exercise books, pens, geometry set and a bag. Priced for one child for one term.</p>
+        <div class="flex items-end justify-between gap-3">
+          <div>
+            <p class="price text-xl font-bold leading-none">D 780</p>
+            <p class="price text-xs font-bold mt-1" style="color:var(--pine)">+D 117.00 back</p>
+          </div>
+          <a href="kyc" class="btn btn-outline btn-sm">Verify to buy</a>
+        </div>
+      </article>
+
+      <!-- Seller invitation, sits in the grid rather than after it -->
+      <article class="reveal d1 relative overflow-hidden rounded-[1.75rem] p-7 text-white flex flex-col" data-category="all-only" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 72%)">
+        <div class="blob blob-drift" style="right:-30%;top:-30%;width:90%;height:90%;background:radial-gradient(circle,rgba(67,167,78,0.4),transparent 70%);filter:blur(40px)"></div>
+        <div class="relative flex flex-col flex-1">
+          <span class="inline-flex self-start items-center px-2.5 py-1 rounded-md bg-white/10 text-[11px] font-bold tracking-wide mb-4">For sellers</span>
+          <h2 class="font-display text-xl font-semibold tracking-tight mb-2">Your shop belongs here</h2>
+          <p class="text-sm text-white/60 leading-[1.7] mb-6 flex-1">
+            List your stock in Dalasi, choose a cashback rate between 10% and 20%, and get
+            settled the same day an order is confirmed.
+          </p>
+          <a href="contact" class="btn btn-light btn-sm self-start">Apply as a seller</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p id="filter-empty" hidden class="text-center text-slate2 py-16">Nothing listed in that category yet. Try another one.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW RATES WORK ══════════════════ -->
+<section class="border-y" style="padding-block:var(--section-y);border-color:var(--line);background:rgba(255,255,255,0.6)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-5">
+        <p class="eyebrow reveal mb-5">Reading the rates</p>
+        <h2 class="reveal d1 font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-6" style="font-size:clamp(2rem,4vw,3.2rem)">
+          Why a mattress<br><span class="text-slate2">beats a bag of rice.</span>
+        </h2>
+        <p class="reveal d2 text-slate2 leading-[1.7] measure">
+          Cashback comes out of the seller's margin, not out of thin air. Staples turn over
+          fast on a tighter margin, so they sit at the bottom of the band. Household goods and
+          fabric carry more room, so sellers push toward the top of it to win the order.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="surface overflow-hidden reveal d1">
+          <table class="w-full text-sm">
+            <caption class="sr-only">Cashback rates by category</caption>
+            <thead>
+              <tr class="text-left" style="background:var(--cream)">
+                <th scope="col" class="px-5 py-3.5 text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Category</th>
+                <th scope="col" class="px-5 py-3.5 text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold">Typical rate</th>
+                <th scope="col" class="px-5 py-3.5 text-[11px] uppercase tracking-[0.14em] text-slate2 font-semibold text-right">Back on D 1,000</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Utilities and cashpower</th>
+                <td class="px-5 py-3.5 price">10%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 100.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Airtime and data</th>
+                <td class="px-5 py-3.5 price">10%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 100.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Gas refill</th>
+                <td class="px-5 py-3.5 price">11%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 110.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Groceries and staples</th>
+                <td class="px-5 py-3.5 price">12&ndash;13%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 120.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">School supplies</th>
+                <td class="px-5 py-3.5 price">15%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 150.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Household goods</th>
+                <td class="px-5 py-3.5 price">18%</td>
+                <td class="px-5 py-3.5 price text-right font-semibold">D 180.00</td>
+              </tr>
+              <tr class="border-t" style="border-color:var(--line);background:rgba(67,167,78,0.06)">
+                <th scope="row" class="px-5 py-3.5 font-semibold text-left">Fabric and tailoring</th>
+                <td class="px-5 py-3.5 price font-semibold" style="color:var(--pine)">20%</td>
+                <td class="px-5 py-3.5 price text-right font-bold" style="color:var(--pine)">D 200.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-slate2 leading-relaxed mt-4 reveal d2">
+          Rates are set per listing by the seller and can change without notice. The rate you
+          see at checkout is the rate you get. Cashback is paid in Dalasi only.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PAYMENT NOTE ══════════════════ -->
+<section style="padding-block:var(--section-y)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="surface-raised spotlight p-7 reveal">
+        <span class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)"><span class="price text-lg font-bold" style="color:var(--pine)">D</span></span>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Paying with Dalasi</h2>
+        <p class="text-sm text-slate2 leading-[1.7]">Top up from mobile money, a bank transfer or cash at an agent, then pay from your wallet balance.</p>
+      </div>
+      <div class="surface-raised spotlight p-7 reveal d1">
+        <span class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Paying with crypto</h2>
+        <p class="text-sm text-slate2 leading-[1.7]">Send USDT, USDC or BTC. We show the Dalasi amount and hold that rate for 60 seconds while you confirm.</p>
+      </div>
+      <div class="surface-raised spotlight p-7 reveal d2">
+        <span class="w-10 h-10 rounded-xl grid place-items-center mb-4" style="background:rgba(67,167,78,0.12)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#176A32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h2 class="font-display text-lg font-semibold tracking-tight mb-2">Getting paid back</h2>
+        <p class="text-sm text-slate2 leading-[1.7]">However you paid, cashback arrives as Dalasi in your wallet. Spend it or withdraw it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="pb-24 md:pb-32">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="reveal relative overflow-hidden rounded-[2.25rem] px-7 py-14 md:px-16 md:py-20 text-center text-white" style="background:linear-gradient(155deg,#11264A 0%,#0B1524 68%)">
+      <div class="blob blob-drift" style="left:-10%;top:-40%;width:60%;height:150%;background:radial-gradient(circle,rgba(67,167,78,0.35),transparent 68%);filter:blur(60px)"></div>
+      <div class="relative">
+        <h2 class="font-display font-semibold tracking-[-0.03em] leading-[1.06] mb-4" style="font-size:clamp(1.9rem,4vw,3rem)">
+          Buying starts after verification.
+        </h2>
+        <p class="text-white/60 leading-[1.7] max-w-lg mx-auto mb-8">
+          Get your account approved now so your first basket is ready when the Gambia rollout opens.
+        </p>
+        <a href="kyc" class="btn btn-light">Verify your account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
+      <div class="col-span-2 md:col-span-5">
+        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+          <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
+          <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
+        </a>
+        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
+          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
+          Dalasi or crypto, and keep part of what you spend.
+        </p>
+        <div class="space-y-2">
+          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +44 7982 144203
+          </a>
+          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            nufaa.now@hotmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
+        <ul class="space-y-3">
+          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
+          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
+          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
+          <li><a href="kyc" class="footer-link">Verify your account</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
+        <ul class="space-y-3">
+          <li><a href="about" class="footer-link">About Nufaa</a></li>
+          <li><a href="contact" class="footer-link">Contact</a></li>
+          <li><a href="terms" class="footer-link">Terms of service</a></li>
+          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-2 md:col-span-3">
+        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
+        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
+        <form class="flex gap-2" data-subscribe novalidate>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
+                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
+          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
+        </form>
+        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
+      </div>
+    </div>
+
+    <hr class="rule mb-7">
+
+    <div class="flex flex-col items-center gap-4">
+      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
+        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
+        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
+        and does not pay interest. Cashback is a discount funded by merchant margin, is
+        variable by category, and can change. Wallet balances are not covered by any deposit
+        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
+        funding method and is converted to Dalasi before your balance updates. Products,
+        prices and rates shown are illustrative of the launch catalogue.
+      </p>
+      <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
+        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/config.js"></script>
+<script src="/assets/nufaa.js"></script>
+</body>
+</html>
