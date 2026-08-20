@@ -1,4 +1,12 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/marketplace", "destination": "/#services", "permanent": true },
+    { "source": "/wallet", "destination": "/", "permanent": true },
+    { "source": "/how-it-works", "destination": "/#rewards", "permanent": true },
+    { "source": "/about", "destination": "/#what-we-do", "permanent": true },
+    { "source": "/contact", "destination": "/#contact", "permanent": true },
+    { "source": "/kyc", "destination": "/#verify", "permanent": true }
+  ]
 }

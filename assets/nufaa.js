@@ -145,7 +145,7 @@
         if (!res.ok) throw new Error('send failed');
         input.value = '';
         if (note) {
-          note.textContent = 'You are on the list. We will write when the Gambia rollout opens.';
+          note.textContent = 'You are on the list. We will be in touch.';
           note.style.color = 'var(--pine)';
         }
         if (btn) { btn.textContent = 'Added'; }

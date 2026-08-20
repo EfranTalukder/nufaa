@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    Nufaa — shared design system
-   Cashback marketplace. Dalasi-first. UK + Gambia.
+   UK digital services and rewards platform.
    Palette derives from brand_assets/logo.svg only.
    ═══════════════════════════════════════════════════════════════ */
 
@@ -50,8 +50,15 @@
 }
 
 /* ── Base ───────────────────────────────────────────────────── */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 7.5rem; }
+@media (max-width: 640px) { html { scroll-padding-top: 6rem; } }
 html, body { overflow-x: hidden; width: 100%; }
+
+/* Utility classes that set `display` (.flex, .btn, .grid …) outrank the
+   browser's own [hidden] rule, which would leave every element the KYC form
+   hides — the error banner, the Back/Continue/Submit buttons, the success
+   card — on screen at once. Keep the attribute authoritative. */
+[hidden] { display: none !important; }
 
 body {
   background-color: var(--cream);
@@ -261,23 +268,6 @@ p { text-wrap: pretty; }
   transition: opacity 0.4s var(--ease);
 }
 .spotlight:hover::before { opacity: 1; }
-
-/* ── Commerce components ────────────────────────────────────── */
-.cashback-pill {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  padding: 0.3rem 0.65rem;
-  border-radius: 0.6rem;
-  background: linear-gradient(135deg, var(--pine), var(--leaf));
-  color: #fff;
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em;
-  font-variant-numeric: tabular-nums;
-  box-shadow: 0 6px 16px -8px rgba(23, 106, 50, 0.7);
-}
-.cashback-pill--quiet {
-  background: rgba(67, 167, 78, 0.1);
-  color: var(--pine);
-  box-shadow: none;
-}
 
 .eyebrow {
   display: flex; align-items: center; gap: 0.5rem;

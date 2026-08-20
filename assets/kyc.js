@@ -1,7 +1,7 @@
 /* Nufaa — KYC verification form.
-   Front-end only: validation, file handling and the review step run in the browser.
-   Nothing is transmitted; wire `submitApplication()` to the real endpoint when the
-   compliance backend is live. */
+   Validation, file handling and the review step run in the browser. On submit the
+   answers and documents are posted to FormSubmit, which emails them to the address
+   in assets/config.js. */
 (function () {
   'use strict';
 
@@ -112,7 +112,7 @@
       case 'dob':
         var age = yearsSince(value);
         if (isNaN(age)) { setError(el, 'Enter a valid date.'); return false; }
-        if (age < 18) { setError(el, 'You must be 18 or older to hold a Nufaa account.'); return false; }
+        if (age < 18) { setError(el, 'You must be 18 or older to open a Nufaa account.'); return false; }
         if (age > 110) { setError(el, 'Check the year on that date.'); return false; }
         break;
       case 'idnumber':
@@ -126,8 +126,13 @@
         if (d <= new Date()) { setError(el, 'This document has expired. Use a current one.'); return false; }
         break;
       case 'amount':
-        if (!/^[0-9,]+$/.test(value) || parseInt(value.replace(/,/g, ''), 10) < 25) {
-          setError(el, 'Enter an amount of D 25 or more, digits only.'); return false;
+        if (!/^[0-9,]+$/.test(value) || parseInt(value.replace(/,/g, ''), 10) < 5) {
+          setError(el, 'Enter an amount of \u00A35 or more, digits only.'); return false;
+        }
+        break;
+      case 'postcode':
+        if (!/^[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\s*[0-9][A-Za-z]{2}$/.test(value)) {
+          setError(el, 'That does not look like a UK postcode.'); return false;
         }
         break;
     }
@@ -218,20 +223,20 @@
 
   form.querySelectorAll('input[name="idType"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
-      var twoSided = radio.value === 'gambian-nid' || radio.value === 'drivers-licence' || radio.value === 'voters-card';
+      var twoSided = radio.value === 'uk-driving-licence' || radio.value === 'brp' || radio.value === 'national-id';
       backWrap.hidden = !twoSided;
       backInput.dataset.required = twoSided ? 'true' : 'false';
       if (!twoSided) clearError(backInput);
 
       frontLabel.childNodes[0].nodeValue = radio.value === 'passport'
-        ? 'Photo of your passport data page '
+        ? 'Photo of your passport photo page '
         : 'Photo of the front of your card ';
 
       var names = {
         'passport': 'Passport number',
-        'gambian-nid': 'National identity (NID) number',
-        'drivers-licence': 'Driving licence number',
-        'voters-card': "Voter's card number"
+        'uk-driving-licence': 'Driving licence number',
+        'brp': 'Residence permit number',
+        'national-id': 'National ID card number'
       };
       idNumberLabel.childNodes[0].nodeValue = (names[radio.value] || 'Document number') + ' ';
     });
@@ -324,7 +329,7 @@
       ['Nationality', labelFor('nationality')],
       ['Phone', (labelFor('dialCode') + ' ' + labelFor('phone')).trim()],
       ['Email', labelFor('email')],
-      ['Residential address', [labelFor('addressLine'), labelFor('city'), labelFor('region'), labelFor('country')].filter(Boolean).join(', ')],
+      ['Home address', [labelFor('addressLine'), labelFor('city'), labelFor('region'), labelFor('postcode'), labelFor('country')].filter(Boolean).join(', ')],
       ['Document type', labelFor('idType')],
       ['Document number', labelFor('idNumber')],
       ['Issuing country', labelFor('idCountry')],
@@ -333,7 +338,7 @@
       ['Second side', backWrap.hidden ? 'Not required for this document' : labelFor('idBack')],
       ['Photo of you', labelFor('selfie')],
       ['Account use', labelFor('accountUse')],
-      ['Expected monthly spend', labelFor('monthlySpend') ? 'D ' + labelFor('monthlySpend') : ''],
+      ['Expected monthly spend', labelFor('monthlySpend') ? '\u00A3' + labelFor('monthlySpend') : ''],
       ['Source of funds', labelFor('fundsSource')]
     ];
 

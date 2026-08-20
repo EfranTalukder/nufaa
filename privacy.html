@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/brand_assets/logo.svg">
 
-  <title>Privacy policy | Nufaa</title>
-  <meta name="description" content="How Nufaa collects, uses, shares and protects your personal data — including identity documents, NID and passport numbers, and the photographs required for KYC.">
+  <title>Privacy policy | Nufaa Technologies Limited</title>
+  <meta name="description" content="How Nufaa Technologies Limited collects, uses, shares and protects your personal data under UK GDPR, including the identity documents you send us during verification.">
   <meta name="theme-color" content="#F6F7F2">
-  <meta property="og:title" content="Nufaa privacy policy">
-  <meta property="og:description" content="What we collect, why, who sees it, how long we keep it, and the rights you have over it.">
-  <meta property="og:type" content="website">
+  <meta name="robots" content="index,follow">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="/assets/tailwind.config.js"></script>
@@ -22,7 +20,7 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="blob blob-drift" style="right:-12%;top:-6%;width:40vw;height:40vw;background:radial-gradient(circle,rgba(67,167,78,0.10) 0%,transparent 68%);"></div>
+<div class="blob blob-drift" style="right:-10%;top:-4%;width:42vw;height:42vw;background:radial-gradient(circle,rgba(46,90,143,0.10) 0%,transparent 68%);"></div>
 
 <!-- ══════════════════ NAV ══════════════════ -->
 <nav class="nav-shell" id="main-nav" aria-label="Primary">
@@ -31,15 +29,16 @@
       <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto transition-transform duration-500 group-hover:-translate-y-0.5">
       <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
     </a>
+
     <div class="hidden lg:flex items-center gap-7">
-      <a href="/" class="nav-link">Home</a>
-      <a href="marketplace" class="nav-link">Marketplace</a>
-      <a href="how-it-works" class="nav-link">How cashback works</a>
-      <a href="wallet" class="nav-link">Wallet</a>
-      <a href="about" class="nav-link">About</a>
-      <a href="contact" class="nav-link">Contact</a>
+      <a href="/#what-we-do" class="nav-link">What we do</a>
+      <a href="/#services" class="nav-link">Services</a>
+      <a href="/#rewards" class="nav-link">Rewards</a>
+      <a href="/#contact" class="nav-link">Contact</a>
     </div>
-    <a href="kyc" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify &amp; join</a>
+
+    <a href="/#verify" class="hidden lg:inline-flex btn btn-primary btn-sm">Verify your account</a>
+
     <button class="lg:hidden hamburger p-2 flex flex-col gap-[5px] relative" style="z-index:var(--z-toggle)" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -48,310 +47,252 @@
 
 <div class="mobile-overlay" id="mobile-menu">
   <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
-    <a href="/" class="mobile-link font-display font-semibold text-3xl">Home</a>
-    <a href="marketplace" class="mobile-link font-display font-semibold text-3xl">Marketplace</a>
-    <a href="how-it-works" class="mobile-link font-display font-semibold text-3xl">How cashback works</a>
-    <a href="wallet" class="mobile-link font-display font-semibold text-3xl">Wallet</a>
-    <a href="about" class="mobile-link font-display font-semibold text-3xl">About</a>
-    <a href="contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
-    <a href="kyc" class="mobile-link btn btn-primary mt-2">Verify &amp; join</a>
+    <a href="/#what-we-do" class="mobile-link font-display font-semibold text-3xl">What we do</a>
+    <a href="/#services" class="mobile-link font-display font-semibold text-3xl">Services</a>
+    <a href="/#rewards" class="mobile-link font-display font-semibold text-3xl">Rewards</a>
+    <a href="/#verify" class="mobile-link font-display font-semibold text-3xl">Verify</a>
+    <a href="/#contact" class="mobile-link font-display font-semibold text-3xl">Contact</a>
   </div>
 </div>
 
 <main id="main">
 
 <section class="pt-32 pb-10 md:pt-44 md:pb-14">
-  <div class="mx-auto w-full max-w-site px-5 md:px-8">
+  <div class="mx-auto w-full max-w-3xl px-5 md:px-8">
     <a href="/" class="text-link text-sm mb-7">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
       Back to home
     </a>
     <p class="eyebrow mt-6 mb-5">Legal</p>
-    <h1 class="font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.3rem,5vw,3.6rem)">
+    <h1 class="font-display font-semibold tracking-[-0.03em] leading-[1.04] mb-5" style="font-size:clamp(2.2rem,5vw,3.4rem)">
       Privacy policy
     </h1>
-    <div class="flex flex-wrap gap-2">
-      <span class="chip">Last updated 18 August 2026</span>
-      <span class="chip">UK GDPR and Gambian data protection law</span>
+    <p class="text-lg text-slate2 leading-[1.7]">
+      What we collect when you verify your account, why we are allowed to collect it,
+      who sees it, how long we keep it, and how to get it back or get it deleted.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-7">
+      <span class="chip">Last updated 20 August 2026</span>
+      <span class="chip">UK GDPR</span>
     </div>
   </div>
 </section>
 
 <section class="pb-24 md:pb-32">
-  <div class="mx-auto w-full max-w-site px-5 md:px-8">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
+  <div class="mx-auto w-full max-w-3xl px-5 md:px-8">
+    <div class="surface p-6 md:p-10 legal">
 
-      <aside class="lg:col-span-3">
-        <nav class="lg:sticky lg:top-28" aria-label="Sections of this document">
-          <p class="text-[10px] uppercase tracking-[0.16em] text-slate2 font-semibold mb-3">On this page</p>
-          <a class="toc-link" href="#controller">1. Who controls your data</a>
-          <a class="toc-link" href="#collect">2. What we collect</a>
-          <a class="toc-link" href="#kyc-data">3. Identity documents</a>
-          <a class="toc-link" href="#why">4. Why we use it</a>
-          <a class="toc-link" href="#share">5. Who we share it with</a>
-          <a class="toc-link" href="#transfers">6. Sending data between countries</a>
-          <a class="toc-link" href="#retention">7. How long we keep it</a>
-          <a class="toc-link" href="#security">8. How we protect it</a>
-          <a class="toc-link" href="#rights">9. Your rights</a>
-          <a class="toc-link" href="#cookies">10. Cookies</a>
-          <a class="toc-link" href="#children">11. Children</a>
-          <a class="toc-link" href="#changes">12. Changes</a>
-          <a class="toc-link" href="#complaints">13. Contact and complaints</a>
-        </nav>
-      </aside>
+      <h2>1. Who is responsible for your data</h2>
+      <p>
+        Nufaa Technologies Limited is the data controller for the personal data described in
+        this policy. We are registered in England and Wales under company number 17405430, at
+        21 New Street, Bloxwich, Walsall, WS3 2HX, United Kingdom.
+      </p>
+      <p>
+        For anything to do with your data, contact
+        <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a>
+        or call <a href="tel:+447982144203">+44 7982 144203</a>.
+      </p>
 
-      <article class="lg:col-span-9 legal">
+      <h2>2. What we collect</h2>
+      <p>When you verify your account, we ask you for:</p>
+      <ul>
+        <li><strong>Who you are</strong> &mdash; first, middle and last name, date of birth, gender, nationality.</li>
+        <li><strong>How to reach you</strong> &mdash; mobile number and email address.</li>
+        <li><strong>Where you live</strong> &mdash; street address, town or city, county, postcode and country.</li>
+        <li><strong>Your identity document</strong> &mdash; document type, document number, issuing country and expiry date.</li>
+        <li><strong>Images</strong> &mdash; a photograph of your identity document, its reverse where it has one, and a photograph of you holding it.</li>
+        <li><strong>Money-laundering checks</strong> &mdash; what you intend to use the account for, your expected monthly spend, your main source of funds, and whether you are a politically exposed person.</li>
+      </ul>
+      <p>
+        When you place an order we also hold the order details and the number, meter or reference
+        the product was delivered to.
+      </p>
 
-        <div class="callout">
-          <p>
-            <strong>In short.</strong> To open a Nufaa account you have to prove who you are,
-            which means giving us a passport or NID number, a photo of that document and a
-            photo of your face. We use it to verify you, to meet anti-money-laundering law, and
-            for nothing else. We do not sell personal data. You can ask to see, correct or
-            erase what we hold, subject to the records we are legally required to keep.
-          </p>
-        </div>
+      <h2>3. Why we collect it, and our lawful basis</h2>
+      <ul>
+        <li><strong>To open your account and supply what you order</strong> &mdash; because it is necessary to perform our contract with you.</li>
+        <li><strong>To verify your identity and run anti-money-laundering checks</strong> &mdash; because we have a legal obligation to do so, and because it is in our legitimate interests to prevent fraud.</li>
+        <li><strong>To keep records after your account closes</strong> &mdash; because we have a legal obligation to retain them.</li>
+        <li><strong>To answer you when you contact us</strong> &mdash; because it is in our legitimate interests to run a business that responds to its customers.</li>
+      </ul>
+      <p>
+        We do not sell your personal data, and we do not use it for advertising or profiling.
+      </p>
 
-        <h2 id="controller">1. Who controls your data</h2>
+      <div class="callout">
         <p>
-          Nufaa operates through a company registered in the United Kingdom and a company
-          registered in The Gambia. The UK entity is the controller for platform accounts,
-          identity verification records and website data. The Gambian entity is the controller
-          for marketplace transactions, seller settlement and the agent network. They act as
-          joint controllers where those activities overlap.
+          <strong>About the photograph of you.</strong> A reviewer compares it to your document by
+          eye. We do not run facial recognition or any automated biometric matching on it, so we do
+          not process it as biometric data, and no decision about you is made by a machine alone.
         </p>
-        <p>
-          Contact for all data protection matters:
-          <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a>.
-        </p>
+      </div>
 
-        <h2 id="collect">2. What we collect</h2>
-        <h3>Information you give us</h3>
-        <ul>
-          <li><strong>Identity:</strong> full legal name, date of birth, gender, nationality.</li>
-          <li><strong>Contact:</strong> mobile number, email address, residential address.</li>
-          <li><strong>Identity document:</strong> document type, document number (passport number or NID number), issuing country, expiry date.</li>
-          <li><strong>Photographs:</strong> an image of your identity document, and a photograph of your face used to match against it.</li>
-          <li><strong>Financial context:</strong> expected monthly spend, source of funds, whether you are a politically exposed person, and whether the account will buy, sell or both.</li>
-          <li><strong>Seller information:</strong> where you trade, what you stock, and the settlement account you nominate.</li>
-          <li><strong>Correspondence:</strong> anything you send us through the contact form, email or WhatsApp.</li>
-        </ul>
-        <h3>Information we generate or receive</h3>
-        <ul>
-          <li>Transaction records: top-ups, orders, cashback, refunds, withdrawals and settlements, all denominated in Dalasi.</li>
-          <li>Crypto funding records: the asset, network, transaction hash, amount received and the rate applied at conversion.</li>
-          <li>Device and usage data: IP address, device type, app version, and how you move through the site or app.</li>
-          <li>Verification results from the providers who check your document, and screening results against sanctions and PEP lists.</li>
-        </ul>
+      <h2>4. Who sees it</h2>
+      <p>Your data is seen by the people at Nufaa who review applications and fulfil orders. Beyond that, we use these service providers:</p>
+      <ul>
+        <li><strong>FormSubmit</strong> &mdash; delivers the verification form from this website to our mailbox.</li>
+        <li><strong>Microsoft</strong> &mdash; hosts the mailbox that receives and stores those submissions.</li>
+        <li><strong>Vercel</strong> &mdash; hosts this website and processes standard server request logs.</li>
+        <li><strong>Merchant partners and suppliers</strong> &mdash; receive only what is needed to deliver your order, such as the mobile number to be topped up. They do not receive your identity documents.</li>
+      </ul>
+      <p>
+        We will also disclose data where the law requires it &mdash; for example to a regulator, or
+        to the police in connection with a criminal investigation.
+      </p>
+      <p>
+        Some of these providers process data outside the United Kingdom. Where that happens, the
+        transfer is covered by the UK International Data Transfer Agreement or UK Addendum, or by
+        adequacy regulations.
+      </p>
 
-        <h2 id="kyc-data">3. Identity documents and photographs</h2>
-        <p>
-          The KYC form asks for your passport number or Gambian NID number, an image of that
-          document, and a photograph of your face. This is the most sensitive data we hold, and
-          it is handled accordingly:
-        </p>
-        <ul>
-          <li>Documents are sent over an encrypted (TLS) connection.</li>
-          <li>During this launch phase, applications are delivered by our forms processor, FormSubmit, to a monitored Nufaa mailbox, and reviewed by hand. We are moving to a dedicated verification platform before general release, and will update this policy when we do.</li>
-          <li>Access is limited to the people who review applications.</li>
-          <li>They are never used for marketing, never sold, and never shown to sellers, agents or other users.</li>
-          <li>Where facial comparison is carried out by an automated provider, it is done to confirm the photograph matches the document, not to build a biometric profile for any other purpose.</li>
-        </ul>
-        <p>
-          If facial matching involves processing biometric data under UK GDPR, we rely on the
-          substantial public interest condition for preventing money laundering, and on your
-          explicit consent given on the KYC form. You may withdraw that consent, but we would
-          then be unable to operate an account for you.
-        </p>
+      <h2>5. How long we keep it</h2>
+      <ul>
+        <li><strong>Verification records and identity documents</strong> &mdash; five years after our relationship with you ends, which is the period UK anti-money-laundering rules require. They are deleted after that.</li>
+        <li><strong>Order and transaction records</strong> &mdash; six years, for tax and accounting purposes.</li>
+        <li><strong>Applications we reject</strong> &mdash; twelve months, so we can explain the decision if you ask, then deleted.</li>
+        <li><strong>General correspondence</strong> &mdash; two years.</li>
+      </ul>
 
-        <h2 id="why">4. Why we use it, and on what basis</h2>
-        <ul>
-          <li><strong>To provide the service</strong> — opening your account, running the wallet, processing orders, crediting cashback, settling sellers. Basis: performance of a contract.</li>
-          <li><strong>To verify identity and prevent financial crime</strong> — KYC, sanctions and PEP screening, transaction monitoring. Basis: legal obligation, and substantial public interest for any special category data.</li>
-          <li><strong>To keep the platform safe</strong> — detecting fraud, cashback abuse and account takeover. Basis: legitimate interests.</li>
-          <li><strong>To support you</strong> — answering questions and handling disputes. Basis: performance of a contract, and legitimate interests.</li>
-          <li><strong>To send launch and service updates</strong> — Basis: consent for marketing email, which you can withdraw at any time; legitimate interests for essential service notices.</li>
-          <li><strong>To meet accounting and regulatory duties</strong> — Basis: legal obligation.</li>
-        </ul>
+      <h2>6. How we protect it</h2>
+      <p>
+        The form on this site is submitted over an encrypted HTTPS connection, and the images you
+        upload are resized in your browser before they are sent. Access to the mailbox holding
+        submissions is restricted to the people who review applications and is protected by a
+        password and two-factor authentication.
+      </p>
+      <p>
+        No system is perfectly secure. If a breach affects your rights and freedoms we will tell
+        you, and we will report it to the Information Commissioner&rsquo;s Office within 72 hours
+        as the law requires.
+      </p>
 
-        <h2 id="share">5. Who we share it with</h2>
-        <ul>
-          <li><strong>FormSubmit</strong> (Devro LABS), the processor that delivers form submissions from this website to our mailbox.</li>
-          <li><strong>Identity verification providers</strong>, where used, to check your document and confirm the photograph matches it.</li>
-          <li><strong>Payment partners</strong> — mobile money operators, banks and the processor that converts cryptoassets — with only what is needed to move the money.</li>
-          <li><strong>Sellers and agents</strong>, who receive the minimum needed to fulfil an order: your name, the delivery or collection point, and the order itself. They never receive your identity documents, document numbers or balance.</li>
-          <li><strong>Professional advisers</strong> — auditors and lawyers, under confidentiality.</li>
-          <li><strong>Regulators, law enforcement and courts</strong>, where we are legally required to disclose. In some cases the law prevents us from telling you.</li>
-        </ul>
-        <p>We do not sell personal data, and we do not share it with advertising networks.</p>
+      <h2>7. Your rights</h2>
+      <p>Under UK GDPR you have the right to:</p>
+      <ul>
+        <li>ask for a copy of the personal data we hold about you;</li>
+        <li>have inaccurate data corrected;</li>
+        <li>have data erased, where we are not legally required to keep it;</li>
+        <li>restrict or object to how we use it;</li>
+        <li>receive your data in a portable format; and</li>
+        <li>withdraw consent, where we relied on consent.</li>
+      </ul>
+      <p>
+        Email <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a> and we will respond
+        within one month. There is no charge.
+      </p>
+      <p>
+        Note that the erasure right is not absolute. Where anti-money-laundering law requires us to
+        keep a verification record, we must keep it for the full retention period even if you ask
+        us to delete it. We will tell you if that applies to your request.
+      </p>
 
-        <h2 id="transfers">6. Sending data between countries</h2>
-        <p>
-          Because Nufaa operates in both the United Kingdom and The Gambia, personal data moves
-          between the two. The Gambia is not covered by a UK adequacy decision, so transfers out
-          of the UK are made under the UK International Data Transfer Agreement or the addendum
-          to the EU standard contractual clauses, together with additional safeguards including
-          encryption and access controls. A copy of the transfer mechanism is available on request.
-        </p>
+      <h2>8. Cookies and this website</h2>
+      <p>
+        This website does not set advertising or analytics cookies, and it does not track you
+        across other sites.
+      </p>
+      <p>
+        The site loads styling and fonts from Tailwind CDN, Fontshare and Google Fonts. Those
+        requests reveal your IP address to those providers, as any web request does. Our host,
+        Vercel, keeps standard server logs including IP address for security and diagnostics.
+      </p>
 
-        <h2 id="retention">7. How long we keep it</h2>
-        <ul>
-          <li><strong>Identity documents and verification records:</strong> five years after your account closes, which is the retention period anti-money-laundering law expects in both jurisdictions.</li>
-          <li><strong>Transaction records:</strong> at least six years, for tax and accounting purposes.</li>
-          <li><strong>Support correspondence:</strong> two years after the matter is closed.</li>
-          <li><strong>Marketing consent records:</strong> until you withdraw consent, plus two years to evidence that you had consented.</li>
-          <li><strong>Website analytics:</strong> fourteen months.</li>
-        </ul>
-        <p>When a retention period ends, records are deleted or irreversibly anonymised.</p>
+      <h2>9. Children</h2>
+      <p>
+        Nufaa is for adults. You must be 18 or over to open an account. We do not knowingly
+        collect data about children, and we will delete it if we find we have.
+      </p>
 
-        <h2 id="security">8. How we protect it</h2>
-        <ul>
-          <li>Encryption in transit and at rest, with identity documents held in a separate restricted store.</li>
-          <li>Role-based access, so ordinary support staff cannot open verification records.</li>
-          <li>Access logging and periodic review of who has looked at what.</li>
-          <li>Multi-factor authentication on internal systems.</li>
-        </ul>
-        <p>
-          No system is completely secure. If a breach is likely to result in a high risk to you,
-          we will tell you without undue delay, and notify the relevant regulator within the
-          required timeframe.
-        </p>
+      <h2>10. Changes to this policy</h2>
+      <p>
+        We may update this policy. The version on this page is the one that applies, and the date
+        at the top tells you when it last changed. Where a change materially affects you, we will
+        tell you by email.
+      </p>
 
-        <h2 id="rights">9. Your rights</h2>
-        <p>Subject to the exemptions in applicable law, you can ask us to:</p>
-        <ul>
-          <li>give you a copy of the personal data we hold about you;</li>
-          <li>correct anything that is wrong or out of date;</li>
-          <li>erase data we no longer have a lawful reason to keep;</li>
-          <li>restrict or object to certain processing;</li>
-          <li>provide your data in a portable format;</li>
-          <li>withdraw consent where processing is based on consent.</li>
-        </ul>
-        <p>
-          Anti-money-laundering law limits some of these rights. We cannot erase a verification
-          record inside its statutory retention period, even at your request. We respond to
-          requests within one month, and will tell you if we need longer.
-        </p>
+      <h2>11. Complaining</h2>
+      <p>
+        Please come to us first &mdash; <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a>
+        &mdash; so we can put it right. You also have the right to complain to the UK supervisory
+        authority at any time:
+      </p>
+      <p>
+        Information Commissioner&rsquo;s Office<br>
+        Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF<br>
+        Helpline: 0303 123 1113<br>
+        <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>
+      </p>
 
-        <h2 id="cookies">10. Cookies and similar technology</h2>
-        <p>
-          This website uses only what it needs to work, plus aggregate analytics to understand
-          which pages are read. We do not use advertising cookies and do not build profiles for
-          targeting. Fonts and the styling framework are loaded from third-party content delivery
-          networks, which will see your IP address as part of serving those files.
-        </p>
+      <h2>12. Contact</h2>
+      <p>
+        Nufaa Technologies Limited<br>
+        21 New Street, Bloxwich, Walsall, WS3 2HX, United Kingdom<br>
+        Company number 17405430<br>
+        Email: <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a><br>
+        Telephone: <a href="tel:+447982144203">+44 7982 144203</a>
+      </p>
 
-        <h2 id="children">11. Children</h2>
-        <p>
-          Nufaa is not for anyone under 18. We do not knowingly collect data from children. If we
-          learn that an account belongs to someone under 18, we will close it and delete the data,
-          apart from anything we are legally required to retain.
-        </p>
+    </div>
 
-        <h2 id="changes">12. Changes to this policy</h2>
-        <p>
-          We will update this page when our practices change, and change the date at the top.
-          For material changes we will tell you by email or in the app before they take effect.
-        </p>
-
-        <h2 id="complaints">13. Contact and complaints</h2>
-        <p>
-          Write to <a href="mailto:nufaa.now@hotmail.com">nufaa.now@hotmail.com</a> with any
-          data protection question or request. We acknowledge within two working days.
-        </p>
-        <p>
-          If you are not satisfied with our response, you can complain to the Information
-          Commissioner's Office in the United Kingdom at
-          <a href="https://ico.org.uk" rel="noopener">ico.org.uk</a>, or to the relevant
-          supervisory authority in The Gambia. We would rather you came to us first so we can
-          put it right.
-        </p>
-
-        <hr class="rule my-10">
-        <p class="text-xs">
-          This policy is provided in English. Where a translation is offered for convenience,
-          the English version governs.
-        </p>
-      </article>
-
+    <div class="flex flex-col sm:flex-row gap-3 mt-8">
+      <a href="/#verify" class="btn btn-primary">Verify your account</a>
+      <a href="terms" class="btn btn-quiet">Read the terms of service</a>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ══════════════════ FOOTER ══════════════════ -->
-<footer class="border-t bg-white pt-16 pb-8" style="border-color:var(--line)">
+<footer class="border-t bg-white pt-16 pb-8 mt-8" style="border-color:var(--line)">
   <div class="mx-auto w-full max-w-site px-5 md:px-8">
-    <div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-10 mb-12">
-      <div class="col-span-2 md:col-span-5">
-        <a href="/" class="flex items-center gap-2.5 mb-5" aria-label="Nufaa home">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-8 pb-12">
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-2.5 mb-5">
           <img src="/brand_assets/logo.svg" alt="" width="30" height="20" class="h-5 w-auto">
           <span class="font-display font-semibold text-xl tracking-tight">Nufaa</span>
-        </a>
-        <p class="text-slate2 text-sm leading-[1.7] max-w-xs mb-5">
-          A cashback marketplace for The Gambia. Shop and sell in Dalasi, pay with
-          Dalasi or crypto, and keep part of what you spend.
-        </p>
-        <div class="space-y-2">
-          <a href="https://wa.me/447982144203" class="flex items-center gap-2 font-semibold text-sm hover:text-pine transition-colors">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +44 7982 144203
-          </a>
-          <a href="mailto:nufaa.now@hotmail.com" class="flex items-center gap-2 footer-link">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            nufaa.now@hotmail.com
-          </a>
         </div>
+        <p class="text-slate2 text-sm leading-[1.8] max-w-sm">
+          A digital services and customer-loyalty technology platform, registered in England
+          and Wales and serving customers in the United Kingdom.
+        </p>
       </div>
-
-      <div class="col-span-1 md:col-span-2">
-        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Marketplace</h2>
-        <ul class="space-y-3">
-          <li><a href="marketplace" class="footer-link">Browse categories</a></li>
-          <li><a href="how-it-works" class="footer-link">How cashback works</a></li>
-          <li><a href="wallet" class="footer-link">Dalasi wallet</a></li>
-          <li><a href="kyc" class="footer-link">Verify your account</a></li>
+      <div class="md:col-span-3">
+        <p class="text-[11px] uppercase tracking-[0.16em] font-semibold text-slate2 mb-5">Site</p>
+        <ul class="space-y-3 text-sm">
+          <li><a href="/#what-we-do" class="footer-link">What we do</a></li>
+          <li><a href="/#services" class="footer-link">Services</a></li>
+          <li><a href="/#rewards" class="footer-link">Rewards programme</a></li>
+          <li><a href="/#verify" class="footer-link">Verify your account</a></li>
+          <li><a href="/#contact" class="footer-link">Contact</a></li>
         </ul>
       </div>
-
-      <div class="col-span-1 md:col-span-2">
-        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Company</h2>
-        <ul class="space-y-3">
-          <li><a href="about" class="footer-link">About Nufaa</a></li>
-          <li><a href="contact" class="footer-link">Contact</a></li>
+      <div class="md:col-span-4">
+        <p class="text-[11px] uppercase tracking-[0.16em] font-semibold text-slate2 mb-5">Legal &amp; company</p>
+        <ul class="space-y-3 text-sm mb-6">
           <li><a href="terms" class="footer-link">Terms of service</a></li>
-          <li><a href="privacy" class="footer-link">Privacy policy</a></li>
+          <li><a href="privacy" class="footer-link" aria-current="page">Privacy policy</a></li>
         </ul>
-      </div>
-
-      <div class="col-span-2 md:col-span-3">
-        <h2 class="text-[10px] font-bold uppercase tracking-[0.15em] text-slate2 mb-5">Launch updates</h2>
-        <p class="text-slate2 text-sm mb-4 leading-relaxed">One email when the Gambia rollout opens. Nothing else.</p>
-        <form class="flex gap-2" data-subscribe novalidate>
-          <label for="footer-email" class="sr-only">Email address</label>
-          <input type="email" id="footer-email" name="email" placeholder="you@email.com" autocomplete="email"
-                 class="input min-w-0 flex-1 !py-2.5 !rounded-full !text-sm">
-          <button type="submit" class="btn btn-ink btn-sm shrink-0">Join</button>
-        </form>
-        <p class="text-xs mt-2.5 leading-relaxed" data-subscribe-note></p>
+        <p class="text-slate2 text-sm leading-[1.8]">
+          Nufaa Technologies Limited<br>
+          Company number 17405430<br>
+          21 New Street, Bloxwich,<br>Walsall, WS3 2HX, United Kingdom
+        </p>
       </div>
     </div>
-
-    <hr class="rule mb-7">
-
-    <div class="flex flex-col items-center gap-4">
-      <p class="text-slate2/60 text-[11px] leading-relaxed text-center max-w-3xl">
-        Nufaa operates a retail marketplace and a closed-loop wallet used to pay for goods
-        bought on that marketplace. It is not a bank, does not take deposits, does not lend,
-        and does not pay interest. Cashback is a discount funded by merchant margin, is
-        variable by category, and can change. Wallet balances are not covered by any deposit
-        guarantee scheme in the United Kingdom or The Gambia. Crypto is accepted only as a
-        funding method and is converted to Dalasi before your balance updates.
+    <hr class="rule">
+    <div class="pt-8">
+      <p class="text-slate2 text-xs leading-[1.8] max-w-3xl mb-6">
+        Nufaa Technologies Limited is not authorised or regulated by the Financial Conduct
+        Authority and does not provide regulated financial services. Nufaa does not hold,
+        store or transmit customer funds. Rewards are promotional discounts funded by merchant
+        commissions, carry no cash value beyond use against Nufaa orders, and may change or be
+        withdrawn at any time. Services are available to residents of the United Kingdom only,
+        and all payments are domestic and in pounds sterling.
       </p>
-      <div class="flex flex-col md:flex-row items-center justify-between w-full gap-3">
-        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa. Registered in the UK and The Gambia.</p>
-        <p class="text-slate2/50 text-sm">Priced in Dalasi.</p>
+      <div class="flex flex-col sm:flex-row justify-between gap-3">
+        <p class="text-slate2 text-sm">&copy; <span data-year>2026</span> Nufaa Technologies Limited. Registered in England and Wales.</p>
+        <p class="text-slate2/50 text-sm">Priced in pounds sterling.</p>
       </div>
     </div>
   </div>
